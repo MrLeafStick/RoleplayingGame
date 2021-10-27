@@ -6,7 +6,8 @@ namespace RoleplayingGame
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var mech = new GameMechanics();
+            mech.GameLogic();
         }
     }
 }
