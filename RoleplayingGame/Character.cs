@@ -9,7 +9,6 @@ namespace RoleplayingGame
 {
     public class Character
     {
-        #region Instance Fields
         private string _name;
         protected int _hitPoints;
         protected int _minDamage;
@@ -71,17 +70,32 @@ namespace RoleplayingGame
             get { return 0; }
         }
 
-        protected virtual int ReceiveDamageModifyChance 
-        { 
-            get { return 0; } 
+        /// <summary>
+        /// Return the chance of the damage received bbeing modified.
+        /// Unless overrieded in a dirived class, a Character has 
+        /// 0% chance of having the damage received modified.
+        /// </summary>
+        protected virtual int ReceiveDamageModyChance
+        {
+            get { return 0; }
         }
 
-        protected virtual int CalculatedModifiedDamage(int dealtDamage)
+        /// <summary>
+        /// Return the modifed dealt damage.
+        /// Unless overrisded in a dirived class, the modified dealt
+        /// damage is the same as the original dealt damage.
+        /// </summary
+        protected virtual int CalculateModifedDamage(int dealtDamage)
         {
             return dealtDamage;
         }
 
-        protected virtual int CalculatedModifiedReceivedDamage(int receivedDamage)
+        /// <summary>
+        /// Return the modifed reveived damage.
+        /// unless orverried in a derved class the modifed received
+        /// damage is the sae as the original received damage.
+        /// </summary>
+        protected virtual int CalculateModifedReceivedDamage(int receivedDamage)
         {
             return receivedDamage;
         }
