@@ -50,11 +50,27 @@ namespace RoleplayingGame
 
         public int DealDamage()
         {
-            return 0;
+            int damage = NumberGenerator.Next(_minDamage, _maxDamage);
+            int modifiedDamage = DealDamageModifier(damage);
+
+            string damageDesc = (damage < modifiedDamage) ? "(INCREASED)" : "";
+            string message = $"{Name} dealt {modifiedDamage} damage {damageDesc}";
+            return modifiedDamage;
         }
-        public int ReceiveDamage()
+        public int ReceiveDamage(int damage)
         {
-            return 0;
+            int modifiedDamage = ReceiveDamageModifier(damage);
+            _hitPoints = _hitPoints - modifiedDamage;
+
+            string damageDesc = (damage > modifiedDamage) ? "(DECREASED)" : "";
+            string message = $"{Name} derecieve {modifiedDamage} damage {damageDesc}, and is down to {_hitPoints} HP";
+
+            if(IsDead)
+            {
+                // TODO: Battlelog
+            }
+
+            return modifiedDamage;
         }
 
         public void LogSurvivor()
@@ -67,12 +83,24 @@ namespace RoleplayingGame
 
         public int DealDamageModifier(int dealtDamage)
         {
-            return 0;
+            int modifiedDealtDamage = dealtDamage;
+            if(NumberGenerator.BelowPercentage(DealDamageModifyChance))
+            {
+                modifiedDealtDamage = CalculateModifedDamage(dealtDamage);
+            }
+
+            return modifiedDealtDamage;
         }
 
         public int ReceiveDamageModifier(int receiveDamage)
         {
-            return 0;
+            int modifiedReceiveDamage = receiveDamage;
+            if (NumberGenerator.BelowPercentage(ReceiveDamageModifiChance))
+            {
+                modifiedReceiveDamage = CalculateModifedDamage(receiveDamage);
+            }
+
+            return modifiedReceiveDamage;
         }
 
         #endregion
@@ -83,7 +111,7 @@ namespace RoleplayingGame
         /// unless overrides in a derived class, a charactor has 
         /// 0% chance of having the damage dealt modified.
         /// </summary>
-        protected virtual int DealDamageModifyChange
+        protected virtual int DealDamageModifyChance
         {
             get { return 0; }
         }        
