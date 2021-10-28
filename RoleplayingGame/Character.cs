@@ -19,10 +19,9 @@ namespace RoleplayingGame
         #endregion
 
         #region Constructor
-        public Character(string name, int hitPoints, int maxHitPoints, int minDamage, int maxDamage)
+        public Character(string name, int maxHitPoints, int minDamage, int maxDamage)
         {
             _name = name;
-            _hitPoints = hitPoints;
             _maxHitPoints = maxHitPoints;
             _minDamage = minDamage;
             _maxDamage = maxDamage;
@@ -72,7 +71,7 @@ namespace RoleplayingGame
             //TODO: Create BattleLog
             BattleLog.Save(message);
 
-            if (!IsDead)
+            if (IsDead)
             {
                 // TODO: BattleLog
                 BattleLog.Save($"{Name} died!");
