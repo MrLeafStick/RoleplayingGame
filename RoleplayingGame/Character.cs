@@ -18,11 +18,10 @@ namespace RoleplayingGame
         #endregion
 
         #region Constructor
-        public Character(string name, int hitPoints, int maxHitPoints, int minDamage, int maxDamage)
+        public Character(string name, int hitPoints, int minDamage, int maxDamage)
         {
             _name = name;
-            _hitPoints = hitPoints;
-            _maxHitPoints = maxHitPoints;
+            _maxHitPoints = hitPoints;
             _minDamage = minDamage;
             _maxDamage = maxDamage;
             Reset();
@@ -33,7 +32,7 @@ namespace RoleplayingGame
         public string Name
         {
             get { return _name; }
-        }        
+        }
 
         public bool IsDead
         {
@@ -75,12 +74,14 @@ namespace RoleplayingGame
                 $"{damageDesc}, and is down to " +
                 $"{_hitPoints} HP";
 
-            if (IsDead)
-            {
-                BattleLog.Save(Name + "died!");
-            }
 
             BattleLog.Save(message);
+
+            if (IsDead)
+            {
+                BattleLog.Save($"{Name} died!");
+            }
+
             return modifiedDamge;
         }
 
@@ -88,14 +89,15 @@ namespace RoleplayingGame
         {
             if (!IsDead)
             {
-                BattleLog.Save(Name + " survived with " + _hitPoints + " hit points left");
+                BattleLog.Save($"{Name} survived with: {_hitPoints} hit points left");
             }
         }
 
         public int DealDamageModifier(int dealtDamage)
         {
             int modifiedDealtDamage = dealtDamage;
-            if (NumberGenerator.BelowPercentage(DealDamageModifyChance)){
+            if (NumberGenerator.BelowPercentage(DealDamageModifyChance))
+            {
                 modifiedDealtDamage = CalculateModifedDamage(dealtDamage);
             }
 
@@ -106,7 +108,8 @@ namespace RoleplayingGame
         {
             int modifiedReceiveDamage = receiveDamage;
 
-            if (NumberGenerator.BelowPercentage(ReceiveDamageModifiChance)){
+            if (NumberGenerator.BelowPercentage(ReceiveDamageModifiChance))
+            {
                 modifiedReceiveDamage = CalculateModifedReceivedDamage(receiveDamage);
             }
 
@@ -124,7 +127,7 @@ namespace RoleplayingGame
         protected virtual int DealDamageModifyChance
         {
             get { return 0; }
-        }        
+        }
 
         /// <summary>
         /// Return the chance of the damage received bbeing modified.
