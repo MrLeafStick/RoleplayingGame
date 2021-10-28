@@ -57,6 +57,8 @@ namespace RoleplayingGame
             string message = $"{Name} dealt {modifiedDamage} damage {damageDesc}";
 
             //TODO: Create BattleLog
+            BattleLog.Save(message);
+
             return modifiedDamage;
         }
         public int ReceiveDamage(int damage)
@@ -67,13 +69,15 @@ namespace RoleplayingGame
             string damageDesc = (damage < modifiedDamage) ? "(Decreased)" : "";
             string message = $"{Name} received {modifiedDamage} damage {damageDesc}, and is now down to {_hitPoints} hp";
 
+            //TODO: Create BattleLog
+            BattleLog.Save(message);
+
             if (!IsDead)
             {
                 // TODO: BattleLog
-
+                BattleLog.Save($"{Name} died!");
             }
 
-            //TODO: Create BattleLog
             return modifiedDamage;
         }
 
@@ -82,7 +86,7 @@ namespace RoleplayingGame
             if (!IsDead)
             {
                 // TODO: BattleLog
-
+                BattleLog.Save($"{Name} survived with {_hitPoints} hitpoints left");
             }
         }
 
