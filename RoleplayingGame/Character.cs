@@ -70,7 +70,25 @@ namespace RoleplayingGame
         #endregion
 
         #region Virtual Properties and Methods
+        protected virtual int DealDamageModifyChange
+        {
+            get { return 0; }
+        }
 
+        protected virtual int ReceiveDamageModifyChance 
+        { 
+            get { return 0; } 
+        }
+
+        protected virtual int CalculatedModifiedDamage(int dealtDamage)
+        {
+            return dealtDamage;
+        }
+
+        protected virtual int CalculatedModifiedReceivedDamage(int receivedDamage)
+        {
+            return receivedDamage;
+        }
         #endregion
     }
 }
