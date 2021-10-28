@@ -19,10 +19,9 @@ namespace RoleplayingGame
         #endregion
 
         #region Constructor
-        public Character(string name, int hitPoints, int maxHitPoints, int minDamage, int maxDamage)
+        public Character(string name, int maxHitPoints, int minDamage, int maxDamage)
         {
             _name = name;
-            _hitPoints = hitPoints;
             _maxHitPoints = maxHitPoints;
             _minDamage = minDamage;
             _maxDamage = maxDamage;
@@ -55,6 +54,8 @@ namespace RoleplayingGame
 
             string damageDesc = (damage < modifiedDamage) ? "(INCREASED)" : "";
             string message = $"{Name} dealt {modifiedDamage} damage {damageDesc}";
+
+            Battlelog.Save(message);
             return modifiedDamage;
         }
         public int ReceiveDamage(int damage)
@@ -65,9 +66,11 @@ namespace RoleplayingGame
             string damageDesc = (damage > modifiedDamage) ? "(DECREASED)" : "";
             string message = $"{Name} derecieve {modifiedDamage} damage {damageDesc}, and is down to {_hitPoints} HP";
 
-            if(IsDead)
+
+            Battlelog.Save(message);
+            if (IsDead)
             {
-                // TODO: Battlelog
+                Battlelog.Save(Name + " died!");
             }
 
             return modifiedDamage;
@@ -77,7 +80,7 @@ namespace RoleplayingGame
         {
             if (!IsDead)
             {
-                
+                Battlelog.Save($"{Name} survived with {_hitPoints} hit points left");
             }
         }
 
@@ -95,7 +98,7 @@ namespace RoleplayingGame
         public int ReceiveDamageModifier(int receiveDamage)
         {
             int modifiedReceiveDamage = receiveDamage;
-            if (NumberGenerator.BelowPercentage(ReceiveDamageModifiChance))
+            if (NumberGenerator.BelowPercentage(ReceiveDamageModifyChance))
             {
                 modifiedReceiveDamage = CalculateModifedDamage(receiveDamage);
             }
@@ -121,7 +124,7 @@ namespace RoleplayingGame
         /// Unless overrieded in a dirived class, a Character has 
         /// 0% chance of having the damage received modified.
         /// </summary>
-        protected virtual int ReceiveDamageModyChance
+        protected virtual int ReceiveDamageModifyChance
         {
             get { return 0; }
         }
