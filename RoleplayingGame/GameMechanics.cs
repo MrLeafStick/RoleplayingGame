@@ -10,7 +10,7 @@ namespace RoleplayingGame
     {
         public void GameLogic()
         {
-            // MSN fixed bug here
+            // Michael fixed bug here
 
         }
     }
