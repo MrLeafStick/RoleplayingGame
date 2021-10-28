@@ -8,7 +8,7 @@ namespace RoleplayingGame
 {
     public static class NumberGenerator
     {
-        private static Random _generator = new Random();
+        private static Random _generator = new Random(Guid.NewGuid().GetHashCode());
 
         public static int Next(int min, int max)
         {

@@ -64,7 +64,7 @@ namespace RoleplayingGame
             _hitPoints = _hitPoints - modifiedDamage;
 
             string damageDesc = (damage > modifiedDamage) ? "(DECREASED)" : "";
-            string message = $"{Name} derecieve {modifiedDamage} damage {damageDesc}, and is down to {_hitPoints} HP";
+            string message = $"{Name} recieved {modifiedDamage} damage {damageDesc}, and is down to {_hitPoints} HP";
 
 
             Battlelog.Save(message);
@@ -100,7 +100,7 @@ namespace RoleplayingGame
             int modifiedReceiveDamage = receiveDamage;
             if (NumberGenerator.BelowPercentage(ReceiveDamageModifyChance))
             {
-                modifiedReceiveDamage = CalculateModifedDamage(receiveDamage);
+                modifiedReceiveDamage = CalculateModifedReceivedDamage(receiveDamage);
             }
 
             return modifiedReceiveDamage;
