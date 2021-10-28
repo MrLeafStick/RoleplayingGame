@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 namespace RoleplayingGame
 
 {
+    /// <summary>
+    /// This class represents a game character.
+    /// </summary>
     public class Character
     {
         #region Instance Fields
@@ -33,7 +36,9 @@ namespace RoleplayingGame
         {
             get { return _name; }
         }
-
+        /// <summary>
+        /// Checks if the Character is dead, defined as having 0 or less hit points...
+        /// </summary>
         public bool IsDead
         {
             get { return _hitPoints <= 0; }
@@ -41,16 +46,18 @@ namespace RoleplayingGame
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Reset the Character's state to the original state
+        /// </summary>
         public void Reset()
         {
             _hitPoints = _maxHitPoints;
         }
         /// <summary>
-        /// Returns the amount of points a character deals in damage.
-        /// This damage could then be received by another character
-        /// nate that there is a chance that the damage is modified
+        /// Returns the amount of points a Character deals in damage.
+        /// This damage could then be received by another character.
+        /// Note that there is a chance that the damage is modified.
         /// </summary>
-        /// <returns></returns>
         public int DealDamage()
         {
             int damage = NumberGenerator.Next(_minDamage, _maxDamage);
@@ -62,7 +69,11 @@ namespace RoleplayingGame
             BattleLog.Save(message);
             return modifiedDamge;
         }
-
+        /// <summary>
+        /// The Character receives the amount of damage specified in the parameter.
+        /// The number of hit points will decrease accordingly.
+        /// Note that there is a chance that the damage is modified.
+        /// </summary>
         public int ReceiveDamage(int damage)
         {
             int modifiedDamge = ReceiveDamageModifier(damage);
@@ -85,6 +96,10 @@ namespace RoleplayingGame
             return modifiedDamge;
         }
 
+        /// <summary>
+        /// Log data about the character to the battle log,
+        /// in case the character is still alive.
+        /// </summary>
         public void LogSurvivor()
         {
             if (!IsDead)
@@ -92,7 +107,9 @@ namespace RoleplayingGame
                 BattleLog.Save($"{Name} survived with: {_hitPoints} hit points left");
             }
         }
-
+        /// <summary>
+        /// Modifies the amount of dealt damage. 
+        /// </summary>
         public int DealDamageModifier(int dealtDamage)
         {
             int modifiedDealtDamage = dealtDamage;
@@ -103,7 +120,9 @@ namespace RoleplayingGame
 
             return modifiedDealtDamage;
         }
-
+        /// <summary>
+        /// Modifies the amount of received damage. 
+        /// </summary>
         public int ReceiveDamageModifier(int receiveDamage)
         {
             int modifiedReceiveDamage = receiveDamage;

@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RoleplayingGame
-{
+{    /// <summary>
+     /// This class represents a group of game characters
+     /// </summary>
     public class CharacterGroup
     {
         #region Instance Field
@@ -27,6 +29,9 @@ namespace RoleplayingGame
             get { return _groupName; }
         }
 
+        /// <summary>
+        /// Dead is defined as: All members of the group must be dead
+        /// </summary>
         public bool IsDead 
         {
             get
@@ -44,11 +49,17 @@ namespace RoleplayingGame
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Add one Character to the group 
+        /// </summary>
         public void AddCharacter(Character aBeast)
         {
             _group.Add(aBeast);
         }
-
+        /// <summary>
+        /// DealDamage is defined as: the total damage dealt by 
+        /// all non-dead members of the group
+        /// </summary>
         public int DealDamage()
         {
             int totalDamage = 0;
@@ -65,6 +76,10 @@ namespace RoleplayingGame
         }
 
 
+        /// <summary>
+        /// ReceiveDamage is defined as: the first non-dead 
+        /// member in the list receives all of the damage
+        /// </summary>
         public void ReceiveDamage(int damage)
         {
             foreach(Character member in _group)

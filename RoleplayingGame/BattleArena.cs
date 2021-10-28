@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace RoleplayingGame
 {
+    /// <summary>
+    /// This class handles the general battle mechanics:
+    /// Keep fighting until one group is dead.
+    /// </summary>
     public class BattleArena
     {
         public static void DoBattle(CharacterGroup groupA, CharacterGroup groupB)

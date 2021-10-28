@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace RoleplayingGame
 {
+    /// <summary>
+    /// This class implements a simple logging system, where strings can be collected
+    /// one by one. The entire set of strings can then be printed.
+    /// </summary>
     public static class BattleLog
     {
         private static List<string> _log = new List<string>();
