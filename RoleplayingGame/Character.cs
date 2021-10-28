@@ -33,7 +33,7 @@ namespace RoleplayingGame
         public string Name
         {
             get { return _name; }
-        }        
+        }
 
         public bool IsDead
         {
@@ -60,7 +60,7 @@ namespace RoleplayingGame
         {
             if (!IsDead)
             {
-                
+
             }
         }
 
@@ -85,7 +85,7 @@ namespace RoleplayingGame
         protected virtual int DealDamageModifyChange
         {
             get { return 0; }
-        }        
+        }
 
         /// <summary>
         /// Return the chance of the damage received bbeing modified.
