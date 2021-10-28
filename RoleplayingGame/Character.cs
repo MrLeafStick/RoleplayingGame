@@ -66,46 +66,25 @@ namespace RoleplayingGame
         #endregion
 
         #region Virtual Properties and Methods
-        /// <summary>
-        /// Return the change of the damage dealt being modifed, 
-        /// unless overrides in a derived class, a charactor has 
-        /// 0% chance of having the damage dealt modified.
-        /// </summary>
         protected virtual int DealDamageModifyChange
         {
             get { return 0; }
         }
 
-        /// <summary>
-        /// Return the chance of the damage received bbeing modified.
-        /// Unless overrieded in a dirived class, a Character has 
-        /// 0% chance of having the damage received modified.
-        /// </summary>
-        protected virtual int ReceiveDamageModyChance
-        {
-            get { return 0; }
+        protected virtual int ReceiveDamageModifyChance 
+        { 
+            get { return 0; } 
         }
 
-        /// <summary>
-        /// Return the modifed dealt damage.
-        /// Unless overrisded in a dirived class, the modified dealt
-        /// damage is the same as the original dealt damage.
-        /// </summary
-        protected virtual int CalculateModifedDamage(int dealtDamage)
+        protected virtual int CalculatedModifiedDamage(int dealtDamage)
         {
             return dealtDamage;
         }
 
-        /// <summary>
-        /// Return the modifed reveived damage.
-        /// unless orverried in a derved class the modifed received
-        /// damage is the sae as the original received damage.
-        /// </summary>
-        protected virtual int CalculateModifedReceivedDamage(int receivedDamage)
+        protected virtual int CalculatedModifiedReceivedDamage(int receivedDamage)
         {
             return receivedDamage;
         }
-
         #endregion
     }
 }
