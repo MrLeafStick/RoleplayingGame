@@ -55,7 +55,6 @@ namespace RoleplayingGame
             string damageDesc = (damage < modifiedDamage) ? "(Increased)" : "";
             string message = $"{Name} dealt {modifiedDamage} damage {damageDesc}";
 
-            //TODO: Create BattleLog
             BattleLog.Save(message);
 
             return modifiedDamage;
@@ -65,15 +64,13 @@ namespace RoleplayingGame
             int modifiedDamage = ReceiveDamageModifier(damage);
             _hitPoints = _hitPoints - modifiedDamage;
 
-            string damageDesc = (damage < modifiedDamage) ? "(Decreased)" : "";
-            string message = $"{Name} received {modifiedDamage} damage {damageDesc}, and is now down to {_hitPoints} hp";
+            string damageDesc = (damage > modifiedDamage) ? " (Decreased)" : "";  //TODO: change to >?
+            string message = $"{Name} received {modifiedDamage} damage{damageDesc}, and is now down to {_hitPoints} hp";
 
-            //TODO: Create BattleLog
             BattleLog.Save(message);
 
             if (IsDead)
             {
-                // TODO: BattleLog
                 BattleLog.Save($"{Name} died!");
             }
 
@@ -84,7 +81,6 @@ namespace RoleplayingGame
         {
             if (!IsDead)
             {
-                // TODO: BattleLog
                 BattleLog.Save($"{Name} survived with {_hitPoints} hitpoints left");
             }
         }
@@ -104,7 +100,7 @@ namespace RoleplayingGame
             int modifiedReceivedDamage = receiveDamage;
             if (NumberGenerator.BelowPercentage(ReceiveDamageModyChance))
             {
-                modifiedReceivedDamage = CalculateModifedDamage(receiveDamage);
+                modifiedReceivedDamage = CalculateModifedReceivedDamage(receiveDamage);
             }
             return modifiedReceivedDamage;
         }
