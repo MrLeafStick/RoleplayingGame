@@ -16,6 +16,7 @@ namespace RoleplayingGame
         protected int _minDamage;
         protected int _maxDamage;
         protected int _maxDamage2;
+        protected int _maxDamage3;
         
         #endregion
 
