@@ -55,7 +55,7 @@ namespace RoleplayingGame
 
             foreach (Character member in _group)
             {
-                if (!member.IsDead) { }
+                if (!member.IsDead)
                 {
                     totalDamage += member.DealDamage();
                 }
