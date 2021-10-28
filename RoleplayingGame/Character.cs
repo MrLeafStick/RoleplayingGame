@@ -96,7 +96,6 @@ namespace RoleplayingGame
         {
             get { return 0; }
         }
-        protected virtual int CalculateModifiedDamage(int dealtDamage)
 
         /// <summary>
         /// Return the modifed dealt damage.
@@ -107,7 +106,6 @@ namespace RoleplayingGame
         {
             return dealtDamage;
         }
-        protected virtual int CalculateModifiedReceivedDamage(int receivedDamage)
 
         /// <summary>
         /// Return the modifed reveived damage.
