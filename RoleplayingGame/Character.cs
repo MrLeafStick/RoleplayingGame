@@ -55,7 +55,7 @@ namespace RoleplayingGame
             string damageDesc = (damage < modifiedDamage) ? "(INCREASED)" : "";
             string message = $"{Name} dealt {modifiedDamage} damage {damageDesc}";
 
-            Battlelog.Save(message);
+            BattleLog.Save(message);
             return modifiedDamage;
         }
 
@@ -66,11 +66,11 @@ namespace RoleplayingGame
 
             string damageDesc = (damage > modifiedDamage) ? "(DECREASED)" : "";
             string message = $"{Name} receives {modifiedDamage} damage {damageDesc}, and is down to {_hitPoints}";
-            Battlelog.Save(message);
+            BattleLog.Save(message);
 
             if (IsDead)
             {
-                Battlelog.Save($"{Name} died... RIP");
+                BattleLog.Save($"{Name} died... RIP");
             }
             return modifiedDamage;
         }
@@ -79,7 +79,7 @@ namespace RoleplayingGame
         {
             if (!IsDead)
             {
-                Battlelog.Save($"{Name} survived with {_hitPoints} hit points left");
+                BattleLog.Save($"{Name} survived with {_hitPoints} hit points left");
             }
         }
 

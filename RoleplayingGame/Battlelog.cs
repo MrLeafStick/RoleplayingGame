@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RoleplayingGame
 {
-    public static class Battlelog
+    public static class BattleLog
     {
         private static List<string> _log = new List<string>();
 

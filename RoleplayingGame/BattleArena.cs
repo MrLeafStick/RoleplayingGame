@@ -20,12 +20,12 @@ namespace RoleplayingGame
                 }
             }
 
-            Battlelog.Save($"{new string('=',20)} BATTLE IS OVER {new string('=', 20)}");
-            Battlelog.Save($"{(groupA.IsDead ? groupB.IsDead ? "" : groupB.GroupName : groupA.GroupName) } Won! status:");
+            BattleLog.Save($"{new string('=',20)} BATTLE IS OVER {new string('=', 20)}");
+            BattleLog.Save($"{(groupA.IsDead ? groupB.GroupName : groupA.GroupName) } Won! status:");
             groupA.LogSurvivor();
             groupB.LogSurvivor();
 
-            Battlelog.PrintLog();
+            BattleLog.PrintLog();
         }
     }
 }
