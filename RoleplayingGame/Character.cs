@@ -5,26 +5,27 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RoleplayingGame
+
 {
     public class Character
     {
-        #region instance fields
+        #region Instance Fields
         private string _name;
         protected int _hitPoints;
-        protected int _maxHitpoints;
+        protected int _maxHitPoints;
         protected int _minDamage;
         protected int _maxDamage;
-
         #endregion
 
         #region Constructor
-        public Character(string name, int hitPoints, int maxHitpoints, int minDamage, int maxDamage)
+        public Character(string name, int hitPoints, int maxHitPoints, int minDamage, int maxDamage)
         {
             _name = name;
             _hitPoints = hitPoints;
-            _maxHitpoints = maxHitpoints;
+            _maxHitPoints = maxHitPoints;
             _minDamage = minDamage;
             _maxDamage = maxDamage;
+            Reset();
         }
         #endregion
 
@@ -32,69 +33,98 @@ namespace RoleplayingGame
         public string Name
         {
             get { return _name; }
-        }
+        }        
 
         public bool IsDead
         {
-            get { return (_hitPoints <= 0); }
+            get { return _hitPoints <= 0; }
         }
         #endregion
 
         #region Methods
-
         public void Reset()
         {
-            _hitPoints = _maxHitpoints;
+            _hitPoints = _maxHitPoints;
         }
+
         public int DealDamage()
         {
             return 0;
         }
-
-        public int RecieveDamage()
+        public int ReceiveDamage()
         {
             return 0;
         }
 
         public void LogSurvivor()
         {
-            if(!IsDead)
+            if (!IsDead)
             {
                 
             }
         }
 
-        public int DealDamageModify(int DealtDamage)
+        public int DealDamageModifier(int dealtDamage)
         {
             return 0;
         }
 
-        public int ReceiveDamageModify(int reciveDamage)
+        public int ReceiveDamageModifier(int receiveDamage)
         {
             return 0;
         }
+
         #endregion
 
         #region Virtual Properties and Methods
+        /// <summary>
+        /// Return the change of the damage dealt being modifed, 
+        /// unless overrides in a derived class, a charactor has 
+        /// 0% chance of having the damage dealt modified.
+        /// </summary>
         protected virtual int DealDamageModifyChange
         {
             get { return 0; }
-        }
-        
-        protected virtual int ReceiveDamageModifyChange
+        }        
+
+        /// <summary>
+        /// Return the chance of the damage received bbeing modified.
+        /// Unless overrieded in a dirived class, a Character has 
+        /// 0% chance of having the damage received modified.
+        /// </summary>
+        protected virtual int ReceiveDamageModyChance
         {
             get { return 0; }
         }
-
-        protected virtual itn CalculateModifiedReceivedDamage(int dealtDamage)
+        protected virtual int CalculateModifiedDamage(int dealtDamage)
         {
             return dealtDamage;
         }
-        
-        protected virtual itn CalculateModifiedReceivedDamage(int receivedDamage)
+
+        /// <summary>
+        /// Return the modifed dealt damage.
+        /// Unless overrisded in a dirived class, the modified dealt
+        /// damage is the same as the original dealt damage.
+        /// </summary
+        protected virtual int CalculateModifedDamage(int dealtDamage)
+        {
+            return dealtDamage;
+        }
+        protected virtual int CalculateModifiedReceivedDamage(int receivedDamage)
         {
             return receivedDamage;
         }
+
+        /// <summary>
+        /// Return the modifed reveived damage.
+        /// unless orverried in a derved class the modifed received
+        /// damage is the sae as the original received damage.
+        /// </summary>
+        protected virtual int CalculateModifedReceivedDamage(int receivedDamage)
+        {
+            return receivedDamage;
+        }
+
         #endregion
     }
 }
