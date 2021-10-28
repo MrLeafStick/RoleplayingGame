@@ -9,20 +9,26 @@ namespace RoleplayingGame
 {
     public class Character
     {
-        #region Instance Fields
+        #region Instance fields
         private string _name;
         protected int _hitPoints;
-        protected int _maxHitPoints;
+        protected int _maxHitpoints;
         protected int _minDamage;
         protected int _maxDamage;
         #endregion
 
         #region Constructor
-        public Character(string name, int hitPoints, int maxHitPoints, int minDamage, int maxDamage)
+        public Character(string name,
+                            int hitPoints,
+                            int maxHitpoints,
+                            int minDamage,
+                            int maxDamage
+        )
+
         {
             _name = name;
             _hitPoints = hitPoints;
-            _maxHitPoints = maxHitPoints;
+            _maxHitpoints = maxHitpoints;
             _minDamage = minDamage;
             _maxDamage = maxDamage;
             Reset();
@@ -33,25 +39,26 @@ namespace RoleplayingGame
         public string Name
         {
             get { return _name; }
-        }        
+        }
 
         public bool IsDead
         {
-            get { return _hitPoints <= 0; }
+            get { return (_hitPoints <= 0); }
         }
         #endregion
 
         #region Methods
         public void Reset()
         {
-            _hitPoints = _maxHitPoints;
+            _hitPoints = _maxHitpoints;
         }
 
         public int DealDamage()
         {
             return 0;
         }
-        public int ReceiveDamage()
+
+        public int ReciveDamage()
         {
             return 0;
         }
@@ -60,7 +67,7 @@ namespace RoleplayingGame
         {
             if (!IsDead)
             {
-                
+
             }
         }
 
@@ -85,7 +92,7 @@ namespace RoleplayingGame
         protected virtual int DealDamageModifyChange
         {
             get { return 0; }
-        }        
+        }
 
         /// <summary>
         /// Return the chance of the damage received bbeing modified.
@@ -96,10 +103,6 @@ namespace RoleplayingGame
         {
             get { return 0; }
         }
-        protected virtual int CalculateModifiedDamage(int dealtDamage)
-        {
-            return dealtDamage;
-        }
 
         /// <summary>
         /// Return the modifed dealt damage.
@@ -109,10 +112,6 @@ namespace RoleplayingGame
         protected virtual int CalculateModifedDamage(int dealtDamage)
         {
             return dealtDamage;
-        }
-        protected virtual int CalculateModifiedReceivedDamage(int receivedDamage)
-        {
-            return receivedDamage;
         }
 
         /// <summary>
