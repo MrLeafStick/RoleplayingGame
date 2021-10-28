@@ -16,6 +16,7 @@ namespace RoleplayingGame
         protected int _minDamage;
         protected int _maxDamage;
         protected int _GITDOOM;
+        protected int _DOOM_OF_DOOMS;
         #endregion
 
         #region Constructor
