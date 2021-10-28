@@ -15,7 +15,6 @@ namespace RoleplayingGame
         protected int _maxHitPoints;
         protected int _minDamage;
         protected int _maxDamage;
-        protected int _FuckThisShit;
         #endregion
 
         #region Constructor
