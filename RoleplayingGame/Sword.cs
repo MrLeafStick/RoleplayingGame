@@ -6,18 +6,18 @@ namespace RoleplayingGame
     {
         #region Instance Fields
         private string _name;
-        private int _MaxDamage;
         private int _minDamage;
+        private int _maxDamage;
         private Random _generator;
 
         #endregion
 
         #region Constructor
-        public Sword(string name, int maxDamage, int minDamage)
+        public Sword(string name, int minDamage, int maxDamage)
         {
             _name = name;
-            _MaxDamage = maxDamage;
             _minDamage = minDamage;
+            _maxDamage = maxDamage;
             _generator = new Random(Guid.NewGuid().GetHashCode());
         }
         #endregion
@@ -34,7 +34,7 @@ namespace RoleplayingGame
         #region Methods
         public int DealDamge() 
         {
-            return _generator.Next(_minDamage, _MaxDamage);
+            return _generator.Next(_minDamage, _maxDamage);
         }
 
         #endregion

@@ -16,85 +16,21 @@ namespace RoleplayingGame
 
             var warriorA = new Warrior("Ragnar", 200, swordB);
             var warriorB = new Warrior("Sighurd", 240, swordA);
-            
-            Console.WriteLine($"Warrior A is called {warriorA.Name}, " +
-                $"and is level {warriorA.Level}, " +
-                $"and has {warriorA.HitPoints} hit points (Dead = {warriorA.IsDead})");
-            Console.WriteLine($"Warrior A is called {warriorB.Name}, " +
-                $"and is level {warriorB.Level}" +
-                $"and has {warriorB.HitPoints} hit points (Dead = {warriorB.IsDead})");
 
-            Console.WriteLine();
-            Console.WriteLine("=======================================");
-
-            Console.WriteLine($"X hits {warriorA.Name}");
-            Console.WriteLine($"y hits {warriorB.Name}");
-
-            Console.WriteLine();
-            Console.WriteLine("=======================================");
-
-
-            warriorA.ReceiveDamage(180);
-            warriorB.ReceiveDamage(180);
-            
-            Console.WriteLine("After first hit");
-            Console.WriteLine($"{warriorA.Name}, " +
-                $"got hit by a huge Axe and now has {warriorA.HitPoints} " +
-                $"left. is he dead ? {warriorA.IsDead}");
-            Console.WriteLine($"{warriorB.Name}, " +
-                $"got hit by a huge Axe and now has {warriorB.HitPoints} " +
-                $"left. is he dead ? {warriorB.IsDead}");
-            Console.WriteLine();
-            Console.ReadLine();
-
-
-            Console.WriteLine("=======================================");
-
-            warriorA.ReceiveDamage(50);
-            warriorB.ReceiveDamage(50);
-
-            Console.WriteLine("After second hit");
-            Console.WriteLine($"{warriorA.Name}, " +
-                $"got hit by a huge Axe and now has {warriorA.HitPoints} " +
-                $"left. is he dead ? {warriorA.IsDead}");
-            Console.WriteLine($"{warriorB.Name}, " +
-                $"got hit by a huge Axe and now has {warriorB.HitPoints} " +
-                $"left. is he dead ? {warriorB.IsDead}");
+            Console.WriteLine("Just after creation:");
+            Console.WriteLine(warriorA.GetInfo());
+            Console.WriteLine(warriorB.GetInfo());
             Console.WriteLine();
 
-            Console.WriteLine("=======================================");
-            Console.ReadLine();
+            int damageFromA = warriorA.DealDamage();
+            int damageFromB = warriorB.DealDamage();
+            warriorA.ReceiveDamage(damageFromB);
+            warriorB.ReceiveDamage(damageFromA);
 
-            if (warriorA.IsDead)
-            {
-                Console.WriteLine($"RIP {warriorA.Name}");
-            }else if (warriorB.IsDead)
-            {
-                Console.WriteLine($"RIP {warriorB.Name}");
-            }
-            else
-            {
-                Console.WriteLine($"I WILL SURVIVE !!!");
-            }
-
-
-
-
-            warriorA.LevelUp();
-            warriorB.LevelUp();
-            warriorB.LevelUp();
-            warriorB.LevelUp();
-
-            Console.WriteLine($"*** A DING is heard in the distance ***");
+            Console.WriteLine("After damage:");
+            Console.WriteLine(warriorA.GetInfo());
+            Console.WriteLine(warriorB.GetInfo());
             Console.WriteLine();
-
-            Console.WriteLine($"Warrior A is called {warriorA.Name}, " +
-                 $"and is now level {warriorA.Level}");           
-            Console.WriteLine($"Warrior B is called {warriorB.Name}, " +
-                 $"and is now level {warriorB.Level}");
-
-            Console.WriteLine();
-
 
 
         }

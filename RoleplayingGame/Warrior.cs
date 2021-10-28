@@ -61,7 +61,7 @@ namespace RoleplayingGame
 
         public int DealDamage()
         {
-            return 0;
+            return _sword.DealDamge();
         }
 
         public string GetInfo()
