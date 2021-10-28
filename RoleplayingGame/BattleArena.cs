@@ -14,7 +14,7 @@ namespace RoleplayingGame
     {
         public static void DoBattle(CharacterGroup groupA, CharacterGroup groupB)
         {
-            while (!groupA.IsDead && !groupB.IsDead)
+            while(!groupA.IsDead && !groupB.IsDead)
             {
                 groupB.ReceiveDamage(groupA.DealDamage());
 
@@ -23,7 +23,7 @@ namespace RoleplayingGame
                     groupA.ReceiveDamage(groupB.DealDamage());
                 }
             }
-            BattleLog.Save($"{new string('=', 20) } BATTLE IS OVER {new string('=', 20)}");
+            BattleLog.Save($"{new string('=',20) } BATTLE IS OVER {new string('=',20)}");
             BattleLog.Save($"{(groupA.IsDead ? groupB.GroupName : groupA.GroupName) } Won! status:");
             groupA.LogSurvivor();
             groupB.LogSurvivor();

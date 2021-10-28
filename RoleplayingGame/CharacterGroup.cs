@@ -24,7 +24,7 @@ namespace RoleplayingGame
         #endregion
 
         #region Propertiess
-        public string GroupName
+        public string GroupName 
         {
             get { return _groupName; }
         }
@@ -32,11 +32,11 @@ namespace RoleplayingGame
         /// <summary>
         /// Dead is defined as: All members of the group must be dead
         /// </summary>
-        public bool IsDead
+        public bool IsDead 
         {
             get
             {
-                foreach (Character member in _group)
+                foreach(Character member in _group)
                 {
                     if (!member.IsDead)
                     {
@@ -82,7 +82,7 @@ namespace RoleplayingGame
         /// </summary>
         public void ReceiveDamage(int damage)
         {
-            foreach (Character member in _group)
+            foreach(Character member in _group)
             {
                 if (!member.IsDead)
                 {

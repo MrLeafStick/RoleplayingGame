@@ -25,7 +25,7 @@ namespace RoleplayingGame
         {
             Console.WriteLine("Battle Log :");
             Console.WriteLine(new string('=', 40));
-            foreach (string s in _log)
+            foreach(string s in _log)
             {
                 Console.WriteLine(s);
             }
