@@ -13,7 +13,7 @@ namespace RoleplayingGame
         {
         }
 
-        protected override int ReceiveDamageModifyChance
+        protected override int ReceiveDamageModifiChance
         {
             get { return 45; }
         }
