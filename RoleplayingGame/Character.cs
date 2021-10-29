@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RoleplayingGame
-
 {
     public class Character
     {
@@ -15,15 +14,20 @@ namespace RoleplayingGame
         protected int _maxHitPoints;
         protected int _minDamage;
         protected int _maxDamage;
+        protected int _stamina;
+        protected int _maxStamina;
+        protected int _staminaRegen;
         #endregion
 
         #region Constructor
-        public Character(string name, int maxHitPoints, int minDamage, int maxDamage)
+        public Character(string name, int maxHitPoints, int minDamage, int maxDamage, int maxStamina, int staminaRegen)
         {
             _name = name;
             _maxHitPoints = maxHitPoints;
             _minDamage = minDamage;
             _maxDamage = maxDamage;
+            _maxStamina = maxStamina;
+            _staminaRegen = staminaRegen;
             Reset();
         }
         #endregion
@@ -44,6 +48,7 @@ namespace RoleplayingGame
         public void Reset()
         {
             _hitPoints = _maxHitPoints;
+            _stamina = _maxStamina;
         }
 
         public int DealDamage()
@@ -148,6 +153,10 @@ namespace RoleplayingGame
             return receivedDamage;
         }
 
+        protected virtual void Regenerate()
+        {
+            _stamina += _staminaRegen;
+        }
         #endregion
     }
 }

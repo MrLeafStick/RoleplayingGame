@@ -8,8 +8,8 @@ namespace RoleplayingGame
 {
     public class Defender : Character
     {
-        public Defender(string name, int maxHitPoints, int minDamage, int maxDamage) 
-            : base(name, maxHitPoints, minDamage, maxDamage)
+        public Defender(string name, int maxHitPoints, int minDamage, int maxDamage, int maxStamina, int staminaRegen) 
+            : base(name, maxHitPoints, minDamage, maxDamage, maxStamina, staminaRegen)
         {
         }
 
