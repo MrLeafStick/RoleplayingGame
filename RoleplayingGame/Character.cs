@@ -14,6 +14,11 @@ namespace RoleplayingGame
     {
         #region Instance Fields
         private string _name;
+        private List<Ability> _abilities;
+        protected int _stamina;
+        protected int _maxStamina;
+        protected int _mana;
+        protected int _maxMana;
         protected int _hitPoints;
         protected int _maxHitPoints;
         protected int _minDamage;
@@ -21,9 +26,10 @@ namespace RoleplayingGame
         #endregion
 
         #region Constructor
-        public Character(string name, int hitPoints, int minDamage, int maxDamage)
+        public Character(string name, List<Ability> abilities, int hitPoints, int minDamage, int maxDamage)
         {
             _name = name;
+            _abilities = abilities;
             _maxHitPoints = hitPoints;
             _minDamage = minDamage;
             _maxDamage = maxDamage;
@@ -65,6 +71,11 @@ namespace RoleplayingGame
 
             string damageDesc = (damage < modifiedDamge) ? "(INCREASED)" : "";
             string message = $"{Name} dealt {modifiedDamge} damage {damageDesc}";
+            if (this is Wizard)
+            {
+                message = $"{Name} uses {_abilities[1].Name} which deals {modifiedDamge} damage {damageDesc}";
+            }
+
 
             BattleLog.Save(message);
             return modifiedDamge;

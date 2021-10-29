@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace RoleplayingGame
 {
-    /// <summary>
-    /// This class represents the Damager character type.
-    /// </summary>
-    public class Damager : Character
+    public class Wizard : Character
     {
-        public Damager(string name, List<Ability> abilities, int hitPoints, int minDamage, int maxDamage) 
+        public Wizard(string name, List<Ability> abilities, int hitPoints, int minDamage, int maxDamage) 
             : base(name, abilities, hitPoints, minDamage, maxDamage)
         {
         }
@@ -21,9 +18,8 @@ namespace RoleplayingGame
         /// </summary>
         protected override int DealDamageModifyChance
         {
-            get { return 40; }
+            get { return 30; }
         }
-
         /// <summary>
         /// If the damage is increased, it is doubled.
         /// </summary>

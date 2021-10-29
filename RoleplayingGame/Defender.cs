@@ -11,10 +11,11 @@ namespace RoleplayingGame
     /// </summary>
     public class Defender : Character
     {
-        public Defender(string name, int hitPoints, int minDamage, int maxDamage)
-            : base(name, hitPoints, minDamage, maxDamage)
+        public Defender(string name, List<Ability> abilities, int hitPoints, int minDamage, int maxDamage) 
+            : base(name, abilities, hitPoints, minDamage, maxDamage)
         {
         }
+
         /// <summary>
         /// A Defender has a 45 % chance of having the received damage reduced.
         /// </summary>
