@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoleplayingGame
 {
     public class Wizard : Character
     {
-        public Wizard(string name, int hitPoints, int minDamage, int maxDamage) 
+        #region Constructor
+        public Wizard(string name, int hitPoints, int minDamage, int maxDamage)
             : base(name, hitPoints, minDamage, maxDamage)
         {
         }
+        #endregion
 
         protected override int DealDamageModifyChance
         {
@@ -25,7 +24,7 @@ namespace RoleplayingGame
 
         protected override int ReceiveDamageModifyChance
         {
-            get { return 30; }
+            get { return 10; }
         }
 
         protected override int CalculateModifedReceivedDamage(int receivedDamage)

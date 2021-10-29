@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoleplayingGame
 
@@ -45,6 +42,7 @@ namespace RoleplayingGame
         {
             _hitPoints = _maxHitPoints;
         }
+
         /// <summary>
         /// Returns the amount of points a character deals in damage.
         /// This damage could then be received by another character
@@ -58,6 +56,10 @@ namespace RoleplayingGame
 
             string damageDesc = (damage < modifiedDamge) ? "(INCREASED)" : "";
             string message = $"{Name} dealt {modifiedDamge} damage {damageDesc}";
+            if (this is Wizard)
+            {
+                message = $"{Name} throwed a big ass fire ball, dealt {modifiedDamge} damage {damageDesc}";
+            }
 
             BattleLog.Save(message);
             return modifiedDamge;
@@ -66,15 +68,10 @@ namespace RoleplayingGame
         public int ReceiveDamage(int damage)
         {
             int modifiedDamge = ReceiveDamageModifier(damage);
-            _hitPoints = _hitPoints - modifiedDamge;
+            _hitPoints -= modifiedDamge;
 
             string damageDesc = (damage > modifiedDamge) ? "(DESCREASED)" : "";
-            string message = $"{Name} receives " +
-                $"{modifiedDamge} damage " +
-                $"{damageDesc}, and is down to " +
-                $"{_hitPoints} HP";
-
-
+            string message = $"{Name} receives {modifiedDamge} damage {damageDesc}, and is down to {_hitPoints} HP";
             BattleLog.Save(message);
 
             if (IsDead)
@@ -158,7 +155,6 @@ namespace RoleplayingGame
         {
             return receivedDamage;
         }
-
         #endregion
     }
 }
