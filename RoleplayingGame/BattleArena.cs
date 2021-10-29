@@ -14,18 +14,18 @@ namespace RoleplayingGame
             {
                 groupB.ReceiveDamage(groupA.DealDamage());
 
-                if(!groupA.IsDead)
+                if (!groupA.IsDead)
                 {
                     groupA.ReceiveDamage(groupB.DealDamage());
                 }
             }
-
-            BattleLog.Save($"{new string('=',20)} BATTLE IS OVER {new string('=', 20)}");
+            BattleLog.Save($"{new string('=',20) } BATTLE IS OVER {new string('=',20)}");
             BattleLog.Save($"{(groupA.IsDead ? groupB.GroupName : groupA.GroupName) } Won! status:");
             groupA.LogSurvivor();
             groupB.LogSurvivor();
 
             BattleLog.PrintLog();
         }
+
     }
 }

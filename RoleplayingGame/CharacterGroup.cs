@@ -8,7 +8,7 @@ namespace RoleplayingGame
 {
     public class CharacterGroup
     {
-        #region Instance Fields
+        #region Instance Field
         private List<Character> _group;
         private string _groupName;
         #endregion
@@ -21,17 +21,17 @@ namespace RoleplayingGame
         }
         #endregion
 
-        #region Properties
-        public string GroupName
+        #region Propertiess
+        public string GroupName 
         {
             get { return _groupName; }
         }
 
-        public bool IsDead
+        public bool IsDead 
         {
             get
             {
-                foreach (var member in _group)
+                foreach(Character member in _group)
                 {
                     if (!member.IsDead)
                     {
@@ -52,21 +52,24 @@ namespace RoleplayingGame
         public int DealDamage()
         {
             int totalDamage = 0;
-            foreach (var member in _group)
+
+            foreach (Character member in _group)
             {
-                if(!member.IsDead)
+                if (!member.IsDead)
                 {
                     totalDamage += member.DealDamage();
                 }
             }
+
             return totalDamage;
         }
 
+
         public void ReceiveDamage(int damage)
         {
-            foreach (var member in _group)
+            foreach(Character member in _group)
             {
-                if(!member.IsDead)
+                if (!member.IsDead)
                 {
                     member.ReceiveDamage(damage);
                     return;
@@ -76,14 +79,16 @@ namespace RoleplayingGame
 
         public void LogSurvivor()
         {
-            foreach (var member in _group)
+            foreach (Character member in _group)
             {
-                if(!member.IsDead)
+                if (!member.IsDead)
                 {
                     member.LogSurvivor();
                 }
             }
         }
+
+
         #endregion
     }
 }
