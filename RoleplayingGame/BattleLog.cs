@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoleplayingGame
 {
@@ -10,32 +7,26 @@ namespace RoleplayingGame
     {
         private static List<string> _log = new List<string>();
 
-        //Save a sinlge string
-
         public static void Save(string message)
         {
             _log.Add(message);
         }
-        //Print all(History )
+
         public static void PrintLog()
         {
             Console.WriteLine("Battle Log :");
             Console.WriteLine(new string('=', 40));
-            foreach(string s in _log)
+            foreach (var message in _log)
             {
-                Console.WriteLine(s);
+                Console.WriteLine(message);
             }
+            Console.WriteLine(new string('=', 40));
             Console.WriteLine();
-            Console.WriteLine();
-
         }
 
-        //Clear everything from log
         public static void Reset()
         {
             _log.Clear();
         }
-
     }
-
 }

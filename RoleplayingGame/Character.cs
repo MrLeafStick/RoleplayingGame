@@ -108,7 +108,7 @@ namespace RoleplayingGame
         {
             int modifiedReceiveDamage = receiveDamage;
 
-            if (NumberGenerator.BelowPercentage(ReceiveDamageModifiChance))
+            if (NumberGenerator.BelowPercentage(ReceiveDamageModifyChance))
             {
                 modifiedReceiveDamage = CalculateModifedReceivedDamage(receiveDamage);
             }
@@ -134,7 +134,7 @@ namespace RoleplayingGame
         /// Unless overrieded in a dirived class, a Character has 
         /// 0% chance of having the damage received modified.
         /// </summary>
-        protected virtual int ReceiveDamageModifiChance
+        protected virtual int ReceiveDamageModifyChance
         {
             get { return 0; }
         }
