@@ -48,9 +48,9 @@ namespace RoleplayingGame
             int damage = NumberGenerator.Next(_minDamage, _maxDamage);
             int modifiedDamage = DealDamageModifier(damage);
 
-            if (damageCost <= _stamina)
+            if (damageCost <= _mana)
             {
-                _stamina -= damageCost;
+                _mana -= damageCost;
                 string damageDesc = (damage < modifiedDamage) ? "(Increased)" : "";
                 string message = $"{Name} throws fireball and dealt {modifiedDamage} damage {damageDesc}. (Mana {_mana})";
 

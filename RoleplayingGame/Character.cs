@@ -74,8 +74,8 @@ namespace RoleplayingGame
             if(damageCost <= _stamina)
             {
                 _stamina -= damageCost;
-                string damageDesc = (damage < modifiedDamage) ? "(Increased)" : "";
-                string message = $"{Name} dealt {modifiedDamage} damage {damageDesc}. (St. {_stamina})";
+                string damageDesc = (damage < modifiedDamage) ? "(INCREASED)" : "";
+                string message = $"{Name} dealt {modifiedDamage} damage {damageDesc}. (Stamina {_stamina})";
 
                 BattleLog.Save(message);
 
@@ -83,7 +83,7 @@ namespace RoleplayingGame
             }
             else
             {
-                string message = $"{Name} is too exhausted to deal damage. (St. {_stamina})";
+                string message = $"{Name} is too exhausted to deal damage. (Stamina {_stamina})";
 
                 BattleLog.Save(message);
 
@@ -96,8 +96,8 @@ namespace RoleplayingGame
             int modifiedDamage = ReceiveDamageModifier(damage);
             _hitPoints = _hitPoints - modifiedDamage;
 
-            string damageDesc = (damage > modifiedDamage) ? " (Decreased)" : "";
-            string message = $"{Name} received {modifiedDamage} damage{damageDesc}, and is now down to {_hitPoints} hp";
+            string damageDesc = (damage > modifiedDamage) ? " (DECREASED)" : "";
+            string message = $"{Name} received {modifiedDamage} damage{damageDesc}, and is now down to {_hitPoints} HP";
 
             BattleLog.Save(message);
 
