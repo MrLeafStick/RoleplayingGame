@@ -15,7 +15,6 @@ namespace RoleplayingGame
         protected int _maxHitPoints;
         protected int _minDamage;
         protected int _maxDamage;
-        
         #endregion
 
         #region Constructor
@@ -59,12 +58,13 @@ namespace RoleplayingGame
 
             return modifiedDamage;
         }
+
         public int ReceiveDamage(int damage)
         {
             int modifiedDamage = ReceiveDamageModifier(damage);
             _hitPoints = _hitPoints - modifiedDamage;
 
-            string damageDesc = (damage > modifiedDamage) ? " (Decreased)" : "";  //TODO: change to >?
+            string damageDesc = (damage > modifiedDamage) ? " (Decreased)" : "";
             string message = $"{Name} received {modifiedDamage} damage{damageDesc}, and is now down to {_hitPoints} hp";
 
             BattleLog.Save(message);
@@ -98,7 +98,7 @@ namespace RoleplayingGame
         public int ReceiveDamageModifier(int receiveDamage)
         {
             int modifiedReceivedDamage = receiveDamage;
-            if (NumberGenerator.BelowPercentage(ReceiveDamageModyChance))
+            if (NumberGenerator.BelowPercentage(ReceiveDamageModifyChance))
             {
                 modifiedReceivedDamage = CalculateModifedReceivedDamage(receiveDamage);
             }
@@ -123,7 +123,7 @@ namespace RoleplayingGame
         /// Unless overrieded in a dirived class, a Character has 
         /// 0% chance of having the damage received modified.
         /// </summary>
-        protected virtual int ReceiveDamageModyChance
+        protected virtual int ReceiveDamageModifyChance
         {
             get { return 0; }
         }
