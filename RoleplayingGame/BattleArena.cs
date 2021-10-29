@@ -18,6 +18,9 @@ namespace RoleplayingGame
                 {
                     groupA.ReceiveDamage(groupB.DealDamage());
                 }
+
+                groupA.Regenerate();
+                groupB.Regenerate();
             }
 
             BattleLog.Save($" {new string('=', 20)} BATTLE IS OVER {new string('=',20)}");

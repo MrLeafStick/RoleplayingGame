@@ -9,8 +9,15 @@ namespace RoleplayingGame
     public class Damager : Character
     {
         #region Constructors
-        public Damager(string name, int maxHitPoints, int minDamage, int maxDamage, int maxStamina, int staminaRegen) 
-            : base(name, maxHitPoints, minDamage, maxDamage, maxStamina, staminaRegen)
+        public Damager(string name, 
+                          int maxHitPoints, 
+                          int minDamage, 
+                          int maxDamage, 
+                          int maxStamina, 
+                          int staminaRegen,
+                          int maxMana,
+                          int ManaRegen)
+            : base(name, maxHitPoints, minDamage, maxDamage, maxStamina, staminaRegen, maxMana, ManaRegen)
         {
 
         }

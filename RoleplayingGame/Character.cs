@@ -17,10 +17,20 @@ namespace RoleplayingGame
         protected int _stamina;
         protected int _maxStamina;
         protected int _staminaRegen;
+        protected int _mana;
+        protected int _maxMana;
+        protected int _manaRegen;
         #endregion
 
         #region Constructor
-        public Character(string name, int maxHitPoints, int minDamage, int maxDamage, int maxStamina, int staminaRegen)
+        public Character(string name, 
+                            int maxHitPoints, 
+                            int minDamage, 
+                            int maxDamage, 
+                            int maxStamina, 
+                            int staminaRegen,
+                            int maxMana,
+                            int ManaRegen)
         {
             _name = name;
             _maxHitPoints = maxHitPoints;
@@ -28,6 +38,8 @@ namespace RoleplayingGame
             _maxDamage = maxDamage;
             _maxStamina = maxStamina;
             _staminaRegen = staminaRegen;
+            _maxMana = maxMana;
+            _manaRegen = ManaRegen;
             Reset();
         }
         #endregion
@@ -49,19 +61,34 @@ namespace RoleplayingGame
         {
             _hitPoints = _maxHitPoints;
             _stamina = _maxStamina;
+            _mana = _maxMana;
         }
 
         public int DealDamage()
         {
+            int damageCost = 20;
             int damage = NumberGenerator.Next(_minDamage, _maxDamage);
             int modifiedDamage = DealDamageModifier(damage);
 
-            string damageDesc = (damage < modifiedDamage) ? "(Increased)" : "";
-            string message = $"{Name} dealt {modifiedDamage} damage {damageDesc}";
+            if(damageCost <= _stamina)
+            {
+                _stamina -= damageCost;
+                string damageDesc = (damage < modifiedDamage) ? "(Increased)" : "";
+                string message = $"{Name} dealt {modifiedDamage} damage {damageDesc}. (St. {_stamina})";
 
-            BattleLog.Save(message);
+                BattleLog.Save(message);
 
-            return modifiedDamage;
+                return modifiedDamage;
+            }
+            else
+            {
+                string message = $"{Name} is too exhausted to deal damage. (St. {_stamina})";
+
+                BattleLog.Save(message);
+
+                return 0;
+            }
+
         }
 
         public int ReceiveDamage(int damage)
@@ -153,9 +180,10 @@ namespace RoleplayingGame
             return receivedDamage;
         }
 
-        protected virtual void Regenerate()
+        public virtual void Regenerate()
         {
             _stamina += _staminaRegen;
+            _mana += _manaRegen;
         }
         #endregion
     }

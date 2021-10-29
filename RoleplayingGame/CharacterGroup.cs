@@ -72,6 +72,17 @@ namespace RoleplayingGame
             }
         }
 
+        public void Regenerate()
+        {
+            foreach (Character member in _group)
+            {
+                if (!member.IsDead)
+                {
+                    member.Regenerate();
+                }
+            }
+        }
+
         public void LogSurvivor()
         {
             foreach (Character member in _group)
