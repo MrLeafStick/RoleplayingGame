@@ -64,7 +64,8 @@ namespace RoleplayingGame
             _mana = _maxMana;
         }
 
-        public int DealDamage()
+        //public int DealDamage()
+        public virtual int DealDamage()
         {
             int damageCost = 20;
             int damage = NumberGenerator.Next(_minDamage, _maxDamage);
@@ -88,7 +89,6 @@ namespace RoleplayingGame
 
                 return 0;
             }
-
         }
 
         public int ReceiveDamage(int damage)
