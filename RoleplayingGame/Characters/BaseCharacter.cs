@@ -12,7 +12,7 @@ namespace RoleplayingGame
         protected int _maxHitPoints;
         protected int _minDamage;
         protected int _maxDamage;
-        protected Dictionary<AbilityType, double> _abilities;
+        protected Dictionary<AbilityType, int> _abilities;
 
         private Random _random;
         #endregion
@@ -24,9 +24,9 @@ namespace RoleplayingGame
             _maxHitPoints = hitPoints;
             _minDamage = minDamage;
             _maxDamage = maxDamage;
-            _abilities = new Dictionary<AbilityType, double>();
-            _abilities.Add(AbilityType.Hand, 5.0);
-            _abilities.Add(AbilityType.Weapon, 15.0);
+            _abilities = new Dictionary<AbilityType, int>();
+            _abilities.Add(AbilityType.Hand, 5);
+            _abilities.Add(AbilityType.Weapon, 15);
             AddRandomAbilities(3);
             Reset();
         }
@@ -60,7 +60,7 @@ namespace RoleplayingGame
                 var abilityType = Ability.AbilityTypeList.ElementAt(randomAbilityIndex);
                 if (!_abilities.ContainsKey(abilityType))
                 {
-                    var abilityDamage = (double)_random.Next(100);
+                    var abilityDamage = _random.Next(100);
                     _abilities.Add(abilityType, abilityDamage);
                     i++;
                 }
@@ -75,14 +75,20 @@ namespace RoleplayingGame
         /// <returns></returns>
         public int DealDamage()
         {
-            int damage = NumberGenerator.Next(_minDamage, _maxDamage);
-            int modifiedDamge = DealDamageModifier(damage);
+            int randomAbility = NumberGenerator.Next(0, _abilities.Count);
+            var ability = _abilities.ElementAt(randomAbility);
 
-            string damageDesc = (damage < modifiedDamge) ? "(INCREASED)" : "";
-            string message = $"{Name} dealt {modifiedDamge} damage {damageDesc}";
+            //int damage = NumberGenerator.Next(_minDamage, _maxDamage);
+            int modifiedDamge = DealDamageModifier(ability.Value);
+
+            string damageDesc = (ability.Value < modifiedDamge) ? "(INCREASED)" : "";
+
+            string message = $"{Name} dealt {modifiedDamge} damage {damageDesc}, using {Ability.GetNameByAbilityType(ability.Key)}";
+
+            //string message = $"{Name} dealt {modifiedDamge} damage {damageDesc}";
             if (this is Wizard)
             {
-                message = $"{Name} throwed a big ass fire ball, dealt {modifiedDamge} damage {damageDesc}";
+                //message = $"{Name} throwed a big ass fire ball, dealt {modifiedDamge} damage {damageDesc}";
             }
 
             BattleLog.Save(message);
