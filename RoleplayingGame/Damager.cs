@@ -28,9 +28,9 @@ namespace RoleplayingGame
             get { return 40; }
         }
 
-        protected override int CalculateModifedDamage(int dealtDamage)
+        protected override int CalculateModifedDamage(int dealtDamage, int modifier)
         {
-            return dealtDamage * 2;
+            return dealtDamage * modifier;
         }
     }
 }

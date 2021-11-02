@@ -44,9 +44,11 @@ namespace RoleplayingGame
         #region Override Methods
         public override int DealDamage()
         {
+            int abilityModifier = NumberGenerator.Next(0, SpellVector.Count);
+
             int damageCost = 20;
             int damage = NumberGenerator.Next(_minDamage, _maxDamage);
-            int modifiedDamage = DealDamageModifier(damage);
+            int modifiedDamage = DealDamageModifier(damage, abilityModifier);
 
             if (damageCost <= _mana)
             {
@@ -68,7 +70,7 @@ namespace RoleplayingGame
             }
         }
 
-        protected override int CalculateModifedDamage(int dealtDamage)
+        protected override int CalculateModifedDamage(int dealtDamage, int modifier)
         {
             return dealtDamage;
         }

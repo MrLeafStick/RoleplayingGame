@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RolePlayingAbilityPrototyping.Spells
+namespace RoleplayingGame
 {
-    public enum SpellType
+    public enum AbilityType
     {
+        Fist,
+        Knife,
+        Club,
+        Crossbow,
+        Longbow,
         IceStorm,
         FireBall,
         AcidRain,
         ThunderBolt,
         LavaBall,
-        Armadeddon
+        Armageddon
     }
 }
