@@ -11,6 +11,7 @@ namespace RoleplayingGame
         #region Instance Fields
         private List<BaseCharacter> _group;
         private string _groupName;
+        private Random _random;
         #endregion
 
         #region Constructors
@@ -18,6 +19,7 @@ namespace RoleplayingGame
         {
             _group = new List<BaseCharacter>();
             _groupName = groupName;
+            _random = new Random();
         }
         #endregion
 
@@ -53,7 +55,7 @@ namespace RoleplayingGame
             {
                 if(!member.IsDead)
                 {
-                    totalDamage = totalDamage + member.DealDamage();
+                    totalDamage += member.DealDamage();
                 }
             }
 
@@ -62,12 +64,15 @@ namespace RoleplayingGame
 
         public void ReceiveDamage(int damage)
         {
-            foreach (BaseCharacter member in _group)
-            {
+            while(true)
+            { 
+                var randomMember = _random.Next(0, _group.Count());
+                BaseCharacter member = _group.ElementAt(randomMember);
+
                 if (!member.IsDead)
                 {
                     member.ReceiveDamage(damage);
-                    return; // TODO: Why is this here?
+                    return;
                 }
             }
         }
