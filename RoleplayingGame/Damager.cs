@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RoleplayingGame
 {
-    public class Damager : Character
+    public class Damager : BaseCharacter
     {
         #region Constructors
         public Damager(string name, 

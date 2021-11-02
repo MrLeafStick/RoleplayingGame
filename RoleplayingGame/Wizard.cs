@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RoleplayingGame
 {
-    public class Wizard : Character
+    public class Wizard : BaseCharacter
     {
         #region Field Definitions
         

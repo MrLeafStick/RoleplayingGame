@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RoleplayingGame
 {
-    public class Character
+    public class BaseCharacter
     {
         #region Instance Fields
         private string _name;
@@ -23,7 +23,7 @@ namespace RoleplayingGame
         #endregion
 
         #region Constructor
-        public Character(string name, 
+        public BaseCharacter(string name, 
                             int maxHitPoints, 
                             int minDamage, 
                             int maxDamage, 
