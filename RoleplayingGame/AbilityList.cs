@@ -11,5 +11,12 @@ namespace RoleplayingGame
         {
             get { return Enum.GetValues(typeof(AbilityType)).Cast<AbilityType>();  }
         }
+
+        /*
+        public static string GetName(int index)
+        {
+            return Enum.GetNames(typeof(AbilityType))[index]; 
+        }
+        */
     }
 }

@@ -11,11 +11,14 @@ namespace RoleplayingGame
         Club,
         Crossbow,
         Longbow,
+        Broadsword,
         IceStorm,
         FireBall,
         AcidRain,
         ThunderBolt,
         LavaBall,
-        Armageddon
+        Armageddon,
+        FleshRot,
+        Tornado
     }
 }

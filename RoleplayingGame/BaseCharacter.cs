@@ -42,13 +42,13 @@ namespace RoleplayingGame
             _maxMana = maxMana;
             _manaRegen = ManaRegen;
 
-            SpellVector = new Dictionary<AbilityType, double>();
+            SpellVector = new Dictionary<AbilityType, int>();
             Reset();
         }
         #endregion
 
         #region Properties
-        public Dictionary<AbilityType, double> SpellVector { get; set; }
+        public Dictionary<AbilityType, int> SpellVector { get; set; }
 
         public string Name
         {
@@ -88,17 +88,19 @@ namespace RoleplayingGame
         
         public virtual int DealDamage()
         {
-            int abilityModifier = NumberGenerator.Next(0, SpellVector.Count + 1);
-            
-            int damageCost = 20;
+            int randomAbility = NumberGenerator.Next(0, SpellVector.Count);
+            var ability = SpellVector.ElementAt(randomAbility);
+            var abilityName = ability.Key.ToString();
+            var abilityValue = ability.Value;
+            int damageCost = (int)(abilityValue / 2);
             int damage = NumberGenerator.Next(_minDamage, _maxDamage);
-            int modifiedDamage = DealDamageModifier(damage, abilityModifier);
+            int modifiedDamage = DealDamageModifier(damage, abilityValue);
 
             if(damageCost <= _stamina)
             {
                 _stamina -= damageCost;
-                string damageDesc = (damage < modifiedDamage) ? "(INCREASED)" : "";
-                string message = $"{Name} dealt {modifiedDamage} damage {damageDesc}. (Stamina {_stamina})";
+                string damageDesc = (damage < modifiedDamage) ? "(INCREASED)" : "\b";
+                string message = $"{Name} dealt {modifiedDamage} damage {damageDesc} with {abilityName}. (Stamina {_stamina})";
 
                 BattleLog.Save(message);
 

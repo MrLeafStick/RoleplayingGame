@@ -12,16 +12,24 @@ namespace RoleplayingGame
         {
             CharacterGroup redTeam = new CharacterGroup("Team Red");
 
-            BaseCharacter c1 = new Damager("Freja", 600, 60, 80, 100, 10, 0, 0);
-            BaseCharacter c2 = new Defender("Thorbjorn", 484, 8, 12, 100, 1, 0, 0);
-            BaseCharacter c3 = new BaseCharacter("Svend", 200, 12, 60, 100, 2, 0, 0);
-            BaseCharacter c4 = new Wizard("Merlin", 100, 20, 40, 100, 5, 500, 5);
+            BaseCharacter c1 = new Damager("Freja", 600, 60, 80, 100, 20, 0, 0);
+            BaseCharacter c2 = new Defender("Thorbjorn", 484, 8, 12, 100, 15, 0, 0);
+            BaseCharacter c3 = new BaseCharacter("Svend", 200, 12, 60, 100, 10, 0, 0);
+            BaseCharacter c4 = new Wizard("Merlin", 100, 20, 40, 100, 30, 500, 5);
 
-            c1.AddAbility(AbilityType.Crossbow, 42);
-            c2.AddAbility(AbilityType.Crossbow, 42);
-            c3.AddAbility(AbilityType.Crossbow, 42);
-            c4.AddAbility(AbilityType.AcidRain, 42);
-            c4.AddAbility(AbilityType.Armageddon, 42);
+            c1.AddAbility(AbilityType.Crossbow, 50);
+            c1.AddAbility(AbilityType.Knife, 10);
+
+            c2.AddAbility(AbilityType.Longbow, 30);
+            c2.AddAbility(AbilityType.Knife, 5);
+
+            c3.AddAbility(AbilityType.Broadsword, 40);
+            c3.AddAbility(AbilityType.Knife, 7);
+
+            c4.AddAbility(AbilityType.LavaBall, 60);
+            c4.AddAbility(AbilityType.ThunderBolt, 50);
+            c4.AddAbility(AbilityType.Tornado, 40);
+            c4.AddAbility(AbilityType.FleshRot, 30);
 
             redTeam.AddCharacter(c1);
             redTeam.AddCharacter(c2);
@@ -31,15 +39,23 @@ namespace RoleplayingGame
             CharacterGroup greenTeam = new CharacterGroup("Team Green");
 
             BaseCharacter r1 = new Defender("Sindy", 345, 10, 12, 100, 10, 0, 0);
-            BaseCharacter r2 = new BaseCharacter("Eric", 290, 20, 30, 100, 5, 0, 0);
-            BaseCharacter r3 = new Damager("Kenny", 100, 100, 140, 100, 1, 0, 0);
-            BaseCharacter r4 = new Wizard("Gandalf", 100, 50, 140, 100, 1, 500, 2);
+            BaseCharacter r2 = new BaseCharacter("Eric", 290, 20, 30, 100, 15, 0, 0);
+            BaseCharacter r3 = new Damager("Kenny", 100, 100, 140, 100, 1, 20, 0);
+            BaseCharacter r4 = new Wizard("Gandalf", 100, 50, 140, 100, 25, 500, 2);
 
-            c1.AddAbility(AbilityType.Crossbow, 42);
-            c2.AddAbility(AbilityType.Crossbow, 42);
-            c3.AddAbility(AbilityType.Crossbow, 42);
-            c4.AddAbility(AbilityType.AcidRain, 42);
-            c4.AddAbility(AbilityType.Armageddon, 42);
+            r1.AddAbility(AbilityType.Crossbow, 30);
+            r1.AddAbility(AbilityType.Knife, 5);
+
+            r2.AddAbility(AbilityType.Crossbow, 40);
+            r2.AddAbility(AbilityType.Knife, 10);
+
+            r3.AddAbility(AbilityType.Crossbow, 50);
+            r3.AddAbility(AbilityType.Knife, 20);
+
+            r4.AddAbility(AbilityType.AcidRain, 60);
+            r4.AddAbility(AbilityType.Armageddon, 50);
+            r4.AddAbility(AbilityType.FireBall, 40);
+            r4.AddAbility(AbilityType.IceStorm, 30);
 
             greenTeam.AddCharacter(r1);
             greenTeam.AddCharacter(r2);
@@ -47,23 +63,6 @@ namespace RoleplayingGame
             greenTeam.AddCharacter(r4);
 
             BattleArena.DoBattle(redTeam, greenTeam);
-
-            /*
-            CharacterGroup redTeam = new CharacterGroup("Team Red");
-            redTeam.AddCharacter(new Defender("Freja", 600, 60, 80));
-            redTeam.AddCharacter(new Character("Torben", 350, 20, 40));
-            redTeam.AddCharacter(new Character("Svend", 200, 12, 60));
-            redTeam.AddCharacter(new Damager("Thorbjørn", 350, 20, 40));
-
-            CharacterGroup greenTeam = new CharacterGroup("Team Green");
-            greenTeam.AddCharacter(new Defender("Kenny", 320, 40, 41));
-            greenTeam.AddCharacter(new Character("Sindy", 345, 10, 12));
-            greenTeam.AddCharacter(new Character("Eric", 290, 20, 30));
-            greenTeam.AddCharacter(new Damager("Stan", 320, 30, 140));
-
-            BattleArena.DoBattle(redTeam, greenTeam);
-            */
-
         }
     }
 }

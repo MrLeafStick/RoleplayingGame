@@ -30,7 +30,7 @@ namespace RoleplayingGame
 
         protected override int CalculateModifedDamage(int dealtDamage, int modifier)
         {
-            return dealtDamage * modifier;
+            return dealtDamage * (int)(modifier * 0.1);
         }
     }
 }
