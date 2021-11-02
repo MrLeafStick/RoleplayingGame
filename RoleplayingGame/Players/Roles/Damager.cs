@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace RoleplayingGame
 {
-    public class Damager : Character
+    public class Damager : BaseCharacter
     {
-        public Damager(string name, int maxHitPoints, int minDamage, int maxDamage) : base(name, maxHitPoints, minDamage, maxDamage)
+        public Damager(string name, int maxHitPoints, int maxMana, int minDamage, int maxDamage) : base(name, maxHitPoints, maxMana, minDamage, maxDamage)
         {
-
         }
 
         protected override int DealDamageModifyChance
@@ -18,7 +17,7 @@ namespace RoleplayingGame
             get { return 40; }
         }
 
-        protected override int CalculateModifedDamage(int dealtDamage)
+        protected override int CalculateModifiedDamage(int dealtDamage)
         {
             return dealtDamage * 2;
         }

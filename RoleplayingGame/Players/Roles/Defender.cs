@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace RoleplayingGame
 {
-    public class Defender : Character
+    public class Defender : BaseCharacter
     {
-        public Defender(string name, int maxHitPoints, int minDamage, int maxDamage) : base(name, maxHitPoints, minDamage, maxDamage)
+        public Defender(string name, int maxHitPoints, int maxMana, int minDamage, int maxDamage) : base(name, maxHitPoints, maxMana, minDamage, maxDamage)
         {
         }
 
@@ -17,7 +17,7 @@ namespace RoleplayingGame
             get { return 45; }
         }
 
-        protected override int CalculateModifedReceivedDamage(int receivedDamage)
+        protected override int CalculateModifiedReceivedDamage(int receivedDamage)
         {
             return receivedDamage / 2;
         }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RoleplayingGame.Moves;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,24 +9,28 @@ using System.Threading.Tasks;
 namespace RoleplayingGame
 
 {
-    public class Character
+    public class BaseCharacter
     {
         #region Instance Fields
         private string _name;
         protected int _hitPoints;
         protected int _maxHitPoints;
+        protected int _mana;
+        protected int _maxMana;
         protected int _minDamage;
         protected int _maxDamage;
-        
+        private Dictionary<AbilityList, double> AbilityVector;
         #endregion
 
         #region Constructor
-        public Character(string name, int maxHitPoints, int minDamage, int maxDamage)
+        public BaseCharacter(string name, int maxHitPoints, int maxMana, int minDamage, int maxDamage)
         {
             _name = name;
             _maxHitPoints = maxHitPoints;
+            _maxMana = maxMana;
             _minDamage = minDamage;
             _maxDamage = maxDamage;
+            AbilityVector = new Dictionary<AbilityList, double>();
             Reset();
         }
         #endregion
@@ -33,7 +39,7 @@ namespace RoleplayingGame
         public string Name
         {
             get { return _name; }
-        }        
+        }
 
         public bool IsDead
         {
@@ -45,14 +51,17 @@ namespace RoleplayingGame
         public void Reset()
         {
             _hitPoints = _maxHitPoints;
+            _mana = _maxMana;
         }
 
         public int DealDamage()
         {
             int damage = NumberGenerator.Next(_minDamage, _maxDamage);
             int modifiedDamage = DealDamageModifier(damage);
+            string damageDesc;
 
-            string damageDesc = (damage < modifiedDamage) ? "(INCREASED)" : "";
+            damageDesc = (damage < modifiedDamage) ? "(INCREASED)" : "";
+
             string message = $"{Name} dealt {modifiedDamage} damage {damageDesc}";
 
             Battlelog.Save(message);
@@ -84,12 +93,13 @@ namespace RoleplayingGame
             }
         }
 
+
         public int DealDamageModifier(int dealtDamage)
         {
             int modifiedDealtDamage = dealtDamage;
-            if(NumberGenerator.BelowPercentage(DealDamageModifyChance))
+            if (NumberGenerator.BelowPercentage(DealDamageModifyChance))
             {
-                modifiedDealtDamage = CalculateModifedDamage(dealtDamage);
+                modifiedDealtDamage = CalculateModifiedDamage(dealtDamage);
             }
 
             return modifiedDealtDamage;
@@ -100,7 +110,7 @@ namespace RoleplayingGame
             int modifiedReceiveDamage = receiveDamage;
             if (NumberGenerator.BelowPercentage(ReceiveDamageModifyChance))
             {
-                modifiedReceiveDamage = CalculateModifedReceivedDamage(receiveDamage);
+                modifiedReceiveDamage = CalculateModifiedReceivedDamage(receiveDamage);
             }
 
             return modifiedReceiveDamage;
@@ -117,7 +127,7 @@ namespace RoleplayingGame
         protected virtual int DealDamageModifyChance
         {
             get { return 0; }
-        }        
+        }
 
         /// <summary>
         /// Return the chance of the damage received bbeing modified.
@@ -134,7 +144,7 @@ namespace RoleplayingGame
         /// Unless overrisded in a dirived class, the modified dealt
         /// damage is the same as the original dealt damage.
         /// </summary
-        protected virtual int CalculateModifedDamage(int dealtDamage)
+        protected virtual int CalculateModifiedDamage(int dealtDamage)
         {
             return dealtDamage;
         }
@@ -144,10 +154,11 @@ namespace RoleplayingGame
         /// unless orverried in a derved class the modifed received
         /// damage is the sae as the original received damage.
         /// </summary>
-        protected virtual int CalculateModifedReceivedDamage(int receivedDamage)
+        protected virtual int CalculateModifiedReceivedDamage(int receivedDamage)
         {
             return receivedDamage;
         }
+
 
         #endregion
     }
