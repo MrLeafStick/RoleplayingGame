@@ -12,13 +12,13 @@ namespace RoleplayingGame
         {
             while(!groupA.IsDead && !groupB.IsDead)
             {
-                BattleLog.Save(" ----------  Team Green attacks  ----------");
+                BattleLog.Save($" ------------  {groupA.GroupName} attacks  ------------");
 
                 groupB.ReceiveDamage(groupA.DealDamage());
 
                 if(!groupA.IsDead)
                 {
-                    BattleLog.Save(" ----------  Team Red attacks  ----------");
+                    BattleLog.Save($" ------------  {groupB.GroupName} attacks  ------------");
 
                     groupA.ReceiveDamage(groupB.DealDamage());
                 }

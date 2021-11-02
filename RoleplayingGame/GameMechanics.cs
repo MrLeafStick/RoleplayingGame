@@ -38,10 +38,10 @@ namespace RoleplayingGame
 
             CharacterGroup greenTeam = new CharacterGroup("Team Green");
 
-            BaseCharacter r1 = new Defender("Sindy", 345, 10, 12, 100, 10, 0, 0);
+            BaseCharacter r1 = new Defender("Sindy", 500, 10, 12, 100, 10, 0, 0);
             BaseCharacter r2 = new BaseCharacter("Eric", 290, 20, 30, 100, 15, 0, 0);
-            BaseCharacter r3 = new Damager("Kenny", 100, 100, 140, 100, 1, 20, 0);
-            BaseCharacter r4 = new Wizard("Gandalf", 100, 50, 140, 100, 25, 500, 2);
+            BaseCharacter r3 = new Damager("Kenny", 400, 100, 140, 100, 1, 20, 0);
+            BaseCharacter r4 = new Wizard("Gandalf", 100, 50, 140, 100, 35, 500, 2);
 
             r1.AddAbility(AbilityType.Crossbow, 30);
             r1.AddAbility(AbilityType.Knife, 5);
