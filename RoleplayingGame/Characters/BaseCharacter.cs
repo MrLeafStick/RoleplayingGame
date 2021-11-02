@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace RoleplayingGame
-
 {
-    public class Character
+    public class BaseCharacter
     {
         #region Instance Fields
         private string _name;
@@ -12,15 +12,22 @@ namespace RoleplayingGame
         protected int _maxHitPoints;
         protected int _minDamage;
         protected int _maxDamage;
+        protected Dictionary<AbilityType, double> _abilities;
+
+        private Random _random;
         #endregion
 
         #region Constructor
-        public Character(string name, int hitPoints, int minDamage, int maxDamage)
+        public BaseCharacter(string name, int hitPoints, int minDamage, int maxDamage)
         {
             _name = name;
             _maxHitPoints = hitPoints;
             _minDamage = minDamage;
             _maxDamage = maxDamage;
+            _abilities = new Dictionary<AbilityType, double>();
+            _abilities.Add(AbilityType.Hand, 5.0);
+            _abilities.Add(AbilityType.Weapon, 15.0);
+            AddRandomAbilities(3);
             Reset();
         }
         #endregion
@@ -41,6 +48,23 @@ namespace RoleplayingGame
         public void Reset()
         {
             _hitPoints = _maxHitPoints;
+        }
+
+        public void AddRandomAbilities(int amount = 1)
+        {
+            for (int i = 0; i < amount;)
+            {
+                _random = new Random(Guid.NewGuid().GetHashCode() + i);
+
+                var randomAbilityIndex = _random.Next(0, Ability.AbilityTypeList.Count());
+                var abilityType = Ability.AbilityTypeList.ElementAt(randomAbilityIndex);
+                if (!_abilities.ContainsKey(abilityType))
+                {
+                    var abilityDamage = (double)_random.Next(100);
+                    _abilities.Add(abilityType, abilityDamage);
+                    i++;
+                }
+            }
         }
 
         /// <summary>

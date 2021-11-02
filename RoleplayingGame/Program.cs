@@ -6,6 +6,8 @@ namespace RoleplayingGame
     {
         static void Main(string[] args)
         {
+            Test.AbilityType d = new Test.AbilityType();
+
             var mech = new GameMechanics();
             mech.GameLogic();
         }

@@ -9,14 +9,14 @@ namespace RoleplayingGame
     public class CharacterGroup
     {
         #region Instance Field
-        private List<Character> _group;
+        private List<BaseCharacter> _group;
         private string _groupName;
         #endregion
 
         #region Constructor
         public CharacterGroup(string groupName)
         {
-            _group = new List<Character>();
+            _group = new List<BaseCharacter>();
             _groupName = groupName;
         }
         #endregion
@@ -31,7 +31,7 @@ namespace RoleplayingGame
         {
             get
             {
-                foreach(Character member in _group)
+                foreach(BaseCharacter member in _group)
                 {
                     if (!member.IsDead)
                     {
@@ -44,7 +44,7 @@ namespace RoleplayingGame
         #endregion
 
         #region Methods
-        public void AddCharacter(Character aBeast)
+        public void AddCharacter(BaseCharacter aBeast)
         {
             _group.Add(aBeast);
         }
@@ -53,7 +53,7 @@ namespace RoleplayingGame
         {
             int totalDamage = 0;
 
-            foreach (Character member in _group)
+            foreach (BaseCharacter member in _group)
             {
                 if (!member.IsDead)
                 {
@@ -67,7 +67,7 @@ namespace RoleplayingGame
 
         public void ReceiveDamage(int damage)
         {
-            foreach(Character member in _group)
+            foreach(BaseCharacter member in _group)
             {
                 if (!member.IsDead)
                 {
@@ -79,7 +79,7 @@ namespace RoleplayingGame
 
         public void LogSurvivor()
         {
-            foreach (Character member in _group)
+            foreach (BaseCharacter member in _group)
             {
                 if (!member.IsDead)
                 {

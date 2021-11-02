@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RoleplayingGame
 {
-    public class Damager : Character
+    public class Damager : BaseCharacter
     {
         public Damager(string name, int hitPoints, int minDamage, int maxDamage)
             : base(name, hitPoints, minDamage, maxDamage)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RoleplayingGame
 {
-    public class Wizard : Character
+    public class Wizard : BaseCharacter
     {
         #region Constructor
         public Wizard(string name, int hitPoints, int minDamage, int maxDamage)
