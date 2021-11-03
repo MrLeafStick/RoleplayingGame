@@ -1,5 +1,8 @@
 ﻿using RoleplayingGameV2.Helpers;
 using RoleplayingGameV2.Interfaces;
+using RoleplayingGameV2.Items.Armor;
+using RoleplayingGameV2.Items.Weapons;
+using System;
 using System.Collections.Generic;
 
 namespace RoleplayingGameV2.Participants
@@ -14,7 +17,23 @@ namespace RoleplayingGameV2.Participants
         #endregion
 
         #region Constructors
+        protected ParticipantBase(
+            int maxInitialHealthPoints, 
+            int maxInitialGold, 
+            int maxInitialItems, 
+            double maxDamage, 
+            string name)
+        {
+            _maxInitialHealthPoints = maxInitialHealthPoints;
+            _maxInitialGold = maxInitialGold;
+            _maxInitialItems = maxInitialItems;
+            _maxDamage = maxDamage;
+            Name = name;
 
+            HealthPoints = SetInitialHealthPoints();
+            GoldOwned = SetInitialGoldOwned();
+            ItemsOwned = SetInitialItemsOwned();
+        }
         #endregion
 
         #region Properties
@@ -62,8 +81,19 @@ namespace RoleplayingGameV2.Participants
 
         public virtual IItem GetInitialItem()
         {
-            int index = RNG.RandomInt(0, 7);
-            return null; // TODO: Fix!
+            int index = RNG.RandomInt(0, 8);
+            switch (index)
+            {
+                case 1: return new ClothGloves();
+                case 2: return new LeatherBoots();
+                case 3: return new PlateBoots();
+                case 4: return new WoodenShield();
+                case 5: return new IronSword();
+                case 6: return new SteelLance();
+                case 7: return new WoodenMace();
+                case 8: return new WoodenStick();
+                default: throw new Exception($"Could not generate item with index {index}");
+            }
         }
 
         public virtual double DealDamage()
