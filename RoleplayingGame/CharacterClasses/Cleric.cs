@@ -12,8 +12,6 @@ namespace RoleplayingGame
         {
         }
 
-
-
         /// <summary>
         /// A Damager has a 40 % chance of dealing increased damage.
         /// </summary>
