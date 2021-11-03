@@ -6,20 +6,24 @@ using System.Threading.Tasks;
 
 namespace RoleplayingGame
 {
-    public class Wizard : Character
+    /// <summary>
+    /// This class represents the Damager character type.
+    /// </summary>
+    public class Damager : BaseCharacter
     {
-        public Wizard(string name, List<Ability> abilities, int hitPoints, int minDamage, int maxDamage) 
-            : base(name, abilities, hitPoints, minDamage, maxDamage)
+        public Damager(string name, Dictionary<AbilityType, double> abilityVector, int hitPoints, int minDamage, int maxDamage) : base(name, abilityVector, hitPoints, minDamage, maxDamage)
         {
         }
+
 
         /// <summary>
         /// A Damager has a 40 % chance of dealing increased damage.
         /// </summary>
         protected override int DealDamageModifyChance
         {
-            get { return 30; }
+            get { return 40; }
         }
+
         /// <summary>
         /// If the damage is increased, it is doubled.
         /// </summary>

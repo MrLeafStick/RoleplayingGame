@@ -8,32 +8,22 @@ namespace RoleplayingGame
 {
     public class Ability
     {
-        private string _name;
-        private AbilityType _abilityType;
-        private int _cost;
-        private int _damage;
-        private int _damageModifier;
-
-        public string Name { get { return _name; } }
-        public AbilityType AbilityType { get { return _abilityType; } }
-        public int Cost { get { return _cost; } }
-        public int Damage { get { return _damage; } }
-        public int DamageModifier { get { return _damageModifier; } }
-
-        public Ability(string name, AbilityType abilityType, int cost, int damage, int damageModifier)
+        public static IEnumerable<AbilityType> AbilityTypeList
         {
-            _name = name;
-            _abilityType = abilityType;
-            _cost = cost;
-            _damage = damage;
-            _damageModifier = damageModifier;
+            get { return Enum.GetValues(typeof(AbilityType)).Cast<AbilityType>(); }
         }
-
-        public virtual void Use(Character target) {}
     }
 
     public enum AbilityType
     {
-        Spell,Weapon
+        BasicAttack,
+        PowerAttack,
+        WhirlwindAttack,
+        Fireball,
+        Blizzard,
+        ShieldSmash,
+        ShieldBlock,
+        HealingSpring,
+        SacredGround
     }
 }

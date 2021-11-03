@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace RoleplayingGame
 {
@@ -10,23 +6,24 @@ namespace RoleplayingGame
     {
         public void GameLogic()
         {
-            var basicAttack = new Ability("Basic attack", AbilityType.Weapon, 5, 5, 5);
-            var fireball = new Ability("Fireball", AbilityType.Weapon, 10, 5, 15);
+            var wizardSet = new Dictionary<AbilityType, double>() {{AbilityType.BasicAttack, 10},{AbilityType.Blizzard, 35},{ AbilityType.Fireball, 50}};
+            var defenderSet = new Dictionary<AbilityType, double>() { {AbilityType.BasicAttack, 15},{AbilityType.ShieldBlock, 0},{AbilityType.ShieldSmash, 25} };
+            var damagerSet = new Dictionary<AbilityType, double>() { { AbilityType.BasicAttack, 20 }, { AbilityType.PowerAttack, 50 }, { AbilityType.WhirlwindAttack, 25 } };
+            var clericSet = new Dictionary<AbilityType, double>() { { AbilityType.BasicAttack, 5 }, { AbilityType.SacredGround, 5 }, { AbilityType.HealingSpring, 0 } };
 
-            CharacterGroup redTeam = new CharacterGroup("Team Red");
-            redTeam.AddCharacter(new Wizard("Freja", new List<Ability>(){ basicAttack, fireball }, 600, 60, 80));
-            redTeam.AddCharacter(new Defender("Thorbjorn", new List<Ability>() { basicAttack}, 484, 8, 12));
-            redTeam.AddCharacter(new Damager("Svend", new List<Ability>() { basicAttack }, 200, 12, 60));
-            redTeam.AddCharacter(new Damager("Torben", new List<Ability>() { basicAttack }, 350, 20, 40));
+            BaseCharacterGroup redTeam = new BaseCharacterGroup("Team Red");
+            redTeam.AddBaseCharacter(new Wizard("Freja", wizardSet, 600, 60, 80));
+            redTeam.AddBaseCharacter(new Defender("Thorbjorn", defenderSet, 484, 8, 12));
+            redTeam.AddBaseCharacter(new Damager("Svend", damagerSet, 200, 12, 60));
+            redTeam.AddBaseCharacter(new Cleric("Torben", clericSet, 350, 20, 40));
 
-            CharacterGroup greenTeam = new CharacterGroup("Team Green");
-            greenTeam.AddCharacter(new Defender("Sindy", new List<Ability>() { basicAttack }, 345, 10, 12));
-            greenTeam.AddCharacter(new Defender("Eric", new List<Ability>() { basicAttack }, 290, 20, 30));
-            greenTeam.AddCharacter(new Damager("Stan", new List<Ability>() { basicAttack }, 310, 30, 40));
-            greenTeam.AddCharacter(new Wizard("Kenny", new List<Ability>() { basicAttack, fireball }, 100, 100, 140));
+            BaseCharacterGroup greenTeam = new BaseCharacterGroup("Team Green");
+            greenTeam.AddBaseCharacter(new Cleric("Sindy", clericSet, 345, 10, 12));
+            greenTeam.AddBaseCharacter(new Defender("Eric", clericSet, 290, 20, 30));
+            greenTeam.AddBaseCharacter(new Damager("Stan", damagerSet, 310, 30, 40));
+            greenTeam.AddBaseCharacter(new Wizard("Kenny", wizardSet, 100, 100, 140));
 
             BattleArena.DoBattle(redTeam, greenTeam);
-
         }
     }
 }

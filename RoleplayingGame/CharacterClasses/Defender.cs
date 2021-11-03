@@ -9,12 +9,12 @@ namespace RoleplayingGame
     /// <summary>
     /// This class represents the Defender character type.
     /// </summary>
-    public class Defender : Character
+    public class Defender : BaseCharacter
     {
-        public Defender(string name, List<Ability> abilities, int hitPoints, int minDamage, int maxDamage) 
-            : base(name, abilities, hitPoints, minDamage, maxDamage)
+        public Defender(string name, Dictionary<AbilityType, double> abilityVector, int hitPoints, int minDamage, int maxDamage) : base(name, abilityVector, hitPoints, minDamage, maxDamage)
         {
         }
+
 
         /// <summary>
         /// A Defender has a 45 % chance of having the received damage reduced.

@@ -12,7 +12,7 @@ namespace RoleplayingGame
     /// </summary>
     public class BattleArena
     {
-        public static void DoBattle(CharacterGroup groupA, CharacterGroup groupB)
+        public static void DoBattle(BaseCharacterGroup groupA, BaseCharacterGroup groupB)
         {
             while(!groupA.IsDead && !groupB.IsDead)
             {

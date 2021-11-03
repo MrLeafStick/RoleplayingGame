@@ -8,17 +8,17 @@ namespace RoleplayingGame
 {    /// <summary>
      /// This class represents a group of game characters
      /// </summary>
-    public class CharacterGroup
+    public class BaseCharacterGroup
     {
         #region Instance Field
-        private List<Character> _group;
+        private List<BaseCharacter> _group;
         private string _groupName;
         #endregion
 
         #region Constructor
-        public CharacterGroup(string groupName)
+        public BaseCharacterGroup(string groupName)
         {
-            _group = new List<Character>();
+            _group = new List<BaseCharacter>();
             _groupName = groupName;
         }
         #endregion
@@ -36,7 +36,7 @@ namespace RoleplayingGame
         {
             get
             {
-                foreach(Character member in _group)
+                foreach(BaseCharacter member in _group)
                 {
                     if (!member.IsDead)
                     {
@@ -50,9 +50,9 @@ namespace RoleplayingGame
 
         #region Methods
         /// <summary>
-        /// Add one Character to the group 
+        /// Add one BaseCharacter to the group 
         /// </summary>
-        public void AddCharacter(Character aBeast)
+        public void AddBaseCharacter(BaseCharacter aBeast)
         {
             _group.Add(aBeast);
         }
@@ -64,7 +64,7 @@ namespace RoleplayingGame
         {
             int totalDamage = 0;
 
-            foreach (Character member in _group)
+            foreach (BaseCharacter member in _group)
             {
                 if (!member.IsDead)
                 {
@@ -82,7 +82,7 @@ namespace RoleplayingGame
         /// </summary>
         public void ReceiveDamage(int damage)
         {
-            foreach(Character member in _group)
+            foreach(BaseCharacter member in _group)
             {
                 if (!member.IsDead)
                 {
@@ -94,7 +94,7 @@ namespace RoleplayingGame
 
         public void LogSurvivor()
         {
-            foreach (Character member in _group)
+            foreach (BaseCharacter member in _group)
             {
                 if (!member.IsDead)
                 {

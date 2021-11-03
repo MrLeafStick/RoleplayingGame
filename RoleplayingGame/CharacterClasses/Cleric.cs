@@ -6,22 +6,20 @@ using System.Threading.Tasks;
 
 namespace RoleplayingGame
 {
-    /// <summary>
-    /// This class represents the Damager character type.
-    /// </summary>
-    public class Damager : Character
+    public class Cleric : BaseCharacter
     {
-        public Damager(string name, List<Ability> abilities, int hitPoints, int minDamage, int maxDamage) 
-            : base(name, abilities, hitPoints, minDamage, maxDamage)
+        public Cleric(string name, Dictionary<AbilityType, double> abilityVector, int hitPoints, int minDamage, int maxDamage) : base(name, abilityVector, hitPoints, minDamage, maxDamage)
         {
         }
+
+
 
         /// <summary>
         /// A Damager has a 40 % chance of dealing increased damage.
         /// </summary>
         protected override int DealDamageModifyChance
         {
-            get { return 40; }
+            get { return 35; }
         }
 
         /// <summary>
@@ -29,7 +27,7 @@ namespace RoleplayingGame
         /// </summary>
         protected override int CalculateModifedDamage(int dealtDamage)
         {
-            return dealtDamage * 2;
+            return dealtDamage;
         }
     }
 }

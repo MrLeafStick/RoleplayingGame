@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace RoleplayingGame
-
 {
     /// <summary>
     /// This class represents a game character.
     /// </summary>
-    public class Character
+    public class BaseCharacter
     {
         #region Instance Fields
         private string _name;
-        private List<Ability> _abilities;
+        private Dictionary<AbilityType, double> _abilityVector;
         protected int _stamina;
         protected int _maxStamina;
         protected int _mana;
@@ -26,13 +21,13 @@ namespace RoleplayingGame
         #endregion
 
         #region Constructor
-        public Character(string name, List<Ability> abilities, int hitPoints, int minDamage, int maxDamage)
+        public BaseCharacter(string name, Dictionary<AbilityType, double> abilityVector, int hitPoints, int minDamage, int maxDamage)
         {
             _name = name;
-            _abilities = abilities;
             _maxHitPoints = hitPoints;
             _minDamage = minDamage;
             _maxDamage = maxDamage;
+            _abilityVector = abilityVector;
             Reset();
         }
         #endregion
@@ -43,7 +38,7 @@ namespace RoleplayingGame
             get { return _name; }
         }
         /// <summary>
-        /// Checks if the Character is dead, defined as having 0 or less hit points...
+        /// Checks if the BaseCharacter is dead, defined as having 0 or less hit points...
         /// </summary>
         public bool IsDead
         {
@@ -53,35 +48,36 @@ namespace RoleplayingGame
 
         #region Methods
         /// <summary>
-        /// Reset the Character's state to the original state
+        /// Reset the BaseCharacter's state to the original state
         /// </summary>
         public void Reset()
         {
             _hitPoints = _maxHitPoints;
         }
         /// <summary>
-        /// Returns the amount of points a Character deals in damage.
+        /// Returns the amount of points a BaseCharacter deals in damage.
         /// This damage could then be received by another character.
         /// Note that there is a chance that the damage is modified.
         /// </summary>
         public int DealDamage()
         {
-            int damage = NumberGenerator.Next(_minDamage, _maxDamage);
-            int modifiedDamge = DealDamageModifier(damage);
+            int modifiedDamge = 0;
 
-            string damageDesc = (damage < modifiedDamge) ? "(INCREASED)" : "";
-            string message = $"{Name} dealt {modifiedDamge} damage {damageDesc}";
-            if (this is Wizard)
+            foreach (var at in _abilityVector)
             {
-                message = $"{Name} uses {_abilities[1].Name} which deals {modifiedDamge} damage {damageDesc}";
+                int damage = NumberGenerator.Next(_minDamage + (int)at.Value, _maxDamage + (int)at.Value);
+                modifiedDamge += DealDamageModifier(damage);
+
+                string damageDesc = (damage < modifiedDamge) ? "(INCREASED)" : "";
+                string message = $"{Name} used {at.Key} which dealt {modifiedDamge} damage {damageDesc}";
+
+                BattleLog.Save(message);
             }
 
-
-            BattleLog.Save(message);
             return modifiedDamge;
         }
         /// <summary>
-        /// The Character receives the amount of damage specified in the parameter.
+        /// The BaseCharacter receives the amount of damage specified in the parameter.
         /// The number of hit points will decrease accordingly.
         /// Note that there is a chance that the damage is modified.
         /// </summary>
@@ -161,7 +157,7 @@ namespace RoleplayingGame
 
         /// <summary>
         /// Return the chance of the damage received bbeing modified.
-        /// Unless overrieded in a dirived class, a Character has 
+        /// Unless overrieded in a dirived class, a BaseCharacter has 
         /// 0% chance of having the damage received modified.
         /// </summary>
         protected virtual int ReceiveDamageModifiChance

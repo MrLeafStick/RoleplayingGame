@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace RoleplayingGame
 {
-    public class Cleric : Character
+    public class Wizard : BaseCharacter
     {
-        public Cleric(string name, List<Ability> abilities, int hitPoints, int minDamage, int maxDamage) 
-            : base(name, abilities, hitPoints, minDamage, maxDamage)
+        public Wizard(string name, Dictionary<AbilityType, double> abilityVector, int hitPoints, int minDamage, int maxDamage) : base(name, abilityVector, hitPoints, minDamage, maxDamage)
         {
         }
 
@@ -19,15 +18,14 @@ namespace RoleplayingGame
         /// </summary>
         protected override int DealDamageModifyChance
         {
-            get { return 35; }
+            get { return 30; }
         }
-
         /// <summary>
         /// If the damage is increased, it is doubled.
         /// </summary>
         protected override int CalculateModifedDamage(int dealtDamage)
         {
-            return dealtDamage;
+            return dealtDamage * 2;
         }
     }
 }
