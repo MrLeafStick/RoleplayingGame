@@ -63,7 +63,7 @@ namespace RpgV2.Participants
             return RNG.RandomDouble(0.0, _maxDamage);  
         }
 
-        public virtual void ReciveDamage(double damagePoints)
+        public virtual void ReceiveDamage(double damagePoints)
         {
             HealthPoints -= damagePoints;
         }
