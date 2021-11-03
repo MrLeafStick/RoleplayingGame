@@ -1,5 +1,7 @@
 ﻿using RPGv2.Helpers;
 using RPGv2.Interfaces;
+using RPGv2.Items.Armor;
+using RPGv2.Items.Weapons;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,7 @@ namespace RPGv2.Participants
         private double _maxDamage;
 
         #region Properties
+
         public virtual string Name { get; set; }
         public double HealthPoints { get; private set; }
         public int GoldOwned { get; set; }
@@ -24,7 +27,26 @@ namespace RPGv2.Participants
         {
             get { return HealthPoints < 0; }
         }
+
         #endregion
+
+        #region Constructor 
+        protected ParticipantBase(int maxInitialHealthPoints, int maxInitialGold, int maxInitialItems, double maxDamage, string name)
+        {
+            _maxInitialHealthPoints = maxInitialHealthPoints;
+            _maxInitialGold = maxInitialGold;
+            _maxInitialItems = maxInitialItems;
+            _maxDamage = maxDamage;
+
+            Name = name;
+
+            HealthPoints = SetInitialHealthPoints();
+            GoldOwned = SetInitialGoldOwned();
+            ItemsOwned = SetInitialItemsOwned();
+        }
+
+        #endregion
+
 
         #region Virtuals
         protected virtual double SetInitialHealthPoints()
@@ -49,7 +71,25 @@ namespace RPGv2.Participants
         public virtual IItems GetInitialItems()
         {
             int index = RNG.RandomInt(1, 7);
-            return null; //TODO add weapons
+            switch (index)
+            {
+                case 1:
+                    return new ClothGloves();
+                case 2:
+                    return new LeatherBoots();
+                case 3:
+                    return new PlateBoots();
+                case 4:
+                    return new WoodenShield();
+                case 5:
+                    return new WoodenMace();
+                case 6:
+                    return new IronSword();
+                case 7:
+                    return new SteelLance();
+                default:
+                    throw new Exception($"Could not generate item with index {index}");
+            }
         }
         public virtual double DealDamage()
         {
