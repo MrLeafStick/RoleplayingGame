@@ -1,5 +1,7 @@
 ﻿using RpgV2.Helpers;
 using RpgV2.Interfaces;
+using RpgV2.Items.Armor;
+using RpgV2.Items.Weapons;
 
 using System;
 using System.Collections.Generic;
@@ -28,6 +30,34 @@ namespace RpgV2.Participants
         {
             get { return HealthPoints <= 0; }
         }
+
+
+
+
+        #endregion
+
+        #region Constructor
+
+        protected ParticipantBase(
+            int maxInitialHealthPoints, 
+            int maxInitialGold, 
+            int maxInitialItems, 
+            double maxDamage, 
+            string name
+            )
+        {
+            _maxInitialHealthPoints = maxInitialHealthPoints;
+            _maxInitialGold = maxInitialGold;
+            _maxInitialItems = maxInitialItems;
+            _maxDamage = maxDamage;
+            
+            Name = name;
+
+            HealthPoints = SetInitialHealthPoints();
+            GoldOwned = SetInitialGoldOwned();
+            ItemsOwned = SetInitialItemsOwned();
+        }
+
         #endregion
 
         #region virtual Methods
@@ -41,7 +71,7 @@ namespace RpgV2.Participants
             return RNG.RandomInt(0, _maxInitialGold);
         }
 
-        public virtual List<IItem> SetInitialItemsOwned() 
+        public virtual List<IItem> SetInitialItemsOwned()
         {
             List<IItem> initialItems = new List<IItem>();
             for (int i = 0; i < RNG.RandomInt(1, _maxInitialItems); i++)
@@ -55,12 +85,30 @@ namespace RpgV2.Participants
         {
             int index = RNG.RandomInt(1, 7);
 
-            return null; //TODO add weapons
+            switch (index)
+            {
+                case 1:
+                    return new ClothGloves();
+                case 2:
+                    return new LeatherBoots();
+                case 3:
+                    return new PlateBoots();
+                case 4:
+                    return new WoodenShield();
+                case 5:
+                    return new IronSword();
+                case 6:
+                    return new SteelLance();
+                case 7:
+                    return new WoodenMace();
+                default:
+                    throw new Exception($"Could not generate item with index {index} ");
+            }
         }
 
         public virtual double DealDamage()
         {
-            return RNG.RandomDouble(0.0, _maxDamage);  
+            return RNG.RandomDouble(0.0, _maxDamage);
         }
 
         public virtual void ReceiveDamage(double damagePoints)
