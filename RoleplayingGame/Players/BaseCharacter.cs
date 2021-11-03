@@ -15,24 +15,22 @@ namespace RoleplayingGame
         private string _name;
         protected int _hitPoints;
         protected int _maxHitPoints;
-        protected int _mana;
-        protected int _maxMana;
         protected int _minDamage;
         protected int _maxDamage;
-        private Dictionary<AbilityList, double> AbilityVector;
+        private Dictionary<AbilityList, double> _abilities;
         #endregion
 
         #region Constructor
-        public BaseCharacter(string name, int maxHitPoints, int maxMana, int minDamage, int maxDamage)
+        public BaseCharacter(string name, int hitpoints, int minDamage, int maxDamage)
         {
             _name = name;
-            _maxHitPoints = maxHitPoints;
-            _maxMana = maxMana;
+            _maxHitPoints = hitpoints;
+            _hitPoints = hitpoints;
             _minDamage = minDamage;
             _maxDamage = maxDamage;
-            AbilityVector = new Dictionary<AbilityList, double>();
             Reset();
         }
+
         #endregion
 
         #region Properties
@@ -51,7 +49,6 @@ namespace RoleplayingGame
         public void Reset()
         {
             _hitPoints = _maxHitPoints;
-            _mana = _maxMana;
         }
 
         public int DealDamage()
@@ -116,6 +113,7 @@ namespace RoleplayingGame
             return modifiedReceiveDamage;
         }
 
+        
         #endregion
 
         #region Virtual Properties and Methods
