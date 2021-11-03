@@ -1,5 +1,7 @@
 ﻿using RPG_V2.Helpers;
 using RPG_V2.Interfaces;
+using RPG_V2.Items.Armour;
+using RPG_V2.Items.Weapons;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -22,6 +24,26 @@ namespace RPG_V2.Participants
         public List<IItem> ItemsOwned { get; set; }
         public bool MyProperty { get; set; }
         public bool IsDead { get { return HealthPoints <= 0; } }
+        #endregion
+
+        #region Constructors
+        protected ParticipantBase(  int maxInitialHealthPoints, 
+                                    int maxInitialGold, 
+                                    int maxInitialItems, 
+                                    double maxDamage, 
+                                    string name)
+        {
+            _maxInitialHealthPoints = maxInitialHealthPoints;
+            _maxInitialGold = maxInitialGold;
+            _maxInitialItems = maxInitialItems;
+            _maxDamage = maxDamage;
+
+            Name = name;
+
+            HealthPoints = SetInitialHealthPoints();
+            GoldOwned = SetInitialGoldOwned();
+            ItemsOwned = SetInitialItemsOwned();
+        }
         #endregion
 
         #region Virtual Methods
@@ -70,7 +92,25 @@ namespace RPG_V2.Participants
         {
             int index = RNG.RandomInt(1, 7);
 
-            return null; // TODO: add weapons
+            switch(index)
+            {
+                case 1:
+                    return new ClothGloves();
+                case 2:
+                    return new LeatherBoots();
+                case 3:
+                    return new PlateBoots();
+                case 4:
+                    return new WoodenShield();
+                case 5:
+                    return new IronSword();
+                case 6:
+                    return new SteelLance();
+                case 7:
+                    return new WoodMace();
+                default:
+                    throw new Exception($"Could not generate item with index {index}");
+            }
         }
         #endregion
 
