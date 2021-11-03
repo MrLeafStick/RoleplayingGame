@@ -17,6 +17,8 @@ namespace RoleplayingGame
         /// Returns a random number in the interval between the values of 
         /// "min" and "max"
         /// </summary>
+        
+
         public static int Next(int min, int max)
         {
             int value = min + _generator.Next(max - min);
