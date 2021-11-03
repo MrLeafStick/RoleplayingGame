@@ -10,7 +10,7 @@ namespace RoleplayingGame
     {
         public void GameLogic()
         {
-            CharacterGroup redTeam = new CharacterGroup("Team Red");
+            CharacterGroup redTeam = new CharacterGroup("Team Red", ConsoleColor.Red);
 
             BaseCharacter c1 = new Damager("Freja", 600, 60, 80, 100, 20, 0, 0);
             BaseCharacter c2 = new Defender("Thorbjorn", 484, 8, 12, 100, 15, 0, 0);
@@ -36,7 +36,7 @@ namespace RoleplayingGame
             redTeam.AddCharacter(c3);
             redTeam.AddCharacter(c4);
 
-            CharacterGroup greenTeam = new CharacterGroup("Team Green");
+            CharacterGroup greenTeam = new CharacterGroup("Team Green", ConsoleColor.Green);
 
             BaseCharacter r1 = new Defender("Sindy", 500, 10, 12, 100, 10, 0, 0);
             BaseCharacter r2 = new BaseCharacter("Eric", 290, 20, 30, 100, 15, 0, 0);

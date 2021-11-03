@@ -12,14 +12,16 @@ namespace RoleplayingGame
         private List<BaseCharacter> _group;
         private string _groupName;
         private Random _random;
+        private ConsoleColor _color;
         #endregion
 
         #region Constructors
-        public CharacterGroup(string groupName)
+        public CharacterGroup(string groupName, ConsoleColor color)
         {
             _group = new List<BaseCharacter>();
             _groupName = groupName;
             _random = new Random();
+            _color = color;
         }
         #endregion
 
