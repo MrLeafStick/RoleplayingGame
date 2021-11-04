@@ -6,28 +6,29 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RPG_V2
+namespace RPG_V2.GameManagement
 {
     public class Game
     {
-        public void Run()
+        public void Run(int numOpponents)
         {
             Character aChar = new Character("Sigrid");
 
-            List<IParticipant> participants = CreateParticipants();
+            List<IParticipant> participants = CreateParticipants(numOpponents);
 
             PrintStartInfo(aChar, participants);
             FightParticipants(aChar, participants);
             PrintEndInfo(aChar);
         }
 
-        private List<IParticipant> CreateParticipants()
+        private List<IParticipant> CreateParticipants(int numOpponents)
         {
             List<IParticipant> participants = new List<IParticipant>();
 
-            participants.Add(new Bear());
-            participants.Add(new Troll("Vectur"));
-            participants.Add(new Snake());
+            for (int i = 0; i < numOpponents; i++)
+            {
+                participants.Add(GameFactory.Instance().ParticipantFactory.CreateParticipant());
+            }
 
             return participants;
         }

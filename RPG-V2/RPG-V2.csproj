@@ -6,9 +6,4 @@
     <RootNamespace>RPG_V2</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Factories\" />
-    <Folder Include="GameManagement\" />
-  </ItemGroup>
-
 </Project>

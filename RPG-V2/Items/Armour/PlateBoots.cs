@@ -11,7 +11,7 @@ namespace RPG_V2.Items.Armour
             get { return "Hardened plate boots"; }
         }
 
-        public override int ArmourPoints
+        public override int ArmorPoints
         {
             get { return 65; }
         }

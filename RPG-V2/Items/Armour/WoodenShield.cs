@@ -11,7 +11,7 @@ namespace RPG_V2.Items.Armour
             get { return "Round wooden shield"; }
         }
 
-        public override int ArmourPoints
+        public override int ArmorPoints
         {
             get { return 40; }
         }

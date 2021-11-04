@@ -10,7 +10,8 @@ namespace RPG_V2.Interfaces
         public double HealthPoints { get; }
         public bool IsDead { get; }
         public int GoldOwned { get; set; }
-        List<IItem> ItemsOwned { get; }
+        List<IArmor> ArmorOwned { get; } 
+        List<IWeapon> WeaponsOwned { get; }
 
         double DealDamage();
         void ReceiveDamage(double damagePoints);

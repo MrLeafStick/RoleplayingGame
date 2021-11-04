@@ -11,7 +11,7 @@ namespace RPG_V2.Items.Armour
             get { return "Brown leather boots"; }
         }
 
-        public override int ArmourPoints
+        public override int ArmorPoints
         {
             get { return 25; }
         }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RPG_V2.Factories;
+using RPG_V2.GameManagement;
+using System;
 
 namespace RPG_V2
 {
@@ -6,6 +8,10 @@ namespace RPG_V2
     {
         static void Main(string[] args)
         {
+            GameFactory.Instance().ArmorFactory = new ArmorFactoryStandard();
+            GameFactory.Instance().WeaponFactory = new WeaponFactoryStandard();
+            GameFactory.Instance().ParticipantFactory = new ParticipantFactoryStandard();
+            
             Game aGame = new Game();
             aGame.Run();
 

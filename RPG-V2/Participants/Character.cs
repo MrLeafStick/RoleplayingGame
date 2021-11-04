@@ -25,3 +25,5 @@ namespace RPG_V2.Participants
 
     }
 }
+
+// TODO: When our character dies I want something to happen

@@ -6,7 +6,7 @@ namespace RPG_V2.Items.Weapons
 {
     public class SteelLance : WeaponBase
     {
-        public SteelLance() : base(75)
+        public SteelLance() : base()
         {
 
         }
@@ -15,5 +15,8 @@ namespace RPG_V2.Items.Weapons
         {
             get { return "Sharpened steel lance"; }
         }
+
+        public override int TotalMaxWeaponDamage { get; }
+        public override string Name { get; }
     }
 }

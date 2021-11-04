@@ -6,7 +6,7 @@ namespace RPG_V2.Items.Weapons
 {
     public class IronSword : WeaponBase
     {
-        public IronSword() : base(40)
+        public IronSword() : base()
         {
 
         }
@@ -15,5 +15,8 @@ namespace RPG_V2.Items.Weapons
         {
             get { return "One-handed Iron Sword"; }
         }
+
+        public override int TotalMaxWeaponDamage { get; }
+        public override string Name { get; }
     }
 }

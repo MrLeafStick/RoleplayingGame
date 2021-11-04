@@ -1,9 +1,11 @@
-﻿using RPG_V2.Helpers;
+﻿using RPG_V2.GameManagement;
+using RPG_V2.Helpers;
 using RPG_V2.Interfaces;
 using RPG_V2.Items.Armour;
 using RPG_V2.Items.Weapons;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace RPG_V2.Participants
@@ -13,36 +15,66 @@ namespace RPG_V2.Participants
         #region Instance Fields
         private int _maxInitialHealthPoints;
         private int _maxInitialGold;
-        private int _maxInitialItems;
-        private double _maxDamage;
+        private int _maxInitialArmor;
+        private int _maxInitialWeapons;
+        private double _meleeMaxDamage;
         #endregion
 
         #region Properties
         public virtual string Name { get;}
         public double HealthPoints { get; private set; }
         public int GoldOwned { get; set; }
-        public List<IItem> ItemsOwned { get; set; }
+        public List<IArmor> ArmorOwned { get; }
+        public List<IWeapon> WeaponsOwned { get; }
         public bool MyProperty { get; set; }
         public bool IsDead { get { return HealthPoints <= 0; } }
+        public double ArmorPoints
+        {
+            get { return ArmorOwned.Count == 0 ? 0 : ArmorOwned.Select(a => a.ArmorPoints).Average(); }
+        }
+        // TODO: Landmine!!
         #endregion
 
         #region Constructors
         protected ParticipantBase(  int maxInitialHealthPoints, 
                                     int maxInitialGold, 
-                                    int maxInitialItems, 
-                                    double maxDamage, 
+                                    int maxInitialArmor, 
+                                    int maxInitialWeapons, 
+                                    double meleeMaxDamage, 
                                     string name)
         {
             _maxInitialHealthPoints = maxInitialHealthPoints;
             _maxInitialGold = maxInitialGold;
-            _maxInitialItems = maxInitialItems;
-            _maxDamage = maxDamage;
+            _maxInitialArmor = maxInitialArmor;
+            _maxInitialWeapons = maxInitialWeapons;
+            _meleeMaxDamage = meleeMaxDamage;
 
             Name = name;
 
             HealthPoints = SetInitialHealthPoints();
             GoldOwned = SetInitialGoldOwned();
-            ItemsOwned = SetInitialItemsOwned();
+            ArmorOwned = SetInitialArmorOwned();
+            WeaponsOwned = SetInitialWeaponsOwned();
+        }
+
+        private List<IWeapon> SetInitialWeaponsOwned()
+        {
+            var initalWeapons = new List<IWeapon>();
+            for (int i = 0; i < RNG.RandomInt(0, _maxInitialWeapons); i++)
+            {
+                initalWeapons.Add(GameFactory.Instance().WeaponFactory.CreateWeapon());
+            }
+            return initalWeapons;
+        }
+
+        protected virtual List<IArmor> SetInitialArmorOwned()
+        {
+            var initalArmor = new List<IArmor>();
+            for(int i = 0; i < RNG.RandomInt(0, _maxInitialArmor); i++)
+            {
+                initalArmor.Add(GameFactory.Instance().ArmorFactory.CreateArmor());
+            }
+            return initalArmor;
         }
         #endregion
 
@@ -57,20 +89,14 @@ namespace RPG_V2.Participants
             return RNG.RandomInt(0, _maxInitialGold);
         }
 
-        public virtual List<IItem> SetInitialItemsOwned()
-        {
-            List<IItem> initialItems = new List<IItem>();
-
-            for(int i = 0; i < RNG.RandomInt(1, _maxInitialItems); i++)
-            {
-                initialItems.Add(GetInitialItem());
-            }
-            return initialItems;
-        }
+        
 
         public virtual double DealDamage()
         {
-            return RNG.RandomDouble(0.0, _maxDamage);
+            return RNG.RandomDouble(0.0, _meleeMaxDamage);
+
+            //TODO: Figure out which weapon is best and deal the damage from that weapon
+            // Hint: select(w => W.sdfdsf.Max()
         }
 
         public virtual void ReceiveDamage(double damagePoints)
@@ -78,14 +104,20 @@ namespace RPG_V2.Participants
             HealthPoints -= damagePoints;
         }
 
-        public virtual void AddItem(IItem item)
+        public virtual void AddArmor(IArmor armor)
         {
-            ItemsOwned.Add(item);
+            ArmorOwned.Add(armor);
+        }
+
+        public virtual void AddWeapons(IWeapon weapon)
+        {
+            WeaponsOwned.Add(weapon);
         }
 
         public virtual void ClearItems()
         {
-            ItemsOwned.Clear();
+            ArmorOwned.Clear();
+            WeaponsOwned.Clear();
         }
 
         public virtual IItem GetInitialItem()
@@ -117,13 +149,23 @@ namespace RPG_V2.Participants
         #region Methods
         public override string ToString()
         {
-            string desc = $"{Name} has {GoldOwned} gold, and is at {HealthPoints:F1} health points\n" +
-                $"{Name} owns {ItemsOwned.Count} items:\n";
+            string desc = $"{Name} has {GoldOwned} gold, " +
+                $"and is at {HealthPoints:F1} health points\n" +
+                $"and has {ArmorPoints:F1} armor points\n";
 
-            foreach(var item in ItemsOwned)
-            {
-                desc += $"  {item}\n";
-            }
+                desc += $"{Name} owns {ArmorOwned.Count} armor items: \n";
+
+                foreach (var armor in ArmorOwned)
+                {
+                    desc += $"  {armor}\n";
+                }
+
+                desc += $"{Name} owns {WeaponsOwned.Count} weapon items: \n";
+
+                foreach (var weapon in WeaponsOwned)
+                {
+                    desc += $"  {weapon}\n";
+                }
 
             return desc;
         }

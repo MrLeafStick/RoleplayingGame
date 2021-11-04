@@ -6,7 +6,7 @@ namespace RPG_V2.Items.Weapons
 {
     public class WoodMace : WeaponBase
     {
-        public WoodMace() : base(30)
+        public WoodMace() : base()
         {
         }
 
@@ -14,5 +14,8 @@ namespace RPG_V2.Items.Weapons
         {
             get { return "Rough wooden mace"; }
         }
+
+        public override int TotalMaxWeaponDamage { get; }
+        public override string Name { get; }
     }
 }
