@@ -6,11 +6,11 @@ using System.Text;
 
 namespace RPG_V2.Items.Armour
 {
-    public abstract class ArmourBase : ItemBase, IArmor
+    public abstract class ArmorBase : ItemBase, IArmor
     {
         public virtual int ArmorPoints { get; private set; }
 
-        public ArmourBase()
+        public ArmorBase()
         {
             ArmorPoints = RNG.RandomInt(1, MaxArmorPoints);
         }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RPG_V2.Items.Armour
 {
-    class PlateBoots : ArmourBase
+    class PlateBoots : ArmorBase
     {
         public override string Description
         {

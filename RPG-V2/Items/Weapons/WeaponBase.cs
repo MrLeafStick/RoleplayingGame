@@ -18,10 +18,11 @@ namespace RPG_V2.Items.Weapons
 
         public override string Description
         {
-            get { return $"{Name} (max {TotalMaxWeaponDamage} weapon damage)"; }
+            get { return $"{Name} (max {TotalMaxWeaponDamage} damage)"; }
         }
 
         public abstract int TotalMaxWeaponDamage { get; }
+        //public abstract int TotalMinWeaponDamage { get; }
         public abstract string Name { get; }
     }
 }
