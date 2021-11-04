@@ -7,7 +7,7 @@ namespace RolePlayingGameV2.Interfaces
         string Name { get; }
         double HealthPoints { get; }
         bool IsDead { get; }
-        int GoldOwned { get; }
+        int GoldOwned { get; set; }
         List<IItem> ItemsOwned { get; }
         double DealDamage();
         void ReceiveDamage(double damagePoints);

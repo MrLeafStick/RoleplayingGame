@@ -25,7 +25,7 @@ namespace RolePlayingGameV2.Participants
         public double HealthPoints { get; private set; }
         public int GoldOwned { get; set; }
         public List<IItem> ItemsOwned { get; }
-        public bool IsDead { get; }
+        public bool IsDead { get { return HealthPoints <= 0; } }
         #endregion
 
         #region Virutal Methods

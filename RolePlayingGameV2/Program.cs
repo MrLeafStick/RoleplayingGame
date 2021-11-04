@@ -1,4 +1,5 @@
 ﻿using System;
+using RolePlayingGameV2.Core;
 
 namespace RolePlayingGameV2
 {
@@ -6,7 +7,17 @@ namespace RolePlayingGameV2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var Game = new Game();
+            Game.Run();
+
+            KeepConsoleWindowOpen();
+        }
+
+        private static void KeepConsoleWindowOpen()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Done, press the any key to close the console thank you...");
+            Console.ReadKey();
         }
     }
 }
