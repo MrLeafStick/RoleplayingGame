@@ -6,7 +6,17 @@ namespace RpgV2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Game aGame = new Game();
+            aGame.Run();
+
+            KeepConsoleWindowOpen(); 
+        }
+
+        private static void KeepConsoleWindowOpen()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Done, press the any key to close the console thank you...");
+            Console.ReadKey();
         }
     }
 }
