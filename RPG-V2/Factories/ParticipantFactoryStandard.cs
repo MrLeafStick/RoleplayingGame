@@ -26,9 +26,9 @@ namespace RPG_V2.Factories
                 case 4:
                     return new Wolf();
                 case 5:
-                    return new Golem(GenerateName()); // TODO: generate name
+                    return new Golem(GenerateName());
                 case 6:
-                    return new Troll(GenerateName()); // TODO: generate name
+                    return new Troll(GenerateName());
                 default:
                     throw new Exception($"Could not generate item with index {index}");
             }
@@ -38,9 +38,9 @@ namespace RPG_V2.Factories
         {
             List<string> generator = new List<string> { "xan", "tran", "ser", "mor", "houl", "zuur", "raz", "qex", "sir", "vaar" };
 
-            var name = generator[RNG.RandomInt(0, generator.Count)] +
-                       generator[RNG.RandomInt(0, generator.Count)] +
-                       generator[RNG.RandomInt(0, generator.Count)];
+            var name = generator[RNG.RandomInt(0, generator.Count - 1)] +
+                       generator[RNG.RandomInt(0, generator.Count - 1)] +
+                       generator[RNG.RandomInt(0, generator.Count - 1)];
 
             name = name.Substring(0, 1).ToUpper() + name.Substring(1, name.Length - 1);
 

@@ -30,9 +30,8 @@ namespace RPG_V2.Participants
         public bool IsDead { get { return HealthPoints <= 0; } }
         public double ArmorPoints
         {
-            get { return ArmorOwned.Count == 0 ? 0 : ArmorOwned.Select(a => a.ArmorPoints).Average(); }
+            get { return ArmorOwned.Count == 0 ? 0 : ArmorOwned.Select(a => a.ArmorPoints).Sum(); }
         }
-        // TODO: Landmine!!
         #endregion
 
         #region Constructors
@@ -93,10 +92,8 @@ namespace RPG_V2.Participants
 
         public virtual double DealDamage()
         {
-            return RNG.RandomDouble(0.0, _meleeMaxDamage);
-
-            //TODO: Figure out which weapon is best and deal the damage from that weapon
-            // Hint: select(w => W.sdfdsf.Max()
+            return WeaponsOwned.Count > 0 ? WeaponsOwned.Select(weapon => weapon.MaxWeaponDamage).Max() : 0;
+            //TODO: Landmine!
         }
 
         public virtual void ReceiveDamage(double damagePoints)
@@ -150,21 +147,21 @@ namespace RPG_V2.Participants
         public override string ToString()
         {
             string desc = $"{Name} has {GoldOwned} gold, " +
-                $"and is at {HealthPoints:F1} health points\n" +
-                $"and has {ArmorPoints:F1} armor points\n";
+                $"{HealthPoints:F1} health points " +
+                $"and {ArmorPoints:F1} armor points\n";
 
                 desc += $"{Name} owns {ArmorOwned.Count} armor items: \n";
 
                 foreach (var armor in ArmorOwned)
                 {
-                    desc += $"  {armor}\n";
+                    desc += $"  {armor} ({armor.ArmorPoints})\n";
                 }
 
                 desc += $"{Name} owns {WeaponsOwned.Count} weapon items: \n";
 
                 foreach (var weapon in WeaponsOwned)
                 {
-                    desc += $"  {weapon}\n";
+                    desc += $"  {weapon} ({weapon.MaxWeaponDamage})\n";
                 }
 
             return desc;

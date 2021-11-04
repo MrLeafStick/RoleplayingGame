@@ -8,7 +8,7 @@ namespace RPG_V2.Items.Armour
 {
     public abstract class ArmourBase : ItemBase, IArmor
     {
-        public  int ArmorPoints { get; private set; }
+        public virtual int ArmorPoints { get; private set; }
 
         public ArmourBase()
         {
@@ -19,7 +19,6 @@ namespace RPG_V2.Items.Armour
         {
             get { return $"{Name} ({ArmorPoints} armor points"; }
         }
-
 
         public abstract int MaxArmorPoints { get; }
         public abstract string Name { get; }

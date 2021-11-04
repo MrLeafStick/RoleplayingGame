@@ -33,6 +33,6 @@ namespace RPG_V2.Helpers
             return RandomPercent() < 50;
         }
 
-        // TODO: Generate a SOLID DIE (a die with solid principles)
+        // TODO: Generate a SOLID DIE (a die with solid principles) 
     }
 }

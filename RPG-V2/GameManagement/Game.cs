@@ -62,15 +62,21 @@ namespace RPG_V2.GameManagement
 
         private void Loot(Character aChar, IParticipant opponent)
         {
-            aChar.GoldOwned = aChar.GoldOwned + opponent.GoldOwned;
-            opponent.GoldOwned = 0;
+            aChar.GoldOwned += opponent.GoldOwned;
 
-            foreach(var item in opponent.ItemsOwned)
+            foreach(var armor in opponent.ArmorOwned)
             {
-                aChar.AddItem(item);
+                aChar.AddArmor(armor);
             }
 
-            opponent.ItemsOwned.Clear(); //TODO use clearitems
+            foreach (var weapon in opponent.WeaponsOwned)
+            {
+                aChar.AddWeapons(weapon);
+            }
+
+            opponent.GoldOwned = 0;
+            opponent.ArmorOwned.Clear();
+            opponent.WeaponsOwned.Clear();
         }
 
         private void PrintParticipants(List<IParticipant> participants)

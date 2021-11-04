@@ -15,5 +15,8 @@ namespace RPG_V2.Items.Armour
         {
             get { return 25; }
         }
+
+        public override int MaxArmorPoints { get; }
+        public override string Name { get; }
     }
 }

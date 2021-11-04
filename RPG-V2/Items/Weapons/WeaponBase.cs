@@ -11,10 +11,9 @@ namespace RPG_V2.Items.Weapons
         public int MaxWeaponDamage { get; private set; }
         public int MinWeaponDamage { get; private set; }
 
-        private double _maxDamage;
         protected WeaponBase()
         {
-            MaxWeaponDamage = RNG.RandomInt(1, TotalMaxWeaponDamage); //TODO: MinWeaponDamage
+            MaxWeaponDamage = RNG.RandomInt(1, TotalMaxWeaponDamage); //TODO: Min Weapon Damage
         }
 
         public override string Description
