@@ -117,12 +117,12 @@ namespace RPG_V2.Participants
         #region Methods
         public override string ToString()
         {
-            string desc = $"{Name} has {GoldOwned} gold, and is at {HealthPoints:F1} health points\n " +
+            string desc = $"{Name} has {GoldOwned} gold, and is at {HealthPoints:F1} health points\n" +
                 $"{Name} owns {ItemsOwned.Count} items:\n";
 
             foreach(var item in ItemsOwned)
             {
-                desc += $"{item}\n";
+                desc += $"  {item}\n";
             }
 
             return desc;

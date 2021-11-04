@@ -9,7 +9,7 @@ namespace RPG_V2.Interfaces
         public string Name { get; }
         public double HealthPoints { get; }
         public bool IsDead { get; }
-        public int GoldOwned { get; }
+        public int GoldOwned { get; set; }
         List<IItem> ItemsOwned { get; }
 
         double DealDamage();

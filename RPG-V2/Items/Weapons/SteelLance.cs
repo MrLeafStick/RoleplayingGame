@@ -13,7 +13,7 @@ namespace RPG_V2.Items.Weapons
 
         public override string Description
         {
-            get { return "Sharpened steel lance"}
+            get { return "Sharpened steel lance"; }
         }
     }
 }
