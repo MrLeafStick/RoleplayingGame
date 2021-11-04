@@ -1,4 +1,7 @@
-﻿using System;
+﻿using RpgV2.Factories;
+using RpgV2.GameManagement;
+
+using System;
 
 namespace RpgV2
 {
@@ -6,8 +9,12 @@ namespace RpgV2
     {
         static void Main(string[] args)
         {
+            GameFactory.Instance().ArmorFactory = new ArmorFactoryStandard();
+            GameFactory.Instance().WeaponFactory = new WeaponFactoryStandard();
+            GameFactory.Instance().ParticipantFactory = new ParticipantFactoryStandard();
+
             Game aGame = new Game();
-            aGame.Run();
+            aGame.Run(5);
 
             KeepConsoleWindowOpen(); 
         }

@@ -28,3 +28,7 @@ namespace RpgV2.Participants
 
     }
 }
+
+//TODO: change char
+
+//TODO: When our charactor dies i want something to happen(NOT BOSD)
