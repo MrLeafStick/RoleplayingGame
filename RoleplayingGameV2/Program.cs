@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RoleplayingGameV2.Factories;
+using RoleplayingGameV2.GameManagement;
+using System;
 
 namespace RoleplayingGameV2
 {
@@ -6,8 +8,12 @@ namespace RoleplayingGameV2
     {
         static void Main(string[] args)
         {
+            GameFactory.Instance.ArmorFactory = new ArmorFactoryStandard();
+            GameFactory.Instance.WeaponFactory = new WeaponFactoryStandard();
+            GameFactory.Instance.ParticipantFactory = new ParticipantFactoryStandard();
+
             var game = new Game();
-            game.Run();
+            game.Run(900);
 
             KeepConsoleWindowOpen();
         }

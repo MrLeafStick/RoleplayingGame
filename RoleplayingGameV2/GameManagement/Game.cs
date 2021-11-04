@@ -5,28 +5,27 @@ using RoleplayingGameV2.Participants.Humanoids;
 using System;
 using System.Collections.Generic;
 
-namespace RoleplayingGameV2
+namespace RoleplayingGameV2.GameManagement
 {
     public class Game
     {
-        public void Run()
+        public void Run(int numberOfOpponents)
         {
             var character = new Character("Sigrid");
-            var participants = CreateParticipants();
+            var participants = CreateParticipants(numberOfOpponents);
 
             PrintStartInfo(character, participants);
             FightParticipants(character, participants);
             PrintEndInfo(character);
         }
 
-        private List<IParticipant> CreateParticipants()
+        private List<IParticipant> CreateParticipants(int numberOfOpponents)
         {
-            var participants = new List<IParticipant>
+            var participants = new List<IParticipant>();
+            for (int i = 0; i < numberOfOpponents; i++)
             {
-                new Bear(),
-                new Troll("Victor"),
-                new Snake()
-            };
+                participants.Add(GameFactory.Instance.ParticipantFactory.CreateParticipant());
+            }
             return participants;
         }
 
