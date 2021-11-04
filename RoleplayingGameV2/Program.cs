@@ -6,7 +6,17 @@ namespace RoleplayingGameV2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var game = new Game();
+            game.Run();
+
+            KeepConsoleWindowOpen();
+        }
+
+        private static void KeepConsoleWindowOpen()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Done, press any key to close the console.");
+            Console.ReadLine();
         }
     }
 }

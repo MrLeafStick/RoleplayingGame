@@ -81,7 +81,7 @@ namespace RoleplayingGameV2.Participants
 
         public virtual IItem GetInitialItem()
         {
-            int index = RNG.RandomInt(0, 8);
+            int index = RNG.RandomInt(1, 8);
             switch (index)
             {
                 case 1: return new ClothGloves();
