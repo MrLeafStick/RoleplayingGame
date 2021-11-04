@@ -19,3 +19,5 @@
         }
     }
 }
+
+//TODO when out character dies i want something to happen...

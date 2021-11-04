@@ -8,23 +8,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RolePlayingGameV2.Core
+namespace RolePlayingGameV2.GameManagement
 {
     public class Game
     {
-        public void Run() 
+        public void Run(int noOfOpponents) 
         {
             var aChar = new Character("Sigrid");
-            List<IParticipant> participants = CreateParticipants();
+            List<IParticipant> participants = CreateParticipants(noOfOpponents);
 
             PrintStartInfo(aChar, participants);
             FightParticipants(aChar, participants);
             PrintEndInfo(aChar);
         }
 
-        private List<IParticipant> CreateParticipants()
+        private List<IParticipant> CreateParticipants(int noOfOpponents)
         {
-            var participants = new List<IParticipant>{ new Bear(), new Troll("Victor"), new Snake()};
+            var participants = new List<IParticipant>();
+
+            for (int i = 0; i < noOfOpponents; i++)
+            {
+                participants.Add(GameFactory.Instance().participantFactory.CreateParticipant());
+            }
 
             return participants;
         }

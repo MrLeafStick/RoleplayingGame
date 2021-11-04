@@ -10,5 +10,9 @@
         {
             get { return "One-Handed Iron Sword"; }
         }
+
+        public override int TotalMaxWeaponDamage { get; }
+
+        public override string Name { get; }
     }
 }
