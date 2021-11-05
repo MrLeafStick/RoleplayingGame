@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPGv2.Helpers
+namespace RpgV2.Helpers
 {
     public class RNG
     {
@@ -24,12 +24,13 @@ namespace RPGv2.Helpers
         {
             return _generator.NextDouble() * (maxVal - minVal) + minVal;
         }
-
         public static bool CoinFlip()
         {
             return RandomPercent() < 50;
         }
 
-        //TODO: Generate a solid die(die with solid principles - fx. d3, d6, d20 osv. ) return int
+        //TODO: Generate A SOLID DIE (a die with solid principles)
+
+
     }
 }

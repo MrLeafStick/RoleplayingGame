@@ -1,19 +1,15 @@
-﻿using RPGv2.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RpgV2.Interfaces;
 
-namespace RPGv2.Items
+namespace RpgV2.Items
 {
-    public abstract class itemBase : IItems
+    public abstract class ItemBase : IItem
     {
         public abstract string Description { get; }
-
+        
         public override string ToString()
         {
             return Description;
         }
+
     }
 }

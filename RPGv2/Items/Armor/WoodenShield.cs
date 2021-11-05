@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPGv2.Items.Armor
+namespace RpgV2.Items.Armor
 {
     public class WoodenShield : ArmorBase
     {
         public override string Description
         {
-            get { return "Round Wooden Shield"; }
+            get { return "Round wooden Shield"; }
         }
 
         public override int ArmorPoints
@@ -18,4 +18,6 @@ namespace RPGv2.Items.Armor
             get { return 40; }
         }
     }
+
+
 }

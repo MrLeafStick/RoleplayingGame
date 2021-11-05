@@ -1,24 +1,35 @@
-﻿using RPGv2.Helpers;
+﻿using RpgV2.Helpers;
+using RpgV2.Interfaces;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPGv2.Items.Weapons
+namespace RpgV2.Items.Weapons
 {
-    public abstract class WeaponBase : itemBase
+    public abstract class WeaponBase : ItemBase, IWeapon
     {
-        private double _maxDamage;
+        public int MaxWeaponDamage { get; private set; }
+        public int MinWeaponDamage { get; private set; }
 
-        protected WeaponBase(double maxDamage)
+
+        protected WeaponBase()
         {
-            _maxDamage = maxDamage;
+            MaxWeaponDamage = RNG.RandomInt(1, TotalMaxWeaponDamage);
+            //TODO: MIN WEP DMG
         }
 
-        public virtual double damage
+        public override string Description
         {
-            get { return RNG.RandomDouble(0.0, _maxDamage); }
+            get { return $"{Name} (max. {TotalMaxWeaponDamage} weapon damage)"; }
         }
+
+        public abstract int TotalMaxWeaponDamage { get; }
+        public abstract string Name { get; }
     }
 }
+
+//TODO: Fix the rest of the weapons class's to reflect the new infrastructure.
+

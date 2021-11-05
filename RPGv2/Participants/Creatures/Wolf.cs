@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPGv2.Participants.Creatures
+namespace RpgV2.Participants.Creatures
 {
     public class Wolf : CreatureBase
     {
-        public const int MaxInitialHealthPoints = 60;
-        public const int MaxDamage = 18;
+        public const int MAX_INITIAL_HEALTH_POINTS = 25;
+        public const int MELEE_MAX_DAMAGE = 20;
 
-        public Wolf(int maxInitialHealthPoints, double maxDamage) : base(maxInitialHealthPoints, maxDamage)
+        public Wolf() : base(MAX_INITIAL_HEALTH_POINTS, MELEE_MAX_DAMAGE)
         {
         }
     }

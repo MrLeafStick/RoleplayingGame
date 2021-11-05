@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPGv2.Items.Weapons
+namespace RpgV2.Items.Weapons
 {
     class WoodenMace : WeaponBase
     {
-        public WoodenMace() : base(20)
+        public WoodenMace() : base(30)
         {
         }
 
         public override string Description
         {
-            get { return " Rough Wooden Mace "; }
+            get { return "Rough Wooden Mace"; }
         }
     }
 }

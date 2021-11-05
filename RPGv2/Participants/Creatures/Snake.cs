@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPGv2.Participants.Creatures
+namespace RpgV2.Participants.Creatures
 {
     public class Snake : CreatureBase
     {
-        public const int MaxInitialHealthPoints = 40;
-        public const int MaxDamage = 10;
+        public const int MAX_INITIAL_HEALTH_POINTS = 40;
+        public const int MELEE_MAX_DAMAGE = 10;
 
-        public Snake(int maxInitialHealthPoints, double maxDamage) : base(maxInitialHealthPoints, maxDamage)
+        public Snake() : base(MAX_INITIAL_HEALTH_POINTS, MELEE_MAX_DAMAGE)
         {
         }
     }
