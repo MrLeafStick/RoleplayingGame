@@ -21,6 +21,3 @@ namespace RpgV2.Items.Armor
         public abstract string Name { get;  }
     }
 }
-
-
-//TODO: Fix the rest of the armor class's to reflect the new infrastructure.

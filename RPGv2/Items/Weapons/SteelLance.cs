@@ -8,13 +8,32 @@ namespace RpgV2.Items.Weapons
 {
     class SteelLance : WeaponBase
     {
-        public SteelLance() : base(75)
-        {            
+        private string _name;
+        private int _totalMinWeaponDamage;
+        private int _totalMaxWeaponDamage;
+        public SteelLance() : base()
+        { 
+
         }
 
         public override string Description
         {
             get { return "Sharpned steel lance"; }
+        }
+
+        public override int TotalMinWeaponDamage
+        {
+            get { return _totalMinWeaponDamage; }
+        }
+
+        public override int TotalMaxWeaponDamage
+        {
+            get { return _totalMaxWeaponDamage; }
+        }
+
+        public override string Name
+        {
+            get { return _name; }
         }
     }
 }

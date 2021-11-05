@@ -8,14 +8,26 @@ namespace RpgV2.Items.Armor
 {
     public class LeatherBoots : ArmorBase
     {
+        private string _name;
+
+        public LeatherBoots(string name)
+        {
+            _name = name;
+        }
+
         public override string Description
         {
             get { return " Brown Leather Boots"; }
         }
 
-        public override int ArmorPoints
+        public override int MaxArmorPoints
         {
             get { return 25; }
+        }
+
+        public override string Name
+        {
+            get { return _name; }
         }
     }
 }
