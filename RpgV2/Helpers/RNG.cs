@@ -8,7 +8,7 @@ namespace RpgV2.Helpers
 {
     public class RNG
     {
-        private static Random _generator = new Random(Guid.NewGuid().GetHashCode());
+        private static Random _generator = new(Guid.NewGuid().GetHashCode());
 
         public static int RandomInt(int minVal, int maxVal)
         {
@@ -24,13 +24,6 @@ namespace RpgV2.Helpers
         {
             return _generator.NextDouble() * (maxVal - minVal) + minVal;
         }
-        //TODO: Generate A SOLID DIE(a die with solid pinciples)
-        /*
-        public static bool FourDie()
-        {
-            return RandomPercent() < 25;
-        }
-        */
         public static bool CoinFlip()
         {
             return RandomPercent() < 50;

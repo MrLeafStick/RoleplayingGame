@@ -8,10 +8,10 @@ namespace RpgV2.Participants.Creatures
 {
     public class Wolf : CreatureBase
     {
-        public const int MaxInitialHealthPoints = 60;
-        public const int MaxDamage = 18;
+        public const int MAX_iNITIAL_HEALTH_POINTS = 60;
+        public const int MELEE_MAX_DAMAGE = 18;
 
-        public Wolf() : base(MaxInitialHealthPoints, MaxDamage)
+        public Wolf() : base(MAX_iNITIAL_HEALTH_POINTS, MELEE_MAX_DAMAGE)
         {
 
         }

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RpgV2
+namespace RpgV2.Interfaces.Factories
 {
-    class Game
+    public interface IArmorFactory
     {
+        IArmor CreateArmor();
     }
 }

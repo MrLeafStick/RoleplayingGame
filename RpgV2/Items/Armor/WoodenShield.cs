@@ -13,9 +13,14 @@ namespace RpgV2.Items.Armor
             get { return "Round Wooden Shield"; }
         }
 
-        public override int ArmorPoints
+        public override int MaxArmorPoints
         {
             get { return 40; }
+        }
+
+        public override string Name
+        {
+            get { return Description; }
         }
     }
 }

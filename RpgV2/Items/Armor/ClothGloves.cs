@@ -13,9 +13,14 @@ namespace RpgV2.Items.Armor
         {
             get { return "Black Cloth Gloves"; }
         }
-        public override int ArmorPoints
+        public override int MaxArmorPoints
         {
             get { return 10; }
+        }
+
+        public override string Name
+        {
+            get { return Name; }
         }
     }
 }

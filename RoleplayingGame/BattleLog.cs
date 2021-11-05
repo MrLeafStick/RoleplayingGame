@@ -40,7 +40,4 @@ namespace RoleplayingGame
             _log.Clear();
         }
     }
-
-    }
-
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RpgV2.Interfaces.Factories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,9 @@ namespace RpgV2.Interfaces
         string Name { get; }
         double HealthPoints { get; }
         bool IsDead { get; }
-        int GoldOwned { get; }
-        List<IItem> ItemsOwned { get; }
+        int GoldOwned { get; set; }
+        List<IArmor>  ArmorOwned { get; }
+        List<IWeapon> WeaponsOwned { get; }
         double DealDamage();
         void ReceiveDamage(double damagePoints);
     }

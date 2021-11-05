@@ -10,12 +10,17 @@ namespace RpgV2.Items.Armor
     {
         public override string Description
         {
-            get { return "Brown Leather boots"; }
+            get { return "Brown Leather Boots"; }
         }
 
-        public override int ArmorPoints
+        public override int MaxArmorPoints
         {
             get { return 25; }
+        }
+
+        public override string Name
+        {
+            get { return Name; }
         }
     }
 }

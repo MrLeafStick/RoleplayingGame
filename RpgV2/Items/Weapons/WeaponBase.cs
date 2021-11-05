@@ -1,4 +1,5 @@
 ﻿using RpgV2.Helpers;
+using RpgV2.Interfaces.Factories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,18 +8,32 @@ using System.Threading.Tasks;
 
 namespace RpgV2.Items.Weapons
 {
-    public abstract class WeaponBase : ItemBase
+    public abstract class WeaponBase : ItemBase, IWeapon
     {
-        private double _maxDamage;
+        public int MaxWeaponDamage { get; private set; }
+        public int MinWeaponDamage { get; private set; }
 
-        protected WeaponBase(double maxDamage)
+
+        protected WeaponBase()
         {
-            _maxDamage = maxDamage;
+            MinWeaponDamage = RNG.RandomInt(0, TotalMinWeaponDamage);
+            MaxWeaponDamage = RNG.RandomInt(MinWeaponDamage, TotalMaxWeaponDamage);
+            //_maxDamage = maxDamage;
         }
 
+        public override string Description
+        {
+            get { return $"{Name} (max. {TotalMaxWeaponDamage} weapon damage"; }
+        }
+        public abstract int TotalMaxWeaponDamage { get; }
+        public abstract int TotalMinWeaponDamage { get; }
+        public abstract string Name { get; }
+        /*
         public virtual double Damage
         {
             get { return RNG.RandomDouble(0.0, _maxDamage); }
         }
+        */
     }
 }
+
