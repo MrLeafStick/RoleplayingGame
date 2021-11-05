@@ -15,23 +15,16 @@ namespace RPG_V2.Factories
         {
             int index = RNG.RandomInt(1, 6);
 
-            switch(index)
+            return index switch
             {
-                case 1:
-                    return new Bear();
-                case 2:
-                    return new Goat();
-                case 3:
-                    return new Snake();
-                case 4:
-                    return new Wolf();
-                case 5:
-                    return new Golem(GenerateName());
-                case 6:
-                    return new Troll(GenerateName());
-                default:
-                    throw new Exception($"Could not generate item with index {index}");
-            }
+                1 => new Bear(),
+                2 => new Goat(),
+                3 => new Snake(),
+                4 => new Wolf(),
+                5 => new Golem(GenerateName()),
+                6 => new Troll(GenerateName()),
+                _ => throw new Exception($"Could not generate item with index {index}"),
+            };
         }
 
         private string GenerateName()

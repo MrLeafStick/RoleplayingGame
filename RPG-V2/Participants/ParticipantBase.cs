@@ -59,7 +59,7 @@ namespace RPG_V2.Participants
         private List<IWeapon> SetInitialWeaponsOwned()
         {
             var initalWeapons = new List<IWeapon>();
-            for (int i = 0; i < RNG.RandomInt(0, _maxInitialWeapons); i++)
+            for (int i = 0; i < RNG.RandomInt(1, _maxInitialWeapons); i++) // TODO: initialWeapons cannot be 0;
             {
                 initalWeapons.Add(GameFactory.Instance().WeaponFactory.CreateWeapon());
             }

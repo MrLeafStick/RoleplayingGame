@@ -6,6 +6,7 @@ namespace RPG_V2.Participants.Creatures
 {
     public class CreatureBase : ParticipantBase
     {
+        // TODO: remove consts
         public const int MAX_INITIAL_ARMOR = 2;
         public const int MAX_INITIAL_WEAPON = 0;
 

@@ -6,6 +6,7 @@ namespace RPG_V2.Participants.Humanoids
 {
     public class HumanoidBase : ParticipantBase
     {
+        // TODO: remove consts
         public const int MAX_INITIAL_GOLD = 50;
         public const int MAX_INITIAL_ITEMS = 4;
         public const int MAX_INITIAL_ARMOR = 4;

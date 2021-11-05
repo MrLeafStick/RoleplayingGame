@@ -14,17 +14,13 @@ namespace RPG_V2.Factories
         {
             int index = RNG.RandomInt(1, 3);
 
-            switch (index)
+            return index switch
             {
-                case 1:
-                    return new IronSword();
-                case 2:
-                    return new SteelLance();
-                case 3:
-                    return new WoodMace();
-                default:
-                    throw new Exception($"Could not generate item with index {index}");
-            }
+                1 => new IronSword(),
+                2 => new SteelLance(),
+                3 => new WoodMace(),
+                _ => throw new Exception($"Could not generate item with index {index}"),
+            };
         }
     }
 }

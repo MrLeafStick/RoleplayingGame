@@ -18,7 +18,7 @@ namespace RPG_V2.GameManagement
 
             PrintStartInfo(aChar, participants);
             FightParticipants(aChar, participants);
-            PrintEndInfo(aChar);
+            PrintEndInfo(aChar, participants);
         }
 
         private List<IParticipant> CreateParticipants(int numOpponents)
@@ -37,7 +37,7 @@ namespace RPG_V2.GameManagement
         {
             foreach(var participant in participants)
             {
-                if(IsFighting(aChar, participant))
+                if(IsFighting(aChar, participant) == true)
                 {
                     Loot(aChar, participant);
                 }
@@ -56,12 +56,12 @@ namespace RPG_V2.GameManagement
                 }
             }
 
-            // TODO return aChar dead
             return opponent.IsDead;
         }
 
         private void Loot(Character aChar, IParticipant opponent)
         {
+            // Copy opponent stuff
             aChar.GoldOwned += opponent.GoldOwned;
 
             foreach(var armor in opponent.ArmorOwned)
@@ -74,6 +74,7 @@ namespace RPG_V2.GameManagement
                 aChar.AddWeapons(weapon);
             }
 
+            // Clear opponent stuff
             opponent.GoldOwned = 0;
             opponent.ArmorOwned.Clear();
             opponent.WeaponsOwned.Clear();
@@ -91,24 +92,46 @@ namespace RPG_V2.GameManagement
         private void PrintStartInfo(Character aChar, List<IParticipant> participants)
         {
             Console.WriteLine(new string('*', 40));
-            Console.WriteLine("The game is starting");
+            Console.WriteLine("The game is about to begin...");
             Console.WriteLine(new string('*', 40));
 
-            Console.WriteLine("Characters:");
+            Console.WriteLine("Characters:\n");
             Console.WriteLine(aChar);
 
-            Console.WriteLine("Enemies:");
+            Console.WriteLine("Enemies:\n");
             PrintParticipants(participants);
         }
 
-        private void PrintEndInfo(Character aChar)
+        private void PrintEndInfo(Character aChar, List<IParticipant> participants)
         {
             Console.WriteLine(new string('*', 40));
-            Console.WriteLine("The game has ended");
+            Console.WriteLine("The game has ended.");
             Console.WriteLine(new string('*', 40));
 
-            Console.WriteLine(aChar);
-        }
+            if(!aChar.IsDead)
+            {
+                Console.WriteLine($"{aChar.Name} survived.\n");
 
+                Console.WriteLine(aChar);
+            }
+            else
+            {
+                Console.WriteLine($"{aChar.Name} has died.\n");
+
+                foreach (var participant in participants)
+                {
+                    if (!participant.IsDead)
+                    {
+                        Console.WriteLine(participant);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{participant.Name} has died.\n");
+                    }
+                }
+            }
+
+
+        }
     }
 }

@@ -28,3 +28,5 @@ namespace RPG_V2.Items.Weapons
 }
 
 // TODO: Fix the rest of the weapon class's to  reflect the new infrastructure.
+
+// TODO: Add base weapons like Bite, Kick, Hit.
