@@ -16,13 +16,13 @@ namespace RpgV2.Factories
             switch (index)
             {
                 case 1:
-                    return new ClothGloves();
+                    return new ClothGloves("Silk Smooth");
                 case 2:
-                    return new LeatherBoots();
+                    return new LeatherBoots("Cow skin leather boots");
                 case 3:
-                    return new PlateBoots();
+                    return new PlateBoots("Polished plate boots");
                 case 4:
-                    return new WoodenShield();
+                    return new WoodenShield("Viking shield");
                 default:
                     throw new Exception($"Could not generate armor with index {index} ");
             }

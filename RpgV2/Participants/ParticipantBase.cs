@@ -79,7 +79,7 @@ namespace RpgV2.Participants
         protected virtual List<IWeapon> SetInitialWeaponsOwned()
         {
             var initialWeapons = new List<IWeapon>();
-            for (int i = 0; i < RNG.RandomInt(0, _maxInitialArmor); i++)
+            for (int i = 0; i < RNG.RandomInt(0, _maxInitialWeapons); i++)
             {
                 initialWeapons.Add(GameFactory.Instance().WeaponFactory.CreateWeapon());
             }
@@ -112,32 +112,48 @@ namespace RpgV2.Participants
         {
             int index = RNG.RandomInt(1, 7);
 
-            switch (index)
+            return index switch
             {
-                case 1:
-                    return new ClothGloves();
-                case 2:
-                    return new LeatherBoots();
-                case 3:
-                    return new PlateBoots();
-                case 4:
-                    return new WoodenShield();
-                case 5:
-                    return new IronSword();
-                case 6:
-                    return new SteelLance();
-                case 7:
-                    return new WoodenMace();
-                default:
-                    throw new Exception($"Could not generate item with index {index} ");
-            }
+                1 => new ClothGloves("Silk Smooth"),
+                2 => new LeatherBoots("Cow skin leather boots"),
+                3 => new PlateBoots("Polished plate boots"),
+                4 => new WoodenShield("Viking shield"),
+                5 => new IronSword("Sharpened sword", 30, 70),
+                6 => new SteelLance("Long stick", 20, 50),
+                7 => new WoodenMace("Broken Club", 10, 30),
+                _ => throw new Exception($"Could not generate item with index {index} "),
+            };
         }
 
         public virtual double DealDamage()
         {
-            return RNG.RandomDouble(0.0, _meleeMaxDamage);
+            if(WeaponsOwned.Count == 0)
+            {
+                return RNG.RandomDouble(0.0, _meleeMaxDamage);
+            } else
+            {
+                var highestDamageWeapon = WeaponsOwned.Select(w => w.MaxWeaponDamage).Max();
+                Console.WriteLine(highestDamageWeapon);
+                //test.Where((x,idx) => idx == 0 || x.Country != test[idx - 1].Country))
 
-            //TODO: Figure out With weapon that is best and deal the damage from that weapon.
+                //IWeapon highestDamageWeapon = null;
+                //for (int i = 0; i < WeaponsOwned.Count; i++)
+                //{
+                //    if (highestDamageWeapon == null || WeaponsOwned[i].MaxWeaponDamage > highestDamageWeapon.MaxWeaponDamage)
+                //    {
+                //        highestDamageWeapon = WeaponsOwned[i];
+                //    }
+                //}
+
+                //Console.WriteLine($"{highestDamageWeapon} was selected");
+                return RNG.RandomDouble(1,100);
+                //return RNG.RandomDouble(highestDamageWeapon.MinWeaponDamage, highestDamageWeapon.MaxWeaponDamage);
+            //TODO: ændre til lambda
+            }
+            
+            
+            
+            //TODO: Figure out which weapon is best and deal the damage from that weapon.
             //TODO Hint: SELECT(W => W.æsdæfkæsdlfksæ).MAX()
         }
 
@@ -170,7 +186,7 @@ namespace RpgV2.Participants
             string desc = $"{Name} has {GoldOwned} gold, " +
                 $"and is at {HealthPoints:F1} health points\n " +
                 $"and has {ArmorPoints:F1} armor points\n";
-                desc += $"{Name} owns {ArmorOwned.Count}armor items:\n";
+                desc += $"{Name} owns {ArmorOwned.Count} armor items:\n";
 
             foreach (var armor in ArmorOwned)
             {

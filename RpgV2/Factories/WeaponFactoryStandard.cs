@@ -15,19 +15,15 @@ namespace RpgV2.Factories
     {
         public IWeapon CreateWeapon()
         {
-            int index = RNG.RandomInt(1, 4);
+            int index = RNG.RandomInt(1, 3);
 
-            switch (index)
+            return index switch
             {
-                case 1:
-                    return new IronSword();
-                case 2:
-                    return new SteelLance();
-                case 3:
-                    return new WoodenMace();
-                default:
-                    throw new Exception($"Could not generate Weapon with index {index} ");
-            }
+                1 => new IronSword("Sharpened sword", 80, 130),
+                2 => new SteelLance("Long stick", 40, 120),
+                3 => new WoodenMace("Broken Club", 10, 80),
+                _ => throw new Exception($"Could not generate Weapon with index {index} "),
+            };
         }
     }
 }

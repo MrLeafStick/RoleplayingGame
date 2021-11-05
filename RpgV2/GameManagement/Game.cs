@@ -65,10 +65,15 @@ namespace RpgV2.GameManagement
         {
             aChar.GoldOwned = aChar.GoldOwned + opponent.GoldOwned;
             opponent.GoldOwned = 0;
-            foreach (var item in opponent.ItemsOwned)
+            foreach (var item in opponent.WeaponsOwned)
             {
-                aChar.AddItem(item);
+                aChar.AddWeapon(item);
             }
+            foreach (var item in opponent.ArmorOwned)
+            {
+                aChar.AddArmor(item);
+            }
+            
             
         }
 

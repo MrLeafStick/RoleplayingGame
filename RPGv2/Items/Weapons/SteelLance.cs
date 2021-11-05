@@ -11,9 +11,12 @@ namespace RpgV2.Items.Weapons
         private string _name;
         private int _totalMinWeaponDamage;
         private int _totalMaxWeaponDamage;
-        public SteelLance() : base()
-        { 
 
+        public SteelLance(string name, int totalMinWeaponDamage, int totalMaxWeaponDamage)
+        {
+            _name = name;
+            _totalMinWeaponDamage = totalMinWeaponDamage;
+            _totalMaxWeaponDamage = totalMaxWeaponDamage;
         }
 
         public override string Description

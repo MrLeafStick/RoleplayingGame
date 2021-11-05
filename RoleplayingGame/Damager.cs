@@ -28,7 +28,7 @@ namespace RoleplayingGame
         /// <summary>
         /// If the damage is increased, it is doubled.
         /// </summary>
-        protected override int CalculateModifedDamage(int dealtDamage)
+        protected override int CalculateModifiedDamage(int dealtDamage)
         {
             return dealtDamage * 2;
         }
