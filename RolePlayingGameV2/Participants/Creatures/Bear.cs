@@ -2,10 +2,10 @@
 {
     public class Bear : CreatureBase
     {
-        public const int MaxInitialHealthPoints = 75;
-        public const int MaxDamage = 25;
+        public const int MAX_INITIAL_HEALTH_POINTS = 75;
+        public const int MAX_MELEE_DAMAGE = 25;
 
-        public Bear() : base(MaxInitialHealthPoints, MaxDamage)
+        public Bear() : base(MAX_INITIAL_HEALTH_POINTS, MAX_MELEE_DAMAGE)
         {
         }
     }

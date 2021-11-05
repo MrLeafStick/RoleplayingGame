@@ -4,5 +4,6 @@
     {
         int MinWeaponDamage { get; }
         int MaxWeaponDamage { get; }
+        int WeaponDamage { get; }
     }
 }

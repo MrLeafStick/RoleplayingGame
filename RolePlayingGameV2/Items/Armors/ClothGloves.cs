@@ -7,6 +7,8 @@
             get { return "Black cloth gloves"; }
         }
 
-        public override int ArmorPoints { get { return 10; } }
+        public override int MaxArmorPoints { get { return 10; } }
+
+        public override string Name { get; }
     }   
 }

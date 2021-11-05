@@ -10,7 +10,7 @@ namespace RolePlayingGameV2.Factories
     {
         public virtual IArmor CreateArmor()
         {
-            var index = RNG.RandomInt(1, 7);
+            var index = RNG.RandomInt(1, 4);
 
             switch (index)
             {
@@ -21,8 +21,6 @@ namespace RolePlayingGameV2.Factories
                 default:
                     throw new Exception($"Could not generate armor with index {index}");
             }
-
-            return null; //TODO add weapons..
         }
     }
 }

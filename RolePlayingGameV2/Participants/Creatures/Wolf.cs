@@ -2,10 +2,10 @@
 {
     public class Wolf : CreatureBase
     {
-        public const int MaxInitialHealthPoints = 60;
-        public const int MaxDamage = 18;
+        public const int MAX_INITIAL_HEALTH_POINTS = 60;
+        public const int MAX_MELEE_DAMAGE = 18;
 
-        public Wolf() : base(MaxInitialHealthPoints, MaxDamage)
+        public Wolf() : base(MAX_INITIAL_HEALTH_POINTS, MAX_MELEE_DAMAGE)
         {
         }
     }

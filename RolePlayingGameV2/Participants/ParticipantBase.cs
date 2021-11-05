@@ -26,10 +26,8 @@ namespace RolePlayingGameV2.Participants
         public List<IArmor> ArmorOwned { get; }
         public List<IWeapon> WeaponsOwned { get; }
         public bool IsDead { get { return HealthPoints <= 0; } }
-        public double ArmorPoints { get { return ArmorOwned.Count == 0 ? 0 : ArmorOwned.Select(a => a.ArmorPoints).Average(); } }
+        public double ArmorPoints { get { return ArmorOwned.Count == 0 ? 0 : ArmorOwned.Select(a => a.ArmorPoints).Sum(); } }
         #endregion
-
-        //TODO change average to sum...
 
         #region Virutal Methods
         protected virtual double SetInitialHealthPoints() 
@@ -42,9 +40,8 @@ namespace RolePlayingGameV2.Participants
         }
         public virtual double DealDamage() 
         {
-            return RNG.RandomDouble(0.0, _maxMeleeDamage);
-            //TODO figure out weapon that is best and deal the damage from that weapon.
-            //TODO HINT Select(W => W.af).MAX;
+            var damage = WeaponsOwned.Count > 0 ? 0.0 : WeaponsOwned.Select(w => w.WeaponDamage).Max();
+            return damage;
         }
         public virtual void ReceiveDamage(double damagePoints)
         {
@@ -63,37 +60,11 @@ namespace RolePlayingGameV2.Participants
             ArmorOwned.Clear();
             WeaponsOwned.Clear();
         }
-        public virtual IItem GetInitialItem() 
-        {
-            var index = RNG.RandomInt(1, 7);
-
-            switch (index)
-            {
-                case 1:
-                    return new ClothGloves();
-                case 2:
-                    return new LeatherBoots();
-                case 3:
-                    return new PlateBoots();
-                case 4:
-                    return new WoodenShield();
-                case 5:
-                    return new IronSword();
-                case 6:
-                    return new WoodenMace();
-                case 7:
-                    return new SteelLance();
-                default:
-                    throw new Exception($"Could not generate item with index {index}");
-            }
-
-            return null; //TODO add weapons..
-        }
 
         protected virtual List<IWeapon> SetInitialWeaponsOwend()
         {
             var initialWeapon = new List<IWeapon>();
-            for (int i = 0; i < RNG.RandomInt(0, _maxInitialArmor); i++)
+            for (int i = 0; i < _maxInitialWeapon; i++)
             {
                 initialWeapon.Add(GameFactory.Instance().WeaponFactory.CreateWeapon());
             }
@@ -102,7 +73,7 @@ namespace RolePlayingGameV2.Participants
         protected virtual List<IArmor> SetInitialArmorOwned()
         {
             var initialArmor = new List<IArmor>();
-            for (int i = 0; i < RNG.RandomInt(0, _maxInitialArmor); i++)
+            for (int i = 0; i < _maxInitialArmor; i++)
             {
                 initialArmor.Add(GameFactory.Instance().ArmorFactory.CreateArmor());
             }
@@ -119,7 +90,7 @@ namespace RolePlayingGameV2.Participants
 
             foreach (var armor in ArmorOwned)
             {
-                desc += $"{armor}\n";
+                desc += $"{armor} \n";
             }
             desc += $"{Name} owns {WeaponsOwned.Count} weapons:\n";
 

@@ -3,6 +3,8 @@
     public class LeatherBoots : ArmorBase
     {
         public override string Description { get { return "Brown leather boots"; } }
-        public override int ArmorPoints { get { return 25; } }
+        public override int MaxArmorPoints { get { return 25; } }
+
+        public override string Name { get; }
     }
 }

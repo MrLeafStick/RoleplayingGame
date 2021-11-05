@@ -29,7 +29,5 @@ namespace RolePlayingGameV2.Helpers
         {
             return RandomPercent() < 50;
         }
-
-        //TODO create die method.
     }
 }

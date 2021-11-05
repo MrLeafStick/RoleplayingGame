@@ -18,14 +18,12 @@ namespace RolePlayingGameV2.Factories
 
             switch (index)
             {
-                case 1: return new IronSword();
-                case 2: return new WoodenMace();
-                case 3: return new SteelLance();
+                case 1: return new IronSword(5, 10);
+                case 2: return new WoodenMace(3, 8);
+                case 3: return new SteelLance(7, 13);
                 default:
-                    throw new Exception($"Could not generate item with index {index}");
+                    throw new Exception($"Could not generate weapon with index {index}");
             }
-
-            return null; //TODO add weapons..
         }
     }
 }
