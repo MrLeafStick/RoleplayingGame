@@ -12,6 +12,10 @@ namespace RoleplayingGame
         {
         }
 
+        public Damager(string name, int hitPoints, int maxHitPoints, int minDamage, int maxDamage) : base(name, hitPoints, maxHitPoints, minDamage, maxDamage)
+        {
+        }
+
         protected override int DealDamageModifyChance
         {
             get { return 40; }

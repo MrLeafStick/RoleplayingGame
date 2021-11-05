@@ -29,7 +29,6 @@ namespace RpgV2.Helpers
             return RandomPercent() < 50;
         }
 
-        //TODO: Generate A SOLID DIE (a die with solid principles)
 
 
     }

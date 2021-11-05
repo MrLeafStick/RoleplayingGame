@@ -11,10 +11,12 @@ namespace RoleplayingGame
     /// </summary>
     public class Damager : Character
     {
-        public Damager(string name, int hitPoints, int minDamage, int maxDamage) 
+
+        public Damager(string name, int hitPoints, int minDamage, int maxDamage)
             : base(name, hitPoints, minDamage, maxDamage)
         {
         }
+
         /// <summary>
         /// A Damager has a 40 % chance of dealing increased damage.
         /// </summary>

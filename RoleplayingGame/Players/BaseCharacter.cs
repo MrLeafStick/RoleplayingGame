@@ -24,11 +24,11 @@ namespace RoleplayingGame
         #endregion
 
         #region Constructor
-        public Character(string name, int hitPoints, int maxHitPoints, int minDamage, int maxDamage)
+        public Character(string name, int hitPoints, int minDamage, int maxDamage)
         {
             _name = name;
             _hitPoints = hitPoints;
-            _maxHitPoints = maxHitPoints;
+            _maxHitPoints = hitPoints;
             _minDamage = minDamage;
             _maxDamage = maxDamage;
             Reset();
@@ -84,17 +84,36 @@ namespace RoleplayingGame
 
         public int DealDamageModifier(int dealtDamage)
         {
-            return 0;
-        }
+            int damage = NumberGenerator.Next(_minDamage, _maxDamage);
+            int modifiedDamage = DealDamageModifier(damage);
+            string damageDesc;
 
-            return modifiedDealtDamage;
+            damageDesc = (damage < modifiedDamage) ? "(INCREASED)" : "";
+
+            string message = $"{Name} dealt {modifiedDamage} damage {damageDesc}";
+
+            BattleLog.Save(message);
+            return modifiedDamage;
         }
         /// <summary>
         /// Modifies the amount of received damage. 
         /// </summary>
         public int ReceiveDamageModifier(int receiveDamage)
         {
-            return 0;
+            int modifiedDamage = ReceiveDamageModifier(receiveDamage);
+            _hitPoints = _hitPoints - modifiedDamage;
+
+            string damageDesc = (receiveDamage > modifiedDamage) ? "(DECREASED)" : "";
+            string message = $"{Name} recieved {modifiedDamage} damage {damageDesc}, and is down to {_hitPoints} HP";
+
+
+            BattleLog.Save(message);
+            if (IsDead)
+            {
+                BattleLog.Save(Name + " died!");
+            }
+
+            return modifiedDamage;
         }
 
         

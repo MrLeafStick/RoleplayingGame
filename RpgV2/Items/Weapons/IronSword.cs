@@ -8,13 +8,35 @@ namespace RpgV2.Items.Weapons
 {
     public class IronSword : WeaponBase
     {
-        public IronSword() : base(40)
+        private string _name;
+        private int _totalMinWeaponDamage;
+        private int _totalMaxWeaponDamage;
+        public IronSword(string name, int totalMinWeaponDamage, int totalMaxWeaponDamage) : base()
         {
+            _name = name;
+            _totalMinWeaponDamage = totalMinWeaponDamage;
+            _totalMaxWeaponDamage = totalMaxWeaponDamage;
         }
 
         public override string Description
         {
             get { return "One-Handed Iron Sword";  }
         }
+
+        public override int TotalMinWeaponDamage 
+        { 
+            get { return _totalMinWeaponDamage; } 
+        }
+        
+        public override int TotalMaxWeaponDamage 
+        { 
+            get { return _totalMaxWeaponDamage; } 
+        }
+
+        public override string Name
+        {
+            get { return _name; }
+        }
+
     }
 }
