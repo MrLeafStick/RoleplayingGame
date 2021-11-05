@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoleplayingGame", "RoleplayingGame\RoleplayingGame.csproj", "{E14DBDF9-1D64-4771-9FB2-D82032ACC688}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPGv2", "RPGv2\RPGv2.csproj", "{D69E737C-45F8-4236-A10A-9A1B12FDDE58}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RpgV2", "RpgV2\RpgV2.csproj", "{7C3EAD74-C478-4223-B1F8-3108C03BEAD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{E14DBDF9-1D64-4771-9FB2-D82032ACC688}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E14DBDF9-1D64-4771-9FB2-D82032ACC688}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E14DBDF9-1D64-4771-9FB2-D82032ACC688}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D69E737C-45F8-4236-A10A-9A1B12FDDE58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D69E737C-45F8-4236-A10A-9A1B12FDDE58}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D69E737C-45F8-4236-A10A-9A1B12FDDE58}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D69E737C-45F8-4236-A10A-9A1B12FDDE58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C3EAD74-C478-4223-B1F8-3108C03BEAD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C3EAD74-C478-4223-B1F8-3108C03BEAD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C3EAD74-C478-4223-B1F8-3108C03BEAD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C3EAD74-C478-4223-B1F8-3108C03BEAD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

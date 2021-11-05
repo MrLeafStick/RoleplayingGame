@@ -9,7 +9,10 @@ using System.Threading.Tasks;
 namespace RoleplayingGame
 
 {
-    public class BaseCharacter
+    /// <summary>
+    /// This class represents a game character.
+    /// </summary>
+    public class Character
     {
         #region Instance Fields
         private string _name;
@@ -17,15 +20,15 @@ namespace RoleplayingGame
         protected int _maxHitPoints;
         protected int _minDamage;
         protected int _maxDamage;
-        private Dictionary<AbilityList, double> _abilities;
+        
         #endregion
 
         #region Constructor
-        public BaseCharacter(string name, int hitpoints, int minDamage, int maxDamage)
+        public Character(string name, int hitPoints, int maxHitPoints, int minDamage, int maxDamage)
         {
             _name = name;
-            _maxHitPoints = hitpoints;
-            _hitPoints = hitpoints;
+            _hitPoints = hitPoints;
+            _maxHitPoints = maxHitPoints;
             _minDamage = minDamage;
             _maxDamage = maxDamage;
             Reset();
@@ -37,7 +40,7 @@ namespace RoleplayingGame
         public string Name
         {
             get { return _name; }
-        }
+        }        
 
         public bool IsDead
         {
@@ -46,71 +49,52 @@ namespace RoleplayingGame
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Reset the Character's state to the original state
+        /// </summary>
         public void Reset()
         {
             _hitPoints = _maxHitPoints;
         }
-
+        /// <summary>
+        /// Returns the amount of points a Character deals in damage.
+        /// This damage could then be received by another character.
+        /// Note that there is a chance that the damage is modified.
+        /// </summary>
         public int DealDamage()
         {
-            int damage = NumberGenerator.Next(_minDamage, _maxDamage);
-            int modifiedDamage = DealDamageModifier(damage);
-            string damageDesc;
-
-            damageDesc = (damage < modifiedDamage) ? "(INCREASED)" : "";
-
-            string message = $"{Name} dealt {modifiedDamage} damage {damageDesc}";
-
-            Battlelog.Save(message);
-            return modifiedDamage;
+            return 0;
         }
-        public int ReceiveDamage(int damage)
+        public int ReceiveDamage()
         {
-            int modifiedDamage = ReceiveDamageModifier(damage);
-            _hitPoints = _hitPoints - modifiedDamage;
-
-            string damageDesc = (damage > modifiedDamage) ? "(DECREASED)" : "";
-            string message = $"{Name} recieved {modifiedDamage} damage {damageDesc}, and is down to {_hitPoints} HP";
-
-
-            Battlelog.Save(message);
-            if (IsDead)
-            {
-                Battlelog.Save(Name + " died!");
-            }
-
-            return modifiedDamage;
+            return 0;
         }
 
+        /// <summary>
+        /// Log data about the character to the battle log,
+        /// in case the character is still alive.
+        /// </summary>
         public void LogSurvivor()
         {
             if (!IsDead)
             {
-                Battlelog.Save($"{Name} survived with {_hitPoints} hit points left");
+                
             }
         }
-
 
         public int DealDamageModifier(int dealtDamage)
         {
-            int modifiedDealtDamage = dealtDamage;
-            if (NumberGenerator.BelowPercentage(DealDamageModifyChance))
-            {
-                modifiedDealtDamage = CalculateModifiedDamage(dealtDamage);
-            }
+            return 0;
+        }
 
             return modifiedDealtDamage;
         }
-
+        /// <summary>
+        /// Modifies the amount of received damage. 
+        /// </summary>
         public int ReceiveDamageModifier(int receiveDamage)
         {
-            int modifiedReceiveDamage = receiveDamage;
-            if (NumberGenerator.BelowPercentage(ReceiveDamageModifyChance))
-            {
-                modifiedReceiveDamage = CalculateModifiedReceivedDamage(receiveDamage);
-            }
-
-            return modifiedReceiveDamage;
+            return 0;
         }
 
         
@@ -132,7 +116,7 @@ namespace RoleplayingGame
         /// Unless overrieded in a dirived class, a Character has 
         /// 0% chance of having the damage received modified.
         /// </summary>
-        protected virtual int ReceiveDamageModifyChance
+        protected virtual int ReceiveDamageModyChance
         {
             get { return 0; }
         }

@@ -5,38 +5,43 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RoleplayingGame
-{
+{    /// <summary>
+     /// This class represents a group of game characters
+     /// </summary>
     public class CharacterGroup
     {
         #region Instance Field
-        private List<BaseCharacter> _group;
+        private List<Character> _group;
         private string _groupName;
 
 
         #endregion
 
         #region Constructor
-        public CharacterGroup(global::System.String groupName)
+        public CharacterGroup(string groupName)
         {
-            _group = new List<BaseCharacter>();
+            _group = new List<Character>();
             _groupName = groupName;
         }
 
         #endregion
 
-        #region Properties
-        public string GroupName
+        #region Propertiess
+        public string GroupName 
         {
             get { return _groupName; }
         }
 
-        public bool IsDead
+        /// <summary>
+        /// Dead is defined as: All members of the group must be dead
+        /// </summary>
+        public bool IsDead 
         {
             get
             {
-                foreach(BaseCharacter member in _group)
+                foreach(Character member in _group)
                 {
-                    if(!member.IsDead)
+                    if (!member.IsDead)
                     {
                         return false;
                     }
@@ -49,19 +54,24 @@ namespace RoleplayingGame
         #endregion
 
         #region Methods
-
-        public void AddCharacter(BaseCharacter aBeast)
+        /// <summary>
+        /// Add one Character to the group 
+        /// </summary>
+        public void AddCharacter(Character aBeast)
         {
             _group.Add(aBeast);
         }
-
+        /// <summary>
+        /// DealDamage is defined as: the total damage dealt by 
+        /// all non-dead members of the group
+        /// </summary>
         public int DealDamage()
         {
             int totalDamage = 0;
 
-            foreach(BaseCharacter member in _group)
+            foreach (Character member in _group)
             {
-                if(!member.IsDead)
+                if (!member.IsDead)
                 {
                     totalDamage = totalDamage + member.DealDamage();
                 }
@@ -70,11 +80,16 @@ namespace RoleplayingGame
             return totalDamage;
         }
 
+
+        /// <summary>
+        /// ReceiveDamage is defined as: the first non-dead 
+        /// member in the list receives all of the damage
+        /// </summary>
         public void ReceiveDamage(int damage)
         {
-            foreach(BaseCharacter member in _group)
+            foreach(Character member in _group)
             {
-                if(!member.IsDead)
+                if (!member.IsDead)
                 {
                     member.ReceiveDamage(damage);
                     return;
@@ -84,14 +99,15 @@ namespace RoleplayingGame
 
         public void LogSurvivor()
         {
-            foreach (BaseCharacter member in _group)
+            foreach (Character member in _group)
             {
-                if(!member.IsDead)
+                if (!member.IsDead)
                 {
                     member.LogSurvivor();
                 }
             }
         }
+
 
         #endregion
     }
