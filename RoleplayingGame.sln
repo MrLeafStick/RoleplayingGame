@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoleplayingGame", "RoleplayingGame\RoleplayingGame.csproj", "{E14DBDF9-1D64-4771-9FB2-D82032ACC688}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPG-V1", "RoleplayingGame\RPG-V1.csproj", "{E14DBDF9-1D64-4771-9FB2-D82032ACC688}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPG-V2", "RPG-V2\RPG-V2.csproj", "{8FBFE3D0-26CE-4540-B6E2-7C743127A12E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG-V3", "RPG-V3\RPG-V3.csproj", "{658E3055-83D8-4F3B-B9BA-D0373CF6C9B6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPG-EntityClass Test", "..\EnumTest\EnumTest\RPG-EntityClass Test.csproj", "{DC2C4F39-1643-4000-8DCC-BA056FF4B35C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPG-Sandbox-V1", "..\EnumTest\EnumTest\RPG-Sandbox-V1.csproj", "{DC2C4F39-1643-4000-8DCC-BA056FF4B35C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RPG_V3.Entities
 {
-    class Entity : IEntity
+    class Entity
     {
 
     }
