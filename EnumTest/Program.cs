@@ -48,26 +48,20 @@ namespace EnumTest
 
         }
 
-        public enum Gender
-        {
-            Female,
-            Male,
-            Genderless,
-            Other
-        }
-
-
-        public enum Species
+        public enum EntitySpecies
         {
             Human,
-            Elven,
+            Elf,
+            Sprite,
             Ork,
             Troll,
             Dwarf,
+            Giant,
             Hobgoblin,
             Gargoyle,
             Griffin,
             Centaur,
+            Minotaur,
             Dragon,
             Unicorn,
             Wolf,
@@ -75,28 +69,44 @@ namespace EnumTest
             Bear,
             Snake,
             Owl,
+            Lion,
+            Fox,
+            Eagle,
+            Orca,
+            Squid,
+            Whale,
+            Sealion
         }
 
-        public enum Type : ushort
+        public enum EntityType
         {
             Ghost,
             Were,
             Mechanical,
             Undead,
             Living,
+            Breathing,
+            Alive,
+            Regular,
             Zombie,
             Skeleton,
             Magical,
         }
 
-        public enum Occupation
+        public enum EntityOccupation
         {
             Peasant,
             Miller,
             Shopkeeper,
+            Innkeeper,
+            Sailor,
             Marauder,
+            Torturer,
+            King,
+            Merchant,
             Blacksmith,
             Thief,
+            Highwayman,
             Wizard,
             Warrior,
             Knight,
@@ -104,8 +114,10 @@ namespace EnumTest
             Enchanterer,
             Mage,
             Necromancer,
+            Alchemist,
             Warlock,
             Priest,
+            Monk,
             Beast,
         }
 
@@ -124,17 +136,17 @@ namespace EnumTest
 
         public class EntityDescriptor
         {
-            public EntityDescriptor(Species species, Occupation occupation, int maxHealthPoints)
+            public EntityDescriptor(EntitySpecies species, EntityOccupation occupation, int maxHealthPoints)
             {
-                Species = species;
-                Occupation = occupation;
+                EntitySpecies = species;
+                EntityOccupation = occupation;
                 MaxHealthPoints = maxHealthPoints;
 
                 AllowedAbilities = new List<AbilityName>();
             }
 
-            public Species Species { get; set; }
-            public Occupation Occupation { get; set; }
+            public EntitySpecies EntitySpecies { get; set; }
+            public EntityOccupation EntityOccupation { get; set; }
             public int MaxHealthPoints { get; set; }
 
             public List<AbilityName> AllowedAbilities { get; set; }
@@ -152,39 +164,45 @@ namespace EnumTest
             public int SkillLevel { get; }
         }
 
+        public class Item
+        {
+
+        }
+
         public class Entity
         {
             public Entity(string name, EntityDescriptor entityDescriptor)
             {
                 Name = name;
-                Species = entityDescriptor.Species;
-                Occupation = entityDescriptor.Occupation;
+                EntitySpecies = entityDescriptor.EntitySpecies;
+                EntityOccupation = entityDescriptor.EntityOccupation;
                 MaxHealthPoints = entityDescriptor.MaxHealthPoints;
 
                 Abilities = new List<Ability>();
             }
 
-            public Entity(string name, Type type, Species species, Occupation occupation, int healthPoints)
+            public Entity(string name, EntityType type, EntitySpecies species, EntityOccupation occupation, int healthPoints)
             {
                 Name = name;
-                Type = type;
-                Species = species;
-                Occupation = occupation;
+                EntityType = type;
+                EntitySpecies = species;
+                EntityOccupation = occupation;
                 MaxHealthPoints = healthPoints;
                 
                 Abilities = new List<Ability>();
             }
 
             public string Name { get; }
-            public Type Type { get; }
-            public Species Species { get; }
-            public Occupation Occupation { get; set; }
+            public EntityType EntityType { get; }
+            public EntitySpecies EntitySpecies { get; }
+            public EntityOccupation EntityOccupation { get; set; }
             public int MaxHealthPoints { get; }
             public List<Ability> Abilities { get; }
+            public List<Item> Items { get; }
 
             public override string ToString()
             {
-                var entityString =  $"{Name} the {Type} {Species} is a {Occupation} and has {MaxHealthPoints} health points.";
+                var entityString =  $"{Name} the {EntityType} {EntitySpecies} is a {EntityOccupation} and has {MaxHealthPoints} health points.";
 
                 var abilityString = $"{Name} has the following abilities:\n";
 
@@ -202,60 +220,73 @@ namespace EnumTest
             List<AbilityDescriptor> abilityDescriptors = new List<AbilityDescriptor>();
             List<EntityDescriptor> entityDescriptors = new List<EntityDescriptor>();
 
+            List<Item> items = new List<Item>();
             List<Ability> abilities = new List<Ability>();
             List<Entity> entities = new List<Entity>();
 
             /*
             // Descriptors
-            entityDescriptors.Add(new EntityDescriptor(Species.Human, Occupation.Thief, 500));
-            entityDescriptors.Add(new EntityDescriptor(Species.Elven, Occupation.Marauder, 500 ));
-            entityDescriptors.Add(new EntityDescriptor(Species.Ork, Occupation.Knight, 700));
-            entityDescriptors.Add(new EntityDescriptor(Species.Ork, Occupation.Warrior, 500));
-            entityDescriptors.Add(new EntityDescriptor(Species.Troll, Occupation.Archer, 500));
-            entityDescriptors.Add(new EntityDescriptor(Species.Dwarf, Occupation.Knight, 500));
-            entityDescriptors.Add(new EntityDescriptor(Species.Dragon, Occupation.Warlock, 500));
-            entityDescriptors.Add(new EntityDescriptor(Species.Unicorn, Occupation.Necromancer, 500));
-            entityDescriptors.Add(new EntityDescriptor(Species.Wolf, Occupation.Beast, 100));
-            entityDescriptors.Add(new EntityDescriptor(Species.Goat, Occupation.Wizard, 100));
-            entityDescriptors.Add(new EntityDescriptor(Species.Bear, Occupation.Beast, 100));
-            entityDescriptors.Add(new EntityDescriptor(Species.Snake, Occupation.Beast, 100));
+            entityDescriptors.Add(new EntityDescriptor(EntitySpecies.Human, EntityOccupation.Thief, 500));
+            entityDescriptors.Add(new EntityDescriptor(EntitySpecies.Elven, EntityOccupation.Marauder, 500 ));
+            entityDescriptors.Add(new EntityDescriptor(EntitySpecies.Ork, EntityOccupation.Knight, 700));
+            entityDescriptors.Add(new EntityDescriptor(EntitySpecies.Ork, EntityOccupation.Warrior, 500));
+            entityDescriptors.Add(new EntityDescriptor(EntitySpecies.Troll, EntityOccupation.Archer, 500));
+            entityDescriptors.Add(new EntityDescriptor(EntitySpecies.Dwarf, EntityOccupation.Knight, 500));
+            entityDescriptors.Add(new EntityDescriptor(EntitySpecies.Dragon, EntityOccupation.Warlock, 500));
+            entityDescriptors.Add(new EntityDescriptor(EntitySpecies.Unicorn, EntityOccupation.Necromancer, 500));
+            entityDescriptors.Add(new EntityDescriptor(EntitySpecies.Wolf, EntityOccupation.Beast, 100));
+            entityDescriptors.Add(new EntityDescriptor(EntitySpecies.Goat, EntityOccupation.Wizard, 100));
+            entityDescriptors.Add(new EntityDescriptor(EntitySpecies.Bear, EntityOccupation.Beast, 100));
+            entityDescriptors.Add(new EntityDescriptor(EntitySpecies.Snake, EntityOccupation.Beast, 100));
 
             // Default descriptors
-            EntityDescriptor defaultEntityDescriptor = new EntityDescriptor(Species.Human, Occupation.Blacksmith, 4200);
+            EntityDescriptor defaultEntityDescriptor = new EntityDescriptor(EntitySpecies.Human, EntityOccupation.Blacksmith, 4200);
             
             // Entities
-            entities.Add(new Entity("Loktar", entityDescriptors.Where(e => e.Species == Species.Ork).DefaultIfEmpty(defaultEntityDescriptor).First()));
-            entities.Add(new Entity("Fenris", entityDescriptors.Where(e => e.Species == Species.Wolf).DefaultIfEmpty(defaultEntityDescriptor).First()));
-            entities.Add(new Entity("Inruel", entityDescriptors.Where(e => e.Occupation == Occupation.Warrior).DefaultIfEmpty(defaultEntityDescriptor).First()));
-            entities.Add(new Entity("Ekhel", entityDescriptors.Where(e => e.Species == Species.Ork && e.Occupation == Occupation.Warrior).DefaultIfEmpty(defaultEntityDescriptor).First()));
-            entities.Add(new Entity("Ekhel", entityDescriptors.Where(e => e.Occupation == Occupation.Archer).DefaultIfEmpty(defaultEntityDescriptor).First()));
-            entities.Add(new Entity("Ekhel", entityDescriptors.Where(e => e.Occupation == Occupation.Marauder).DefaultIfEmpty(defaultEntityDescriptor).First()));
-            entities.Add(new Entity("Ekhel", entityDescriptors.Where(e => e.Occupation == Occupation.Necromancer).DefaultIfEmpty(defaultEntityDescriptor).First()));
+            entities.Add(new Entity("Loktar", entityDescriptors.Where(e => e.EntitySpecies == EntitySpecies.Ork).DefaultIfEmpty(defaultEntityDescriptor).First()));
+            entities.Add(new Entity("Fenris", entityDescriptors.Where(e => e.EntitySpecies == EntitySpecies.Wolf).DefaultIfEmpty(defaultEntityDescriptor).First()));
+            entities.Add(new Entity("Inruel", entityDescriptors.Where(e => e.EntityOccupation == EntityOccupation.Warrior).DefaultIfEmpty(defaultEntityDescriptor).First()));
+            entities.Add(new Entity("Ekhel", entityDescriptors.Where(e => e.EntitySpecies == EntitySpecies.Ork && e.EntityOccupation == EntityOccupation.Warrior).DefaultIfEmpty(defaultEntityDescriptor).First()));
+            entities.Add(new Entity("Ekhel", entityDescriptors.Where(e => e.EntityOccupation == EntityOccupation.Archer).DefaultIfEmpty(defaultEntityDescriptor).First()));
+            entities.Add(new Entity("Ekhel", entityDescriptors.Where(e => e.EntityOccupation == EntityOccupation.Marauder).DefaultIfEmpty(defaultEntityDescriptor).First()));
+            entities.Add(new Entity("Ekhel", entityDescriptors.Where(e => e.EntityOccupation == EntityOccupation.Necromancer).DefaultIfEmpty(defaultEntityDescriptor).First()));
 
-            entities.Add(new Entity("Garglebloth", Type.Undead, Species.Ork, Occupation.Marauder, 350));
-            entities.Add(new Entity("Ymritol", Type.Were, Species.Unicorn, Occupation.Miller, 35000));
-            entities.Add(new Entity("Zooldestir", Type.Skeleton, Species.Dwarf, Occupation.Peasant, 30));
-            entities.Add(new Entity("Random", RndEnumVal<Type>(), RndEnumVal<Species>(), RndEnumVal<Occupation>(), 30));
-            entities.Add(new Entity("Random", RndEnumVal<Type>(), RndEnumVal<Species>(), RndEnumVal<Occupation>(), 30));
-            entities.Add(new Entity("Random", RndEnumVal<Type>(), RndEnumVal<Species>(), RndEnumVal<Occupation>(), 30));
-            entities.Add(new Entity("Random", RndEnumVal<Type>(), RndEnumVal<Species>(), RndEnumVal<Occupation>(), 30));
-            entities.Add(new Entity("Random", RndEnumVal<Type>(), RndEnumVal<Species>(), RndEnumVal<Occupation>(), 30));
+            entities.Add(new Entity("Garglebloth", EntityType.Undead, EntitySpecies.Ork, EntityOccupation.Marauder, 350));
+            entities.Add(new Entity("Ymritol", EntityType.Were, EntitySpecies.Unicorn, EntityOccupation.Miller, 35000));
+            entities.Add(new Entity("Zooldestir", EntityType.Skeleton, EntitySpecies.Dwarf, EntityOccupation.Peasant, 30));
+            entities.Add(new Entity("Random", EnumRndVal<EntityType>(), EnumRndVal<EntitySpecies>(), EnumRndVal<EntityOccupation>(), 30));
+            entities.Add(new Entity("Random", EnumRndVal<EntityType>(), EnumRndVal<EntitySpecies>(), EnumRndVal<EntityOccupation>(), 30));
+            entities.Add(new Entity("Random", EnumRndVal<EntityType>(), EnumRndVal<EntitySpecies>(), EnumRndVal<EntityOccupation>(), 30));
+            entities.Add(new Entity("Random", EnumRndVal<EntityType>(), EnumRndVal<EntitySpecies>(), EnumRndVal<EntityOccupation>(), 30));
+            entities.Add(new Entity("Random", EnumRndVal<EntityType>(), EnumRndVal<EntitySpecies>(), EnumRndVal<EntityOccupation>(), 30));
             */
             Random rnd = new Random(Guid.NewGuid().GetHashCode());
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 30; i++)
             {
-                entities.Add(new Entity(GenerateName(), RndEnumVal<Type>(), RndEnumVal<Species>(), RndEnumVal<Occupation>(), rnd.Next(1, 1000)));
+                entities.Add(new Entity(GenerateName(), EnumRndVal<EntityType>(), EnumRndVal<EntitySpecies>(), EnumRndVal<EntityOccupation>(), rnd.Next(1, 1000)));
             }
 
-            foreach(var entity in entities)
+            int totalCombinations = EnumCount<EntityType>() * EnumCount<EntitySpecies>() * EnumCount<EntityOccupation>();
+
+            Console.WriteLine($"Number of combinations: {totalCombinations}");
+
+            Console.WriteLine("\n");
+
+            foreach (var entity in entities)
             {
                 Console.WriteLine(entity);
             }
 
         }
 
-        static T RndEnumVal<T>()
+        static int EnumCount<T>()
+        {
+            var v = Enum.GetValues(typeof(T));
+            return v.Length;
+        }
+
+        static T EnumRndVal<T>()
         {
             Random rnd = new Random(Guid.NewGuid().GetHashCode());
             var v = Enum.GetValues(typeof(T));
