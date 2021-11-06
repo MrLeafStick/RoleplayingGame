@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPG-V1", "RoleplayingGame\R
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPG-V2", "RPG-V2\RPG-V2.csproj", "{8FBFE3D0-26CE-4540-B6E2-7C743127A12E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG-V3", "RPG-V3\RPG-V3.csproj", "{658E3055-83D8-4F3B-B9BA-D0373CF6C9B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPG-V3", "RPG-V3\RPG-V3.csproj", "{658E3055-83D8-4F3B-B9BA-D0373CF6C9B6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPG-Sandbox-V1", "..\EnumTest\EnumTest\RPG-Sandbox-V1.csproj", "{DC2C4F39-1643-4000-8DCC-BA056FF4B35C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPG-Sandbox-V1", "EnumTest\RPG-Sandbox-V1.csproj", "{A66E48ED-4241-468E-9697-069EBBDFFBDA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{658E3055-83D8-4F3B-B9BA-D0373CF6C9B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{658E3055-83D8-4F3B-B9BA-D0373CF6C9B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{658E3055-83D8-4F3B-B9BA-D0373CF6C9B6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DC2C4F39-1643-4000-8DCC-BA056FF4B35C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC2C4F39-1643-4000-8DCC-BA056FF4B35C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DC2C4F39-1643-4000-8DCC-BA056FF4B35C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DC2C4F39-1643-4000-8DCC-BA056FF4B35C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A66E48ED-4241-468E-9697-069EBBDFFBDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A66E48ED-4241-468E-9697-069EBBDFFBDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A66E48ED-4241-468E-9697-069EBBDFFBDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A66E48ED-4241-468E-9697-069EBBDFFBDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
