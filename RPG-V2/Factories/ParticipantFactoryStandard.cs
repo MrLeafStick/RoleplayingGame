@@ -13,7 +13,7 @@ namespace RPG_V2.Factories
     {
         public IParticipant CreateParticipant()
         {
-            int index = RNG.RandomInt(1, 6);
+            int index = RNG.RandomInt(1, 8);
 
             return index switch
             {
@@ -23,13 +23,15 @@ namespace RPG_V2.Factories
                 4 => new Wolf(),
                 5 => new Golem(GenerateName()),
                 6 => new Troll(GenerateName()),
+                7 => new Ghoul(GenerateName()),
+                8 => new Skeleton(GenerateName()),
                 _ => throw new Exception($"Could not generate item with index {index}"),
             };
         }
 
         private string GenerateName()
         {
-            List<string> generator = new List<string> { "xan", "tran", "ser", "mor", "houl", "zuur", "raz", "qex", "sir", "vaar" };
+            List<string> generator = new List<string> { "xan", "tran", "ser", "mor", "houl", "zuur", "raz", "qex", "sir", "zor", "vaar", "khon", "an", "bel", "lin" };
 
             var name = generator[RNG.RandomInt(0, generator.Count - 1)] +
                        generator[RNG.RandomInt(0, generator.Count - 1)] +

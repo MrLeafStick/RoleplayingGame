@@ -126,7 +126,9 @@ namespace RPG_V2.GameManagement
                     }
                     else
                     {
-                        Console.WriteLine($"{participant.Name} has died.\n");
+                        string fullName = participant.Name == participant.GetType().Name ? participant.Name : participant.Name + " the " + participant.GetType().Name;
+
+                        Console.WriteLine($"{fullName} has died.\n");
                     }
                 }
             }

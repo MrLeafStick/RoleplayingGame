@@ -119,34 +119,29 @@ namespace RPG_V2.Participants
 
         public virtual IItem GetInitialItem()
         {
-            int index = RNG.RandomInt(1, 7);
+            int index = RNG.RandomInt(1, 8);
 
-            switch(index)
+            return index switch
             {
-                case 1:
-                    return new ClothGloves();
-                case 2:
-                    return new LeatherBoots();
-                case 3:
-                    return new PlateBoots();
-                case 4:
-                    return new WoodenShield();
-                case 5:
-                    return new IronSword();
-                case 6:
-                    return new SteelLance();
-                case 7:
-                    return new WoodMace();
-                default:
-                    throw new Exception($"Could not generate item with index {index}");
-            }
+                1 => new ClothGloves(),
+                2 => new LeatherBoots(),
+                3 => new PlateBoots(),
+                4 => new WoodenShield(),
+                5 => new IronSword(),
+                6 => new SteelLance(),
+                7 => new WoodMace(),
+                8 => new BronzeDagger(),
+                _ => throw new Exception($"Could not generate item with index {index}"),
+            };
         }
         #endregion
 
         #region Methods
         public override string ToString()
         {
-            string desc = $"{Name} has {GoldOwned} gold, " +
+            string fullName = Name == GetType().Name ? Name: Name + " the " + GetType().Name;
+
+            string desc = $"{fullName} has {GoldOwned} gold, " +
                 $"{HealthPoints:F1} health points " +
                 $"and {ArmorPoints:F1} armor points\n";
 
@@ -161,7 +156,7 @@ namespace RPG_V2.Participants
 
                 foreach (var weapon in WeaponsOwned)
                 {
-                    desc += $"  {weapon} ({weapon.MaxWeaponDamage})\n";
+                    desc += $"  {weapon} (Max dmg {weapon.MaxWeaponDamage})\n";
                 }
 
             return desc;
