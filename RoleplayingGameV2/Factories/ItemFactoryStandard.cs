@@ -16,18 +16,18 @@ namespace RoleplayingGameV2.Factories
         public IItem CreateItem()
         {
             int index = RNG.RandomInt(1, 8);
-            switch (index)
+            return index switch
             {
-                case 1: return new ClothGloves();
-                case 2: return new LeatherBoots();
-                case 3: return new PlateBoots();
-                case 4: return new WoodenShield();
-                case 5: return new IronSword();
-                case 6: return new SteelLance();
-                case 7: return new WoodenMace();
-                case 8: return new WoodenStick();
-                default: throw new Exception($"Could not generate item with index {index}");
-            }
+                1 => new ClothGloves(),
+                2 => new LeatherBoots(),
+                3 => new PlateBoots(),
+                4 => new WoodenShield(),
+                5 => new IronSword(),
+                6 => new SteelLance(),
+                7 => new WoodenMace(),
+                8 => new WoodenStick(),
+                _ => throw new Exception($"Could not generate item with index {index}"),
+            };
         }
     }
 }

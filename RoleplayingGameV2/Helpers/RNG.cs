@@ -31,10 +31,5 @@ namespace RoleplayingGameV2.Helpers
         {
             return RandomPercent() < 50;
         }
-
-        //public static bool FourDie()
-        //{
-        //    return RandomPercent() < 25;
-        //}
     }
 }

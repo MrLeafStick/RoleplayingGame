@@ -8,13 +8,13 @@ namespace RoleplayingGameV2.Items.Weapons
 {
     public class WoodenStick : WeaponBase
     {
-        public WoodenStick() : base(5)
+        public WoodenStick() : base()
         {
         }
 
-        public override string Description
-        {
-            get { return "Wooden Stick"; }
-        }
+        public override int TotalMaxWeaponDamage { get { return 5; } }
+        public override int TotalMinWeaponDamage { get { return 1; } }
+
+        public override string Name { get { return "Wooden Stick"; } }
     }
 }

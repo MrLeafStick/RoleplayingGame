@@ -3,10 +3,11 @@
     public class HumanoidBase : ParticipantBase
     {
         public const int MAX_INITIAL_GOLD = 50;
-        public const int MAX_INITIAL_ITEMS = 4;
+        public const int MAX_INITIAL_ARMOR = 2;
+        public const int MAX_INITIAL_WEAPONS = 1;
 
-        public HumanoidBase(string name, int maxInitialHealthPoints, double maxDamage) 
-            : base(maxInitialHealthPoints, MAX_INITIAL_GOLD, MAX_INITIAL_ITEMS, maxDamage, name)
+        public HumanoidBase(string name, int maxInitialHealthPoints, double meleeMaxDamage) 
+            : base(maxInitialHealthPoints, MAX_INITIAL_GOLD, MAX_INITIAL_ARMOR, MAX_INITIAL_WEAPONS, meleeMaxDamage, name)
         {
         }
     }

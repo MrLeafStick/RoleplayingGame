@@ -12,17 +12,17 @@ namespace RoleplayingGameV2.Items.Weapons
         protected WeaponBase()
         {
             MaxWeaponDamage = RNG.RandomInt(1, TotalMaxWeaponDamage);
+            MinWeaponDamage = RNG.RandomInt(1, TotalMinWeaponDamage);
             // TODO: MIN WEP DMG
         }
 
         public override string Description
         {
-            get { return $"Name (max. {TotalMaxWeaponDamage} weapon damage)"; }
+            get { return $"{Name} (max. {TotalMaxWeaponDamage} weapon damage)"; }
         }
 
         public abstract int TotalMaxWeaponDamage { get; }
+        public abstract int TotalMinWeaponDamage { get; }
         public abstract string Name { get; }
     }
 }
-
-// TODO: Fix the rest of the weapon classes to reflect the new infrastructure

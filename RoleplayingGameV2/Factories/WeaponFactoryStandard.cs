@@ -11,14 +11,14 @@ namespace RoleplayingGameV2.Factories
         public IWeapon CreateWeapon()
         {
             int index = RNG.RandomInt(1, 4);
-            switch (index)
+            return index switch
             {
-                case 1: return new IronSword();
-                case 2: return new SteelLance();
-                case 3: return new WoodenMace();
-                case 4: return new WoodenStick();
-                default: throw new Exception($"Could not generate weapon with index {index}");
-            }
+                1 => new IronSword(),
+                2 => new SteelLance(),
+                3 => new WoodenMace(),
+                4 => new WoodenStick(),
+                _ => throw new Exception($"Could not generate weapon with index {index}"),
+            };
         }
     }
 }

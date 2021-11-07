@@ -2,13 +2,13 @@
 {
     public class IronSword : WeaponBase
     {
-        public IronSword() : base(40.0)
+        public IronSword() : base()
         {
         }
 
-        public override string Description 
-        { 
-            get { return "One-Handed Iron Sword"; }
-        }
+        public override int TotalMaxWeaponDamage { get { return 40; } }
+        public override int TotalMinWeaponDamage { get { return 10; } }
+
+        public override string Name { get { return "One-Handed Iron Sword"; } }
     }
 }

@@ -13,5 +13,6 @@ namespace RoleplayingGameV2.Interfaces
 
         double DealDamage();
         void ReceiveDamage(double damagePoints);
+        void ClearItems();
     }
 }

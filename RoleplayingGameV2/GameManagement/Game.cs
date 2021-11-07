@@ -59,11 +59,15 @@ namespace RoleplayingGameV2.GameManagement
         {
             character.GoldOwned += opponent.GoldOwned;
             opponent.GoldOwned = 0;
-            foreach (var item in opponent.ItemsOwned)
+            foreach (var armor in opponent.ArmorOwned)
             {
-                character.AddItem(item);
+                character.AddArmor(armor);
             }
-            opponent.ItemsOwned.Clear();
+            foreach (var weapon in opponent.WeaponsOwned)
+            {
+                character.AddWeapon(weapon);
+            }
+            opponent.ClearItems();
         }
 
         private void PrintParticipant(List<IParticipant> participants)

@@ -11,14 +11,14 @@ namespace RoleplayingGameV2.Factories
         public IArmor CreateArmor()
         {
             int index = RNG.RandomInt(1, 4);
-            switch (index)
+            return index switch
             {
-                case 1: return new ClothGloves();
-                case 2: return new LeatherBoots();
-                case 3: return new PlateBoots();
-                case 4: return new WoodenShield();
-                default: throw new Exception($"Could not generate armor with index {index}");
-            }
+                1 => new ClothGloves(),
+                2 => new LeatherBoots(),
+                3 => new PlateBoots(),
+                4 => new WoodenShield(),
+                _ => throw new Exception($"Could not generate armor with index {index}"),
+            };
         }
     }
 }

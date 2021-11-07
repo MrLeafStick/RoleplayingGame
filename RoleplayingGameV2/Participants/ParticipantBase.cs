@@ -49,11 +49,7 @@ namespace RoleplayingGameV2.Participants
         public List<IArmor> ArmorOwned { get; }
         public List<IWeapon> WeaponsOwned { get; }
         public bool IsDead { get { return HealthPoints <= 0; } }
-        public double ArmorPoints
-        {
-            // TODO: Change from average to sum!
-            get { return ArmorOwned.Count == 0 ? 0 : ArmorOwned.Select(a => a.ArmorPoints).Average(); }
-        }
+        public double ArmorPoints { get { return ArmorOwned.Count == 0 ? 0 : ArmorOwned.Select(a => a.ArmorPoints).Sum(); } }
         #endregion
 
         #region Methods
@@ -89,7 +85,8 @@ namespace RoleplayingGameV2.Participants
         protected List<IWeapon> SetInitialWeaponsOwned()
         {
             var initialWeapons = new List<IWeapon>();
-            for (int i = 0; i < RNG.RandomInt(0, _maxInitialWeapons); i++)
+            var maxInitialWeapons = RNG.RandomInt(0, _maxInitialWeapons);
+            for (int i = 0; i < maxInitialWeapons; i++)
             {
                 initialWeapons.Add(GameFactory.Instance.WeaponFactory.CreateWeapon());
             }
@@ -99,36 +96,17 @@ namespace RoleplayingGameV2.Participants
         protected List<IArmor> SetInitialArmorOwned()
         {
             var initialArmor = new List<IArmor>();
-            for (int i = 0; i < RNG.RandomInt(0, _maxInitialArmor); i++)
+            var maxInitialArmor = RNG.RandomInt(0, _maxInitialArmor);
+            for (int i = 0; i < maxInitialArmor; i++)
             {
                 initialArmor.Add(GameFactory.Instance.ArmorFactory.CreateArmor());
             }
             return initialArmor;
         }
 
-        public virtual IItem GetInitialItem()
-        {
-            int index = RNG.RandomInt(1, 8);
-            switch (index)
-            {
-                case 1: return new ClothGloves();
-                case 2: return new LeatherBoots();
-                case 3: return new PlateBoots();
-                case 4: return new WoodenShield();
-                case 5: return new IronSword();
-                case 6: return new SteelLance();
-                case 7: return new WoodenMace();
-                case 8: return new WoodenStick();
-                default: throw new Exception($"Could not generate item with index {index}");
-            }
-        }
-
         public virtual double DealDamage()
         {
-            // TODO: Figure out with weapon that is best and the damage from that weapon
-            // TODO hint: SELECT(w => w.Damage).Max();
-
-            return (RNG.RandomDouble(0.0, _meleeMaxDamage));
+            return WeaponsOwned.Count == 0 ? 0.0 : WeaponsOwned.Select(weapon => weapon.MaxWeaponDamage).Max();
         }
 
         public virtual void ReceiveDamage(double damagePoints)

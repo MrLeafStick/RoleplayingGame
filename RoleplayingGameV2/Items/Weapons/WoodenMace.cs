@@ -8,13 +8,13 @@ namespace RoleplayingGameV2.Items.Weapons
 {
     public class WoodenMace : WeaponBase
     {
-        public WoodenMace() : base(30)
+        public WoodenMace() : base()
         {
         }
 
-        public override string Description
-        {
-            get { return "Rough Wooden Mace"; }
-        }
+        public override int TotalMaxWeaponDamage { get { return 30; } }
+        public override int TotalMinWeaponDamage { get { return 10; } }
+
+        public override string Name { get { return "Rough Wooden Mace"; } }
     }
 }

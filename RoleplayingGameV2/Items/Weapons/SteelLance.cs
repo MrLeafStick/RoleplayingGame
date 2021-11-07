@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RoleplayingGameV2.Items.Weapons
+﻿namespace RoleplayingGameV2.Items.Weapons
 {
     public class SteelLance : WeaponBase
     {
-        public SteelLance() : base(75)
+        public SteelLance() : base()
         {
         }
 
-        public override string Description
-        {
-            get { return "Sharpned Steel Lance"; }
-        }
+        public override int TotalMaxWeaponDamage { get { return 75; } }
+        public override int TotalMinWeaponDamage { get { return 10; } }
+
+        public override string Name { get { return "Sharpned Steel Lance"; } }
     }
 }
