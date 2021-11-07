@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoleplayingGame
 {
-    public class CharacterGroup 
+    public class CharacterGroup
     {
         #region Instance Fields
         private List<BaseCharacter> _group;
@@ -27,11 +25,11 @@ namespace RoleplayingGame
 
         #region Propertes
         public string GroupName { get { return _groupName; } }
-        public bool IsDead 
-        { 
-            get 
-            { 
-                foreach(BaseCharacter member in _group)
+        public bool IsDead
+        {
+            get
+            {
+                foreach (BaseCharacter member in _group)
                 {
                     if (!member.IsDead)
                     {
@@ -39,7 +37,7 @@ namespace RoleplayingGame
                     }
                 }
                 return true;
-            } 
+            }
         }
         #endregion
 
@@ -53,9 +51,9 @@ namespace RoleplayingGame
         {
             int totalDamage = 0;
 
-            foreach(BaseCharacter member in _group)
+            foreach (BaseCharacter member in _group)
             {
-                if(!member.IsDead)
+                if (!member.IsDead)
                 {
                     totalDamage += member.DealDamage();
                 }
@@ -66,8 +64,8 @@ namespace RoleplayingGame
 
         public void ReceiveDamage(int damage)
         {
-            while(true)
-            { 
+            while (true)
+            {
                 var randomMember = _random.Next(0, _group.Count());
                 BaseCharacter member = _group.ElementAt(randomMember);
 

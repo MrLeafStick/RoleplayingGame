@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace RoleplayingGame
+﻿namespace RoleplayingGame
 {
     class Program
     {

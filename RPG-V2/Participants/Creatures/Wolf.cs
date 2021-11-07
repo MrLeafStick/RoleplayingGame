@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RPG_V2.Participants.Creatures
+﻿namespace RPG_V2.Participants.Creatures
 {
     public class Wolf : CreatureBase
     {

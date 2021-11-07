@@ -1,10 +1,7 @@
 ﻿using RPG_V2.Interfaces;
 using RPG_V2.Participants;
-using RPG_V2.Participants.Creatures;
-using RPG_V2.Participants.Humanoids;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace RPG_V2.GameManagement
 {
@@ -35,9 +32,9 @@ namespace RPG_V2.GameManagement
 
         private void FightParticipants(Character aChar, List<IParticipant> participants)
         {
-            foreach(var participant in participants)
+            foreach (var participant in participants)
             {
-                if(IsFighting(aChar, participant) == true)
+                if (IsFighting(aChar, participant) == true)
                 {
                     Loot(aChar, participant);
                 }
@@ -46,11 +43,11 @@ namespace RPG_V2.GameManagement
 
         private bool IsFighting(Character aChar, IParticipant opponent)
         {
-            while(!opponent.IsDead && !aChar.IsDead)
+            while (!opponent.IsDead && !aChar.IsDead)
             {
                 opponent.ReceiveDamage(aChar.DealDamage());
 
-                if(!opponent.IsDead)
+                if (!opponent.IsDead)
                 {
                     aChar.ReceiveDamage(opponent.DealDamage());
                 }
@@ -64,7 +61,7 @@ namespace RPG_V2.GameManagement
             // Copy opponent stuff
             aChar.GoldOwned += opponent.GoldOwned;
 
-            foreach(var armor in opponent.ArmorOwned)
+            foreach (var armor in opponent.ArmorOwned)
             {
                 aChar.AddArmor(armor);
             }
@@ -82,7 +79,7 @@ namespace RPG_V2.GameManagement
 
         private void PrintParticipants(List<IParticipant> participants)
         {
-            foreach(var participant in participants)
+            foreach (var participant in participants)
             {
                 Console.WriteLine(participant);
             }
@@ -108,7 +105,7 @@ namespace RPG_V2.GameManagement
             Console.WriteLine("The game has ended.");
             Console.WriteLine(new string('*', 40));
 
-            if(!aChar.IsDead)
+            if (!aChar.IsDead)
             {
                 Console.WriteLine($"{aChar.Name} survived.\n");
 

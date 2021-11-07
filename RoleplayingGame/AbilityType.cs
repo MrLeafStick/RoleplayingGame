@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RoleplayingGame
+﻿namespace RoleplayingGame
 {
     public enum AbilityType
     {

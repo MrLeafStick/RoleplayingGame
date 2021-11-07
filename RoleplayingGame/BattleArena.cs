@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RoleplayingGame
+﻿namespace RoleplayingGame
 {
     public class BattleArena
     {
         public static void DoBattle(CharacterGroup groupA, CharacterGroup groupB)
         {
-            while(!groupA.IsDead && !groupB.IsDead)
+            while (!groupA.IsDead && !groupB.IsDead)
             {
                 BattleLog.Save($" ------------  {groupA.GroupName} attacks  ------------");
 
                 groupB.ReceiveDamage(groupA.DealDamage());
 
-                if(!groupA.IsDead)
+                if (!groupA.IsDead)
                 {
                     BattleLog.Save($" ------------  {groupB.GroupName} attacks  ------------");
 
@@ -27,7 +21,7 @@ namespace RoleplayingGame
                 groupB.Regenerate();
             }
 
-            BattleLog.Save($" {new string('=', 20)} BATTLE IS OVER {new string('=',20)}");
+            BattleLog.Save($" {new string('=', 20)} BATTLE IS OVER {new string('=', 20)}");
             BattleLog.Save($"{ (groupA.IsDead ? groupB.GroupName : groupA.GroupName)} won! Status:");
             groupA.LogSurvivor();
             groupB.LogSurvivor();

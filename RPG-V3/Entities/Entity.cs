@@ -1,11 +1,8 @@
 ﻿using RPG_V3.GameManagement;
 using RPG_V3.Helpers;
 using RPG_V3.Interfaces;
-using RPG_V3.Interfaces.Items.Armor;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace RPG_V3.Entities
 {
@@ -29,7 +26,7 @@ namespace RPG_V3.Entities
             Category = entity.Category;
             Species = entity.Species;
             Occupation = entity.Occupation;
-            
+
             Name = entity.Name;
             GoldOwned = entity.GoldOwned;
             HealthPoints = entity.HealthPoints;
@@ -118,7 +115,7 @@ namespace RPG_V3.Entities
 
             var armorString = $"{Name} has the following armor:\n";
 
-            foreach(var armor in ArmorOwned)
+            foreach (var armor in ArmorOwned)
             {
                 armorString += $" {armor.Name}\n";
             }

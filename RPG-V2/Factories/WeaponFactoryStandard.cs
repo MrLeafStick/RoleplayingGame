@@ -3,8 +3,6 @@ using RPG_V2.Interfaces;
 using RPG_V2.Interfaces.Factories;
 using RPG_V2.Items.Weapons;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace RPG_V2.Factories
 {

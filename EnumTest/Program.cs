@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace EnumTest
 {
@@ -146,7 +145,7 @@ namespace EnumTest
                 EntitySpecies = species;
                 EntityOccupation = occupation;
                 MaxHealthPoints = healthPoints;
-                
+
                 Abilities = new List<Ability>();
             }
 
@@ -160,11 +159,11 @@ namespace EnumTest
 
             public override string ToString()
             {
-                var entityString =  $"{Name} the {EntityType} {EntitySpecies} is a {EntityOccupation} and has {MaxHealthPoints} health points.";
+                var entityString = $"{Name} the {EntityType} {EntitySpecies} is a {EntityOccupation} and has {MaxHealthPoints} health points.";
 
                 var abilityString = $"{Name} has the following abilities:\n";
 
-                foreach(var ability in Abilities)
+                foreach (var ability in Abilities)
                 {
                     abilityString += ability.ToString();
                 }

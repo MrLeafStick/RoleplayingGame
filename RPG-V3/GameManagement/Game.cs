@@ -1,9 +1,7 @@
 ﻿using RPG_V3.Entities;
-using RPG_V3.GameManagement;
 using RPG_V3.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace RPG_V3.GameManagement
 {
@@ -34,9 +32,9 @@ namespace RPG_V3.GameManagement
 
         private void FightParticipants(Entity aChar, List<IEntity> participants)
         {
-            foreach(var participant in participants)
+            foreach (var participant in participants)
             {
-                if(IsFighting(aChar, participant))
+                if (IsFighting(aChar, participant))
                 {
                     Loot(aChar, participant);
                 }
@@ -45,11 +43,11 @@ namespace RPG_V3.GameManagement
 
         private bool IsFighting(Entity aChar, IEntity opponent)
         {
-            while(!opponent.IsDestroyed && !aChar.IsDestroyed)
+            while (!opponent.IsDestroyed && !aChar.IsDestroyed)
             {
                 opponent.ReceiveDamage(aChar.DealDamage());
 
-                if(!opponent.IsDestroyed)
+                if (!opponent.IsDestroyed)
                 {
                     aChar.ReceiveDamage(opponent.DealDamage());
                 }
@@ -63,7 +61,7 @@ namespace RPG_V3.GameManagement
             // Copy opponent stuff
             aChar.GoldOwned += opponent.GoldOwned;
 
-            foreach(var armor in opponent.ArmorOwned)
+            foreach (var armor in opponent.ArmorOwned)
             {
                 aChar.AddArmor(armor);
             }
@@ -81,7 +79,7 @@ namespace RPG_V3.GameManagement
 
         private void PrintParticipants(List<IEntity> participants)
         {
-            foreach(var participant in participants)
+            foreach (var participant in participants)
             {
                 Console.WriteLine(participant);
             }
@@ -107,7 +105,7 @@ namespace RPG_V3.GameManagement
             Console.WriteLine("The game has ended.");
             Console.WriteLine(new string('*', 40));
 
-            if(!aChar.IsDestroyed)
+            if (!aChar.IsDestroyed)
             {
                 Console.WriteLine($"{aChar.Name} survived.\n");
                 Console.WriteLine(aChar);

@@ -1,9 +1,6 @@
-﻿using RPG_V3.Entities;
-using RPG_V3.Factories;
+﻿using RPG_V3.Factories;
 using RPG_V3.GameManagement;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace RPG_V3
 {

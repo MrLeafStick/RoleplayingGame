@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace RPG_V3.Interfaces.Items.Weapons
 {
     class Weapon : IWeapon
     {
-        public static Weapon WoodenSword    { get { return new Weapon("Wooden Sword", 4.0, 1.0, 10.0, 1.0); } }
-        public static Weapon FlintSword     { get { return new Weapon("Flint Sword", 8.0, 2.0, 50.0, 1.0); } }
-        public static Weapon BronzeSword    { get { return new Weapon("Bronze Sword", 16.0, 2.0, 50.0, 1.0); } }
-        public static Weapon IronSword      { get { return new Weapon("Iron Sword", 24.0, 5.0, 80.0, 1.0); } }
-        public static Weapon SteelSword     { get { return new Weapon("Steel Sword", 32.0, 5.0, 100.0, 1.0); } }
+        public static Weapon WoodenSword { get { return new Weapon("Wooden Sword", 4.0, 1.0, 10.0, 1.0); } }
+        public static Weapon FlintSword { get { return new Weapon("Flint Sword", 8.0, 2.0, 50.0, 1.0); } }
+        public static Weapon BronzeSword { get { return new Weapon("Bronze Sword", 16.0, 2.0, 50.0, 1.0); } }
+        public static Weapon IronSword { get { return new Weapon("Iron Sword", 24.0, 5.0, 80.0, 1.0); } }
+        public static Weapon SteelSword { get { return new Weapon("Steel Sword", 32.0, 5.0, 100.0, 1.0); } }
 
         private Weapon(string name, double value, double weight, double maxDamagePoints, double minDamagePoints)
         {

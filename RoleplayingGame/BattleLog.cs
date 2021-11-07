@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoleplayingGame
 {
@@ -18,9 +15,9 @@ namespace RoleplayingGame
         public static void PrintLog()
         {
             Console.WriteLine("Battle log:");
-            Console.WriteLine( new string('=', 40));
+            Console.WriteLine(new string('=', 40));
 
-            foreach(string s in _log)
+            foreach (string s in _log)
             {
                 Console.WriteLine(s);
             }

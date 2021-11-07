@@ -6,7 +6,6 @@ using RPG_V2.Items.Weapons;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace RPG_V2.Participants
 {
@@ -21,7 +20,7 @@ namespace RPG_V2.Participants
         #endregion
 
         #region Properties
-        public virtual string Name { get;}
+        public virtual string Name { get; }
         public double HealthPoints { get; private set; }
         public int GoldOwned { get; set; }
         public List<IArmor> ArmorOwned { get; }
@@ -34,11 +33,11 @@ namespace RPG_V2.Participants
         #endregion
 
         #region Constructors
-        protected ParticipantBase(  int maxInitialHealthPoints, 
-                                    int maxInitialGold, 
-                                    int maxInitialArmor, 
-                                    int maxInitialWeapons, 
-                                    double meleeMaxDamage, 
+        protected ParticipantBase(int maxInitialHealthPoints,
+                                    int maxInitialGold,
+                                    int maxInitialArmor,
+                                    int maxInitialWeapons,
+                                    double meleeMaxDamage,
                                     string name)
         {
             _maxInitialHealthPoints = maxInitialHealthPoints;
@@ -68,7 +67,7 @@ namespace RPG_V2.Participants
         protected virtual List<IArmor> SetInitialArmorOwned()
         {
             var initalArmor = new List<IArmor>();
-            for(int i = 0; i < RNG.RandomInt(0, _maxInitialArmor); i++)
+            for (int i = 0; i < RNG.RandomInt(0, _maxInitialArmor); i++)
             {
                 initalArmor.Add(GameFactory.Instance().ArmorFactory.CreateArmor());
             }
@@ -87,7 +86,7 @@ namespace RPG_V2.Participants
             return RNG.RandomInt(0, _maxInitialGold);
         }
 
-        
+
 
         public virtual double DealDamage()
         {
@@ -137,25 +136,25 @@ namespace RPG_V2.Participants
         #region Methods
         public override string ToString()
         {
-            string fullName = Name == GetType().Name ? Name: Name + " the " + GetType().Name;
+            string fullName = Name == GetType().Name ? Name : Name + " the " + GetType().Name;
 
             string desc = $"{fullName} has {GoldOwned} gold, " +
                 $"{HealthPoints:F1} health points " +
                 $"and {ArmorPoints:F1} armor points\n";
 
-                desc += $"{Name} owns {ArmorOwned.Count} armor items: \n";
+            desc += $"{Name} owns {ArmorOwned.Count} armor items: \n";
 
-                foreach (var armor in ArmorOwned)
-                {
-                    desc += $"  {armor} ({armor.ArmorPoints})\n";
-                }
+            foreach (var armor in ArmorOwned)
+            {
+                desc += $"  {armor} ({armor.ArmorPoints})\n";
+            }
 
-                desc += $"{Name} owns {WeaponsOwned.Count} weapon items: \n";
+            desc += $"{Name} owns {WeaponsOwned.Count} weapon items: \n";
 
-                foreach (var weapon in WeaponsOwned)
-                {
-                    desc += $"  {weapon} (Max dmg {weapon.MaxWeaponDamage})\n";
-                }
+            foreach (var weapon in WeaponsOwned)
+            {
+                desc += $"  {weapon} (Max dmg {weapon.MaxWeaponDamage})\n";
+            }
 
             return desc;
         }

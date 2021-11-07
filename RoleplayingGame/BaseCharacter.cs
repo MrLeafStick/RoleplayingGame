@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoleplayingGame
 {
@@ -24,11 +22,11 @@ namespace RoleplayingGame
         #endregion
 
         #region Constructor
-        public BaseCharacter(string name, 
-                            int maxHitPoints, 
-                            int minDamage, 
-                            int maxDamage, 
-                            int maxStamina, 
+        public BaseCharacter(string name,
+                            int maxHitPoints,
+                            int minDamage,
+                            int maxDamage,
+                            int maxStamina,
                             int staminaRegen,
                             int maxMana,
                             int ManaRegen)
@@ -53,7 +51,7 @@ namespace RoleplayingGame
         public string Name
         {
             get { return _name; }
-        }        
+        }
 
         public bool IsDead
         {
@@ -85,7 +83,7 @@ namespace RoleplayingGame
             _stamina = _maxStamina;
             _mana = _maxMana;
         }
-        
+
         public virtual int DealDamage()
         {
             int randomAbility = NumberGenerator.Next(0, SpellVector.Count);
@@ -96,7 +94,7 @@ namespace RoleplayingGame
             int damage = NumberGenerator.Next(_minDamage, _maxDamage);
             int modifiedDamage = DealDamageModifier(damage, abilityValue);
 
-            if(damageCost <= _stamina)
+            if (damageCost <= _stamina)
             {
                 _stamina -= damageCost;
                 string damageDesc = (damage < modifiedDamage) ? "(INCREASED)" : "\b";
@@ -145,7 +143,7 @@ namespace RoleplayingGame
         public int DealDamageModifier(int dealtDamage, int modifier)
         {
             int modifiedDealtDamage = dealtDamage;
-            if(NumberGenerator.BelowPercentage(DealDamageModifyChance))
+            if (NumberGenerator.BelowPercentage(DealDamageModifyChance))
             {
                 modifiedDealtDamage = CalculateModifedDamage(dealtDamage, modifier);
             }
@@ -173,7 +171,7 @@ namespace RoleplayingGame
         protected virtual int DealDamageModifyChance
         {
             get { return 0; }
-        }        
+        }
 
         /// <summary>
         /// Return the chance of the damage received bbeing modified.

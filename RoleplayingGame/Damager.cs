@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RoleplayingGame
+﻿namespace RoleplayingGame
 {
     public class Damager : BaseCharacter
     {
         #region Constructors
-        public Damager(string name, 
-                          int maxHitPoints, 
-                          int minDamage, 
-                          int maxDamage, 
-                          int maxStamina, 
+        public Damager(string name,
+                          int maxHitPoints,
+                          int minDamage,
+                          int maxDamage,
+                          int maxStamina,
                           int staminaRegen,
                           int maxMana,
                           int ManaRegen)

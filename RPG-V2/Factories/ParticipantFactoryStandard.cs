@@ -5,7 +5,6 @@ using RPG_V2.Participants.Creatures;
 using RPG_V2.Participants.Humanoids;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace RPG_V2.Factories
 {
@@ -41,6 +40,6 @@ namespace RPG_V2.Factories
 
             return name;
         }
-       
+
     }
 }

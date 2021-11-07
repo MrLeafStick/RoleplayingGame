@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace RPG_V2.Interfaces
 {
@@ -10,7 +8,7 @@ namespace RPG_V2.Interfaces
         public double HealthPoints { get; }
         public bool IsDead { get; }
         public int GoldOwned { get; set; }
-        List<IArmor> ArmorOwned { get; } 
+        List<IArmor> ArmorOwned { get; }
         List<IWeapon> WeaponsOwned { get; }
 
         double DealDamage();

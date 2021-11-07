@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace RoleplayingGame
 {
@@ -9,7 +8,7 @@ namespace RoleplayingGame
     {
         public static IEnumerable<AbilityType> SpellTypeList
         {
-            get { return Enum.GetValues(typeof(AbilityType)).Cast<AbilityType>();  }
+            get { return Enum.GetValues(typeof(AbilityType)).Cast<AbilityType>(); }
         }
 
         /*

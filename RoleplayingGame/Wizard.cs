@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RoleplayingGame
+﻿namespace RoleplayingGame
 {
     public class Wizard : BaseCharacter
     {
         #region Field Definitions
-        
+
         #endregion
 
         #region Constructors
-        public Wizard( string name,
+        public Wizard(string name,
                         int maxHitPoints,
                         int minDamage,
                         int maxDamage,
@@ -33,9 +27,9 @@ namespace RoleplayingGame
         #region Override Properties
         protected override int DealDamageModifyChance
         {
-            get 
-            { 
-                return 50; 
+            get
+            {
+                return 50;
             }
         }
         #endregion

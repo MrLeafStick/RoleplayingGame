@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RPG_V2.Items.Armour
+﻿namespace RPG_V2.Items.Armour
 {
     class PlateBoots : ArmorBase
     {
