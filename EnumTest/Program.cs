@@ -33,6 +33,11 @@ namespace EnumTest
     {
 
         // Enums
+        public enum Item
+        {
+            Ru
+        }
+
         public enum AbilityName
         {
             Bite,
@@ -85,13 +90,10 @@ namespace EnumTest
             Were,
             Mechanical,
             Undead,
-            Living,
-            Breathing,
-            Alive,
-            Regular,
             Zombie,
             Skeleton,
             Magical,
+            Living,
         }
 
         public enum EntityOccupation
@@ -123,6 +125,19 @@ namespace EnumTest
         }
 
         // Classes
+        public class EntitySpeciesTemplate
+        {
+            public EntitySpecies Species { get; }
+            public int MaxHealthPoints { get; }
+            public int MaxManaPoints { get; }
+            public int MaxDamage { get; }
+            public int MinDamage { get; }
+            public int MaxArmour { get; }
+            public int MinArmour { get; }
+            public int MaxGold { get; }
+        }
+
+
         public class Ability
         {
             public Ability(AbilityName name, int skillLevel)
@@ -186,7 +201,14 @@ namespace EnumTest
 
             for (int i = 0; i < 30; i++)
             {
-                entities.Add(new Entity(GenerateName(), EnumRndVal<EntityType>(), EnumRndVal<EntitySpecies>(), EnumRndVal<EntityOccupation>(), rnd.Next(1, 1000)));
+                string name = GenerateName();
+                EntityType entity = EnumRndVal<EntityType>();
+                EntitySpecies species = EnumRndVal<EntitySpecies>();
+                EntityOccupation occupation = EnumRndVal<EntityOccupation>();
+
+                //Console.WriteLine($"{occupation} has a value of { (int)occupation}");
+
+                entities.Add(new Entity(name, entity, species, occupation, rnd.Next(1, 1000)));
             }
 
             int totalCombinations = EnumCount<EntityType>() * EnumCount<EntitySpecies>() * EnumCount<EntityOccupation>();

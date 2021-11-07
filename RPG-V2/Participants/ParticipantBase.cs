@@ -26,7 +26,6 @@ namespace RPG_V2.Participants
         public int GoldOwned { get; set; }
         public List<IArmor> ArmorOwned { get; }
         public List<IWeapon> WeaponsOwned { get; }
-        public bool MyProperty { get; set; }
         public bool IsDead { get { return HealthPoints <= 0; } }
         public double ArmorPoints
         {
