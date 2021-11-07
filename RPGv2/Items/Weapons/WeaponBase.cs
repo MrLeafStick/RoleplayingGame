@@ -13,21 +13,22 @@ namespace RpgV2.Items.Weapons
     {
         public int MaxWeaponDamage { get; private set; }
         public int MinWeaponDamage { get; private set; }
+        public int AverageWeaponDamage { get; private set; }
 
-
-        protected WeaponBase()
+        protected WeaponBase(int minWeaponDamage, int maxWeaponDamage)
         {
-            MinWeaponDamage = RNG.RandomInt(1, TotalMinWeaponDamage);
-            MaxWeaponDamage = RNG.RandomInt(MinWeaponDamage, TotalMaxWeaponDamage);
+            MinWeaponDamage = minWeaponDamage;
+            MaxWeaponDamage = maxWeaponDamage;
+            AverageWeaponDamage = (minWeaponDamage + maxWeaponDamage) / 2;
         }
 
         public override string Description
         {
-            get { return $"{Name} (max. {TotalMaxWeaponDamage} weapon damage)"; }
+            get { return $"{Name} (max. {MaxWeaponDamage} weapon damage)"; }
         }
-        public abstract int TotalMinWeaponDamage { get; }
-        public abstract int TotalMaxWeaponDamage { get; }
         public abstract string Name { get; }
+
+        
     }
 }
 

@@ -22,6 +22,3 @@ namespace RpgV2.Participants.Creatures
         }
     }
 }
-
-
-//TODO: FIX VALUES FOR ALL CREATURES.

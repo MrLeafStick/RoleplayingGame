@@ -15,12 +15,17 @@ namespace RpgV2.GameManagement
     {
         public void Run(int noOfOpponents)
         {
-            var aChar = new Character("Sigrid");
-            List<IParticipant> participants = CreateParticipants(noOfOpponents);
+            bool playGame = true;
+            while (playGame)
+            {
+                var aChar = new Character("Sigrid");
+                List<IParticipant> participants = CreateParticipants(noOfOpponents);
 
-            PrintStartInfo(aChar, participants);
-            FightParticipants(aChar, participants);
-            PrintEndInfo(aChar);
+                PrintStartInfo(aChar, participants);
+                FightParticipants(aChar, participants);
+                PrintEndInfo(aChar);
+                playGame = RestartGame();
+            }
         }
 
         private List<IParticipant> CreateParticipants(int noOfOpponents)
@@ -43,6 +48,10 @@ namespace RpgV2.GameManagement
                 {
                     Loot(aChar, participant);
                 }
+                if(aChar.IsDead)
+                {
+                    break;
+                }
             }
         }
 
@@ -57,8 +66,14 @@ namespace RpgV2.GameManagement
                 }
             }
 
-            //TODO RETURN CHAR:DEAD
-            return opponent.IsDead;
+            if (aChar.IsDead)
+            {
+                return aChar.IsDead;
+            } else 
+            { 
+                return opponent.IsDead; 
+            }
+            
         }
 
         private void Loot(Character aChar, IParticipant opponent)
@@ -98,9 +113,24 @@ namespace RpgV2.GameManagement
         {
             Console.WriteLine(new string('*', 40));
             Console.WriteLine("The game has ended");
-            Console.WriteLine(aChar);
+
+            if(aChar.IsDead) Console.WriteLine(aChar.DeadCharacter());
+            else Console.WriteLine(aChar);
+
             Console.WriteLine(new string('*', 40));
             Console.WriteLine();
+        }
+
+        private bool RestartGame()
+        {
+            Console.WriteLine("Do you want to try again? (Y/N)");
+
+            if (Console.ReadLine().ToLower() == "y")
+            {
+                Console.Clear();
+                return true;
+            }
+            else return false;
         }
 
     }

@@ -8,7 +8,7 @@ namespace RpgV2.Participants
 {
     class Character : ParticipantBase
     {
-        public const int MAX_INITIAL_HEALTH_POINTS = 500;
+        public const int MAX_INITIAL_HEALTH_POINTS = 100;
         public const int MAX_INITIAL_GOLD = 100;
         public const int MAX_INITIAL_ARMOR = 2;
         public const int MAX_INITIAL_WEAPONS = 7;
@@ -26,10 +26,24 @@ namespace RpgV2.Participants
             Level++;
         }
 
+        public string DeadCharacter()
+        {
+            string deathDescription = $"{this.Name} has died and lost all items.\n";
+            deathDescription += $"\nGold lost: {this.GoldOwned}\n";
+            deathDescription += $"\nArmor lost: \n";
+            foreach (var armor in this.ArmorOwned)
+            {
+                deathDescription += $"{armor}\n";
+            }
 
+            deathDescription += $"\nWeapons lost: \n";
+
+            foreach (var weapon in this.WeaponsOwned)
+            {
+                deathDescription += $"{weapon}\n";
+            }
+
+            return deathDescription;
+        }
     }
 }
-
-//TODO: change char
-
-//TODO: When our charactor dies i want something to happen(NOT BOSD)

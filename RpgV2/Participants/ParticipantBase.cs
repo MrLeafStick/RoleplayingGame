@@ -4,6 +4,7 @@ using RpgV2.Interfaces;
 using RpgV2.Items.Armor;
 using RpgV2.Items.Weapons;
 
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,10 +37,10 @@ namespace RpgV2.Participants
 
         public double ArmorPoints
         {
-            get { return ArmorOwned.Count == 0 ? 
-                    0 : ArmorOwned.Select(a => a.ArmorPoints).Average(); }
+            get { return ArmorOwned.Count == 0 ? _maxInitialArmor : ArmorOwned.Select(a => a.ArmorPoints).Average() + _maxInitialArmor; }
         }
-         //TODO: LANDMINE !!!!!
+
+        
 
 
 
@@ -132,29 +133,30 @@ namespace RpgV2.Participants
                 return RNG.RandomDouble(0.0, _meleeMaxDamage);
             } else
             {
-                var highestDamageWeapon = WeaponsOwned.Select(w => w.MaxWeaponDamage).Max();
-                Console.WriteLine(highestDamageWeapon);
-                //test.Where((x,idx) => idx == 0 || x.Country != test[idx - 1].Country))
+                // #1 Finds the weapon with the highest average damage then returns a damage between min & max damage - ugly, but fastest and right way
+                IWeapon highestAverageDamageWeapon = WeaponsOwned[0];
+                for (int i = 1; i < WeaponsOwned.Count; i++)
+                {
+                    if (WeaponsOwned[i].AverageWeaponDamage > highestAverageDamageWeapon.AverageWeaponDamage)
+                    {
+                        highestAverageDamageWeapon = WeaponsOwned[i];
+                    }
+                }
+                return RNG.RandomDouble(highestAverageDamageWeapon.MinWeaponDamage, highestAverageDamageWeapon.MaxWeaponDamage);
 
-                //IWeapon highestDamageWeapon = null;
-                //for (int i = 0; i < WeaponsOwned.Count; i++)
-                //{
-                //    if (highestDamageWeapon == null || WeaponsOwned[i].MaxWeaponDamage > highestDamageWeapon.MaxWeaponDamage)
-                //    {
-                //        highestDamageWeapon = WeaponsOwned[i];
-                //    }
-                //}
 
-                //Console.WriteLine($"{highestDamageWeapon} was selected");
-                return RNG.RandomDouble(1,100);
+                // #2 Finds the highest average damage of the weapons, then finds the weapon with the average damage and returns a damage between min & max damage
+                //int weaponAverageDamage = WeaponsOwned.Select(w => w.AverageWeaponDamage).Max();
+                //IWeapon highestAverageDamageWeapon = WeaponsOwned.Find(w => w.AverageWeaponDamage == weaponAverageDamage);
                 //return RNG.RandomDouble(highestDamageWeapon.MinWeaponDamage, highestDamageWeapon.MaxWeaponDamage);
-            //TODO: ændre til lambda
+
+
             }
-            
-            
-            
-            //TODO: Figure out which weapon is best and deal the damage from that weapon.
-            //TODO Hint: SELECT(W => W.æsdæfkæsdlfksæ).MAX()
+
+
+
+            //TODO: Figure out which weapon is best and deal the damage from that weapon.   done 
+            //TODO Hint: SELECT(W => W.æsdæfkæsdlfksæ).MAX()    <- returner et tal (int eller double)
         }
 
         public virtual void ReceiveDamage(double damagePoints)
