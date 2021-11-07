@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RPG_V3.Interfaces.Entities
 {
-    interface IEntityType
+    interface IEntityCategory
     {
     }
 }

@@ -13,15 +13,7 @@ namespace RPG_V3.Factories
     {
         public IWeapon CreateWeapon()
         {
-            Weapon weapon = GetRandom(Weapon.List(), RNG._generator);
-            //Weapon weapon = new Weapon(GetRandom(Weapon.List(), RNG._generator));
-
-            return weapon;
-        }
-
-        T GetRandom<T>(List<T> list, Random random)
-        {
-            return list.ElementAt(random.Next(0, list.Count));
+            return new Weapon(Randomizer.GetRandom(Weapon.List()));
         }
     }
 }

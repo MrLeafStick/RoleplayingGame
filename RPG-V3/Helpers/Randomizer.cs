@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RPG_V3.Helpers
 {
-    public class RNG
+    public class Randomizer
     {
         public static Random _generator = new Random(Guid.NewGuid().GetHashCode());
 
@@ -29,7 +29,20 @@ namespace RPG_V3.Helpers
             return RandomPercent() < 50;
         }
 
-        public T GetRandom<T>(List<T> list)
+        public static string GenerateName()
+        {
+            List<string> generator = new List<string> { "xan", "tran", "ser", "mor", "houl", "zuur", "raz", "qex", "sir", "zor", "vaar", "khon", "an", "bel", "lin" };
+
+            var name = generator[Randomizer.RandomInt(0, generator.Count - 1)] +
+                       generator[Randomizer.RandomInt(0, generator.Count - 1)] +
+                       generator[Randomizer.RandomInt(0, generator.Count - 1)];
+
+            name = name.Substring(0, 1).ToUpper() + name.Substring(1, name.Length - 1);
+
+            return name;
+        }
+
+        public static T GetRandom<T>(List<T> list)
         {
             return list.ElementAt(_generator.Next(0, list.Count));
         }

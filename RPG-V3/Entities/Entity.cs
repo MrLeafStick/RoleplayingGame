@@ -11,10 +11,10 @@ namespace RPG_V3.Entities
 {
     public class Entity : IEntity
     {
-        public Entity(string name, EntityType type, EntitySpecies species, EntityOccupation occupation)
+        public Entity(string name, EntityCategory category, EntitySpecies species, EntityOccupation occupation)
         {
             Name = name;
-            Type = type;
+            Category = category;
             Species = species;
             Occupation = occupation;
 
@@ -24,13 +24,27 @@ namespace RPG_V3.Entities
             WeaponsOwned = SetInitialWeaponsOwned();
         }
 
-        public EntityType Type { get; }
+        public Entity(Entity entity)
+        {
+            Category = entity.Category;
+            Species = entity.Species;
+            Occupation = entity.Occupation;
+            
+            Name = entity.Name;
+            GoldOwned = entity.GoldOwned;
+            HealthPoints = entity.HealthPoints;
+
+            ArmorOwned = entity.ArmorOwned;
+            WeaponsOwned = entity.WeaponsOwned;
+        }
+
+        public EntityCategory Category { get; }
         public EntitySpecies Species { get; }
         public EntityOccupation Occupation { get; }
         public string Name { get; }
         public int GoldOwned { get; set; }
         public double HealthPoints { get; private set; }
-        public bool IsDead { get { return HealthPoints <= 0; } }
+        public bool IsDestroyed { get { return HealthPoints <= 0; } }
 
         public List<IArmor> ArmorOwned { get; }
         public List<IWeapon> WeaponsOwned { get; }
@@ -38,69 +52,62 @@ namespace RPG_V3.Entities
         private List<IWeapon> SetInitialWeaponsOwned()
         {
             var initalWeapons = new List<IWeapon>();
-            for (int i = 0; i < RNG.RandomInt(1, 5); i++) // TODO: initialWeapons cannot be 0;
+            for (int i = 0; i < Randomizer.RandomInt(1, 5); i++) // TODO: initialWeapons cannot be 0;
             {
                 initalWeapons.Add(GameFactory.Instance().WeaponFactory.CreateWeapon());
             }
             return initalWeapons;
         }
 
-        protected virtual List<IArmor> SetInitialArmorOwned()
+        protected List<IArmor> SetInitialArmorOwned()
         {
             var initalArmor = new List<IArmor>();
-            for (int i = 0; i < RNG.RandomInt(0, 5); i++)
+            for (int i = 0; i < Randomizer.RandomInt(0, 5); i++)
             {
                 initalArmor.Add(GameFactory.Instance().ArmorFactory.CreateArmor());
             }
             return initalArmor;
         }
 
-        protected virtual double SetInitialHealthPoints()
+        protected double SetInitialHealthPoints()
         {
-            return RNG.RandomDouble(1.0, Species.MaxHealthPoints);
+            return Randomizer.RandomDouble(1.0, Species.MaxHealthPoints);
         }
 
-        protected virtual int SetInitialGoldOwned()
+        protected int SetInitialGoldOwned()
         {
-            return RNG.RandomInt(0, 1000);
+            return Randomizer.RandomInt(0, 1000);
         }
 
         public virtual double DealDamage()
         {
-            return WeaponsOwned.Count > 0 ? WeaponsOwned.Select(weapon => weapon.MaxDamagePoints).Max() : 0;
+            return WeaponsOwned.Count > 0 ? WeaponsOwned.Select(weapon => weapon.MaxDamagePoints).Max() : 0.0;
         }
 
-        public virtual void ReceiveDamage(double damagePoints)
+        public void ReceiveDamage(double damagePoints)
         {
             HealthPoints -= damagePoints;
         }
 
-        public virtual void AddArmor(IArmor armor)
+        public void AddArmor(IArmor armor)
         {
             ArmorOwned.Add(armor);
         }
 
-        public virtual void AddWeapons(IWeapon weapon)
+        public void AddWeapons(IWeapon weapon)
         {
             WeaponsOwned.Add(weapon);
         }
 
-        public virtual void ClearItems()
+        public void ClearItems()
         {
             ArmorOwned.Clear();
             WeaponsOwned.Clear();
         }
 
-        public virtual IItem GetInitialItem()
-        {
-            Armor armor = GetRandom(Armor.List(), RNG._generator);
-
-            return armor;
-        }
-
         public override string ToString()
         {
-            var entityString = $"{Name} the {(Type.Name == "Living" ? "\b" : Type.Name)}{(Type.Name == "Were" ? "-" : " ")}{Species.Name} is {Occupation.Name}.\n";
+            var entityString = $"{Name} the {(Category.Name == "Living" ? "\b" : Category.Name)}{(Category.Name == "Were" ? "-" : " ")}{Species.Name} is {Occupation.Name}.\n";
 
             var weaponString = $"{Name} has the following weapons:\n";
 
@@ -118,12 +125,5 @@ namespace RPG_V3.Entities
 
             return entityString + weaponString + armorString;
         }
-
-        T GetRandom<T>(List<T> list, Random random)
-        {
-            return list.ElementAt(random.Next(0, list.Count));
-        }
     }
-
-
 }

@@ -11,7 +11,7 @@ namespace RPG_V3.GameManagement
     {
         public void Run(int numOpponents)
         {
-            Entity aChar = new Entity("Sigrid", EntityType.Living, EntitySpecies.Human, EntityOccupation.Warrior);
+            Entity aChar = new Entity("Sigrid", EntityCategory.Living, EntitySpecies.Human, EntityOccupation.Warrior);
 
             List<IEntity> participants = CreateParticipants(numOpponents);
 
@@ -36,7 +36,7 @@ namespace RPG_V3.GameManagement
         {
             foreach(var participant in participants)
             {
-                if(IsFighting(aChar, participant) == true)
+                if(IsFighting(aChar, participant))
                 {
                     Loot(aChar, participant);
                 }
@@ -45,17 +45,17 @@ namespace RPG_V3.GameManagement
 
         private bool IsFighting(Entity aChar, IEntity opponent)
         {
-            while(!opponent.IsDead && !aChar.IsDead)
+            while(!opponent.IsDestroyed && !aChar.IsDestroyed)
             {
                 opponent.ReceiveDamage(aChar.DealDamage());
 
-                if(!opponent.IsDead)
+                if(!opponent.IsDestroyed)
                 {
                     aChar.ReceiveDamage(opponent.DealDamage());
                 }
             }
 
-            return opponent.IsDead;
+            return opponent.IsDestroyed;
         }
 
         private void Loot(Entity aChar, IEntity opponent)
@@ -107,7 +107,7 @@ namespace RPG_V3.GameManagement
             Console.WriteLine("The game has ended.");
             Console.WriteLine(new string('*', 40));
 
-            if(!aChar.IsDead)
+            if(!aChar.IsDestroyed)
             {
                 Console.WriteLine($"{aChar.Name} survived.\n");
                 Console.WriteLine(aChar);
@@ -119,7 +119,7 @@ namespace RPG_V3.GameManagement
 
             foreach (var participant in participants)
             {
-                if (!participant.IsDead)
+                if (!participant.IsDestroyed)
                 {
                     Console.WriteLine($"{participant.Name} survived.\n");
                     Console.WriteLine(participant);

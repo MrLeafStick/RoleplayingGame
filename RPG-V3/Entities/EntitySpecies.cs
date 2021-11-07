@@ -28,7 +28,7 @@ namespace RPG_V3.Entities
         public static EntitySpecies Goat { get { return new EntitySpecies("Goat", 50, 25); } }
         public static EntitySpecies Snake { get { return new EntitySpecies("Snake", 150, 250); } }
         public static EntitySpecies Bear { get { return new EntitySpecies("Bear", 500, 500); } }
-        public static EntitySpecies Human { get { return new EntitySpecies("Human", 5000, 5000); } }
+        public static EntitySpecies Human { get { return new EntitySpecies("Human", 2000, 2000); } }
 
         public static List<EntitySpecies> List()
         {

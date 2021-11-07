@@ -1,4 +1,5 @@
-﻿using RPG_V3.Interfaces.Factories;
+﻿using RPG_V3.Factories;
+using RPG_V3.Interfaces.Factories;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,7 +21,6 @@ namespace RPG_V3.GameManagement
 
         private GameFactory()
         {
-
         }
     }
 }
