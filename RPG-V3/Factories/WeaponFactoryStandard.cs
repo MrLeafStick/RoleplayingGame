@@ -14,6 +14,7 @@ namespace RPG_V3.Factories
         public IWeapon CreateWeapon()
         {
             Weapon weapon = GetRandom(Weapon.List(), RNG._generator);
+            //Weapon weapon = new Weapon(GetRandom(Weapon.List(), RNG._generator));
 
             return weapon;
         }

@@ -21,6 +21,15 @@ namespace RPG_V3.Interfaces.Items.Armor
             MinArmorPoints = minArmorPoints;
         }
 
+        public Armor(Armor armor)
+        {
+            Name = armor.Name;
+            Value = armor.Value;
+            Weight = armor.Weight;
+            MaxArmorPoints = armor.MaxArmorPoints;
+            MinArmorPoints = armor.MinArmorPoints;
+    }
+
         public static List<Armor> List()
         {
             return new List<Armor> { WoodenShield, LeatherShield, BronzeShield, IronShield, SteelShield };

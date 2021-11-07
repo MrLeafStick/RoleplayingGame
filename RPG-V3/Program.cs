@@ -13,10 +13,10 @@ namespace RPG_V3
         {
             GameFactory.Instance().ArmorFactory = new ArmorFactoryStandard();
             GameFactory.Instance().WeaponFactory = new WeaponFactoryStandard();
-            GameFactory.Instance().ParticipantFactory = new ParticipantFactoryStandard();
+            GameFactory.Instance().ParticipantFactory = new EntityFactoryStandard();
 
             Game aGame = new Game();
-            aGame.Run(10);
+            aGame.Run(3);
 
             KeepConsoleWindowOpen();
         }

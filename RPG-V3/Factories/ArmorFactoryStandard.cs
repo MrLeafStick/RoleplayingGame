@@ -14,8 +14,10 @@ namespace RPG_V3.Factories
         public IArmor CreateArmor()
         {
             Armor armor = GetRandom(Armor.List(), RNG._generator);
+            //Armor armor = new Armor(GetRandom(Armor.List(), RNG._generator));
 
-            return armor;
+            //return armor;
+            return new Armor(GetRandom(Armor.List(), RNG._generator));
         }
 
         T GetRandom<T>(List<T> list, Random random)

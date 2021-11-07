@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RPG_V3.Interfaces.Factories
 {
-    public interface IParticipantFactory
+    public interface IEntityFactory
     {
         IEntity CreateParticipant();
     }

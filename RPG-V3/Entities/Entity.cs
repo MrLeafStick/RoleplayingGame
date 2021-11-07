@@ -30,7 +30,7 @@ namespace RPG_V3.Entities
         public string Name { get; }
         public int GoldOwned { get; set; }
         public double HealthPoints { get; private set; }
-        public bool IsDead { get { return HealthPoints <= 0.0 ? true : false; } }
+        public bool IsDead { get { return HealthPoints <= 0; } }
 
         public List<IArmor> ArmorOwned { get; }
         public List<IWeapon> WeaponsOwned { get; }
@@ -57,12 +57,12 @@ namespace RPG_V3.Entities
 
         protected virtual double SetInitialHealthPoints()
         {
-            return RNG.RandomDouble(1.0, 500.0);
+            return RNG.RandomDouble(1.0, Species.MaxHealthPoints);
         }
 
         protected virtual int SetInitialGoldOwned()
         {
-            return RNG.RandomInt(0, 100);
+            return RNG.RandomInt(0, 1000);
         }
 
         public virtual double DealDamage()
@@ -100,9 +100,23 @@ namespace RPG_V3.Entities
 
         public override string ToString()
         {
-            var entityString = $"{Name} the {(Type.Name == "Living" ? "\b" : Type.Name)}{(Type.Name == "Were" ? "-" : " ")}{Species.Name} is {Occupation.Name}";
+            var entityString = $"{Name} the {(Type.Name == "Living" ? "\b" : Type.Name)}{(Type.Name == "Were" ? "-" : " ")}{Species.Name} is {Occupation.Name}.\n";
 
-            return entityString;
+            var weaponString = $"{Name} has the following weapons:\n";
+
+            foreach (var weapon in WeaponsOwned)
+            {
+                weaponString += $" {weapon.Name}\n";
+            }
+
+            var armorString = $"{Name} has the following armor:\n";
+
+            foreach(var armor in ArmorOwned)
+            {
+                armorString += $" {armor.Name}\n";
+            }
+
+            return entityString + weaponString + armorString;
         }
 
         T GetRandom<T>(List<T> list, Random random)

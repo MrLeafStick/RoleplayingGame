@@ -9,7 +9,7 @@ using System.Text;
 
 namespace RPG_V3.Factories
 {
-    public class ParticipantFactoryStandard : IParticipantFactory
+    public class EntityFactoryStandard : IEntityFactory
     {
         public IEntity CreateParticipant()
         {

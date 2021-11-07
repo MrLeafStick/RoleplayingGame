@@ -6,8 +6,6 @@ namespace RPG_V3.Interfaces.Items.Weapons
 {
     class Weapon : IWeapon
     {
-        private Weapon weapon;
-
         public static Weapon WoodenSword { get { return new Weapon("Wooden Sword", 1.0, 5.0, 10.0, 1.0); } }
         public static Weapon FlintSword { get { return new Weapon("Flint Sword", 1.0, 5.0, 10.0, 1.0); } }
         public static Weapon BronzeSword { get { return new Weapon("Bronze Sword", 1.0, 5.0, 10.0, 1.0); } }
@@ -25,7 +23,11 @@ namespace RPG_V3.Interfaces.Items.Weapons
 
         public Weapon(Weapon weapon)
         {
-            this.weapon = weapon;
+            Name = weapon.Name;
+            Value = weapon.Value;
+            Weight = weapon.Weight;
+            MaxDamagePoints = weapon.MaxDamagePoints;
+            MinDamagePoints = weapon.MinDamagePoints;
         }
 
         public static List<Weapon> List()

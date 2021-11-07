@@ -110,25 +110,25 @@ namespace RPG_V3.GameManagement
             if(!aChar.IsDead)
             {
                 Console.WriteLine($"{aChar.Name} survived.\n");
-
                 Console.WriteLine(aChar);
             }
             else
             {
                 Console.WriteLine($"{aChar.Name} has died.\n");
+            }
 
-                foreach (var participant in participants)
+            foreach (var participant in participants)
+            {
+                if (!participant.IsDead)
                 {
-                    if (!participant.IsDead)
-                    {
-                        Console.WriteLine(participant);
-                    }
-                    else
-                    {
-                        string fullName = participant.Name == participant.GetType().Name ? participant.Name : participant.Name + " the " + participant.GetType().Name;
+                    Console.WriteLine($"{participant.Name} survived.\n");
+                    Console.WriteLine(participant);
+                }
+                else
+                {
+                    //string fullName = participant.Name == participant.GetType().Name ? participant.Name : participant.Name + " the " + participant.GetType().Name;
 
-                        Console.WriteLine($"{fullName} has died.\n");
-                    }
+                    Console.WriteLine($"{participant.Name} has died.\n");
                 }
             }
 
