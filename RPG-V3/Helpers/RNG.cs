@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace RPG_V3.Helpers
 {
     public class RNG
     {
-        private static Random _generator = new Random(Guid.NewGuid().GetHashCode());
+        public static Random _generator = new Random(Guid.NewGuid().GetHashCode());
 
         public static int RandomInt(int minVal, int maxVal)
         {
@@ -26,6 +27,11 @@ namespace RPG_V3.Helpers
         public static bool CoinFlip()
         {
             return RandomPercent() < 50;
+        }
+
+        public T GetRandom<T>(List<T> list)
+        {
+            return list.ElementAt(_generator.Next(0, list.Count));
         }
     }
 }

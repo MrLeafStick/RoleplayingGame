@@ -7,9 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Factories\" />
-    <Folder Include="GameManagement\" />
-    <Folder Include="IItems\" />
     <Folder Include="Abilities\" />
   </ItemGroup>
 

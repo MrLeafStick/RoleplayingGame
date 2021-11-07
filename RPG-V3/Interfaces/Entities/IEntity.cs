@@ -15,5 +15,11 @@ namespace RPG_V3.Interfaces
         public int GoldOwned { get; set; }
         public double HealthPoints { get; }
         public bool IsDead { get; }
+
+        public List<IArmor> ArmorOwned { get; }
+        public List<IWeapon> WeaponsOwned { get; }
+
+        public double DealDamage();
+        public void ReceiveDamage(double damagePoints);
     }
 }

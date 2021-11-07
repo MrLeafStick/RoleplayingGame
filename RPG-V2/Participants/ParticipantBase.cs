@@ -92,7 +92,6 @@ namespace RPG_V2.Participants
         public virtual double DealDamage()
         {
             return WeaponsOwned.Count > 0 ? WeaponsOwned.Select(weapon => weapon.MaxWeaponDamage).Max() : 0;
-            //TODO: Landmine!
         }
 
         public virtual void ReceiveDamage(double damagePoints)

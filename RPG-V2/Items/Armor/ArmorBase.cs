@@ -24,5 +24,3 @@ namespace RPG_V2.Items.Armour
         public abstract string Name { get; }
     }
 }
-
-// TODO: Fix the rest of the armor class's to  reflect the new infrastructure.
