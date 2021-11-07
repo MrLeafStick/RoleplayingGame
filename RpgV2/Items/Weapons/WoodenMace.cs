@@ -12,11 +12,6 @@ namespace RpgV2.Items.Weapons
         {
 
         }
-
-        public override string Description
-        {
-            get { return "Rough Wooden Mace"; }
-        }
         public override int TotalMinWeaponDamage
         {
             get { return 1; }
@@ -28,7 +23,7 @@ namespace RpgV2.Items.Weapons
 
         public override string Name
         {
-            get { return base.Description; }
+            get { return "Rough Wooden Mace"; }
         }
     }
 }

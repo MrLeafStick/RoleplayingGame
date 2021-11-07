@@ -12,11 +12,6 @@ namespace RpgV2.Items.Weapons
         {
 
         }
-
-        public override string Description
-        {
-            get { return "Sharpened steel lance"; }
-        }
         public override int TotalMinWeaponDamage
         {
             get { return 10; }
@@ -25,10 +20,9 @@ namespace RpgV2.Items.Weapons
         {
             get { return 15; }
         }
-
         public override string Name
         {
-            get { return Name; }
+            get { return "Sharpened steel lance"; }
         }
     }
 }

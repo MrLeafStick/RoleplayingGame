@@ -8,7 +8,6 @@ namespace RpgV2.Interfaces.Factories
 {
     public interface IWeapon : IItem
     {
-        int MaxWeaponDamage { get; }
-        int MinWeaponDamage { get; }
+        int TotalWeaponDamage { get; }
     }
 }

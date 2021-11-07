@@ -95,10 +95,8 @@ namespace RpgV2.Participants
 
         public virtual double DealDamage()
         {
-            //SELECT THE STRONGEST WEAPON - Use max damage if weapon is not present
-            var strongestWeap = WeaponsOwned.Count != 0 ? WeaponsOwned.Select(w => w.MaxWeaponDamage).Max() : _meleeMaxDamage;
-            return RNG.RandomDouble(0.0, strongestWeap);
-
+            //SELECT THE STRONGEST WEAPON
+            return WeaponsOwned.Count != 0 ? WeaponsOwned.Select(w => w.TotalWeaponDamage).Max() : _meleeMaxDamage;
         }
 
         public virtual void ReceiveDamage(double damagePoints)

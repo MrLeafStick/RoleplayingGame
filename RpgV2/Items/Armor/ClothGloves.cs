@@ -8,11 +8,6 @@ namespace RpgV2.Items.Armor
 {
     public class ClothGloves : ArmorBase
     {
-
-        public override string Description
-        {
-            get { return "Black Cloth Gloves"; }
-        }
         public override int MaxArmorPoints
         {
             get { return 10; }
@@ -20,7 +15,7 @@ namespace RpgV2.Items.Armor
 
         public override string Name
         {
-            get { return Name; }
+            get { return "Black Cloth Gloves"; }
         }
     }
 }

@@ -11,11 +11,6 @@ namespace RpgV2.Items.Weapons
         public IronSword(): base()
         {
         }
-
-        public override string Description
-        {
-            get { return "One handed Iron Sword"; }
-        }
         public override int TotalMinWeaponDamage
         {
             get { return 5; }
@@ -27,7 +22,7 @@ namespace RpgV2.Items.Weapons
 
         public override string Name
         {
-            get { return Name; }
+            get { return "One handed Iron Sword"; }
         }
     }
 }

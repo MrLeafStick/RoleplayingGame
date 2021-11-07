@@ -8,11 +8,6 @@ namespace RpgV2.Items.Armor
 {
     public class PlateBoots : ArmorBase
     {
-        public override string Description
-        {
-            get { return "Hardened Plate Boots"; }
-        }
-
         public override int MaxArmorPoints
         {
             get { return 65; }
@@ -20,7 +15,7 @@ namespace RpgV2.Items.Armor
 
         public override string Name
         {
-            get { return Name; }
+            get { return "Hardened Plate Boots"; }
         }
     }
 }
