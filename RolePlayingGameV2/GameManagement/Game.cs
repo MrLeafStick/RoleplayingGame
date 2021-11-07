@@ -42,6 +42,10 @@ namespace RolePlayingGameV2.GameManagement
                 {
                     Loot(aChar, participant);
                 }
+                else 
+                {
+                    return;
+                }
             }
         }
 
@@ -49,11 +53,16 @@ namespace RolePlayingGameV2.GameManagement
         {
             while (opponent.IsDead == false && aChar.IsDead == false)
             {
-                opponent.ReceiveDamage(aChar.DealDamage());
+                //TODO add some string output to show that some form of combat has happenend...
+                opponent.ReceiveDamage(aChar.DealDamage(),aChar.Name);
                 if (opponent.IsDead == false)
                 {
-                    aChar.ReceiveDamage(opponent.DealDamage());
+                    aChar.ReceiveDamage(opponent.DealDamage(),opponent.Name);
                 }
+
+                Console.WriteLine("Press any key to continue");
+                Console.ReadKey();
+                Console.WriteLine();
             }
 
             //TODO Return aChar.IsDead
@@ -67,15 +76,14 @@ namespace RolePlayingGameV2.GameManagement
 
             foreach (var armor in opponent.ArmorOwned)
             {
-                aChar.ArmorOwned.Add(armor);
+                aChar.AddArmor(armor);
             }
             foreach (var weapon in opponent.WeaponsOwned)
             {
-                aChar.WeaponsOwned.Add(weapon);
+                aChar.AddWeapon(weapon);
             }
 
-            opponent.ArmorOwned.Clear();
-            opponent.WeaponsOwned.Clear();
+            opponent.ClearItems();
         }
 
         private void PrintParticipants(List<IParticipant> participants) 
@@ -84,25 +92,41 @@ namespace RolePlayingGameV2.GameManagement
             {
                 Console.WriteLine(participant);
             }
+
+            Console.Write(new string('*', 17));
+            Console.Write("Combat");
+            Console.WriteLine(new string('*', 17));
             Console.WriteLine();
         }
 
         private void PrintStartInfo(Character aChar, List<IParticipant> participants) 
         {
-            Console.WriteLine("The game is starting");
-            Console.WriteLine(aChar);
-            Console.WriteLine();
-            PrintParticipants(participants);
+            Console.WriteLine("The game is starting\n");
 
+            Console.Write(new string('*', 18));
+            Console.Write("Hero");
+            Console.WriteLine(new string('*', 18));
+            Console.WriteLine();
+
+            Console.WriteLine(aChar);
+
+            Console.Write(new string('*', 16));
+            Console.Write("Opponent");
+            Console.WriteLine(new string('*', 16));
+            Console.WriteLine();
+
+            PrintParticipants(participants);
         }
 
         private void PrintEndInfo(Character aChar) 
         {
-            Console.WriteLine(new string('*',40));
-            Console.WriteLine("The game has ended");
+            Console.Write(new string('*',16));
+            Console.Write("Summary");
+            Console.WriteLine(new string('*', 16));
+            Console.WriteLine();
+
             Console.WriteLine(aChar);
             Console.WriteLine(new string('*', 40));
-            Console.WriteLine();
         }
     }
 }

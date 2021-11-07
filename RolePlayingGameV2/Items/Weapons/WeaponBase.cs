@@ -6,9 +6,7 @@ namespace RolePlayingGameV2.Items.Weapons
     public abstract class WeaponBase : ItemBase, IWeapon
     {
         public int MinWeaponDamage { get; }
-
         public int MaxWeaponDamage { get; }
-
         public int WeaponDamage { get; }
 
         protected WeaponBase (int minDamage, int maxDamage) 
@@ -22,5 +20,3 @@ namespace RolePlayingGameV2.Items.Weapons
         public abstract string Name { get; }
     }
 }
-
-//TODO Fix the rest of the weapon class to reflect the new strcuture...

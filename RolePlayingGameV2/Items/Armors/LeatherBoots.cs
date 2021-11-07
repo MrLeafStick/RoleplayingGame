@@ -4,7 +4,6 @@
     {
         public override string Description { get { return "Brown leather boots"; } }
         public override int MaxArmorPoints { get { return 25; } }
-
         public override string Name { get; }
     }
 }

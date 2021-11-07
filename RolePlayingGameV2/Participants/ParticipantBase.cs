@@ -40,12 +40,17 @@ namespace RolePlayingGameV2.Participants
         }
         public virtual double DealDamage() 
         {
-            var damage = WeaponsOwned.Count > 0 ? 0.0 : WeaponsOwned.Select(w => w.WeaponDamage).Max();
+            var damage = WeaponsOwned.Count > 0 ? WeaponsOwned.Select(w => w.WeaponDamage).Max() : _maxMeleeDamage;
             return damage;
         }
-        public virtual void ReceiveDamage(double damagePoints)
+        public virtual void ReceiveDamage(double damagePoints,string damageDealer)
         {
-            HealthPoints -= damagePoints;
+            var damageMultiplier = 100 / (100 + ArmorPoints);
+            HealthPoints -= (damagePoints * damageMultiplier);
+            
+            Console.WriteLine($"{damageDealer} hits {Name} with {damagePoints}, which have {ArmorPoints} armorpoints\n" +
+                              $"{Name} recieves {damageMultiplier * 100:F0} % damage, in total {damagePoints * damageMultiplier:F0}\n"+
+                              $"{Name} has {HealthPoints:F0} health points left and is {(IsDead ? "dead" : "alive")}\n");
         }
         public virtual void AddArmor(IArmor armor)
         {
@@ -84,19 +89,19 @@ namespace RolePlayingGameV2.Participants
         #region Methods
         public override string ToString()
         {
-            string desc = $"{Name} has {GoldOwned} gold, and is at {HealthPoints:F1} health points\n"
-                + $"and has {ArmorPoints:F2} armor points\n";
+            string desc = $"{Name} has {GoldOwned} gold, and is at {HealthPoints:F0} health points\n"
+                + $"and has {ArmorPoints:F0} armor points\n";
             desc += $"{Name} owns {ArmorOwned.Count} armor items:\n";
 
             foreach (var armor in ArmorOwned)
             {
-                desc += $"{armor} \n";
+                desc += $"{armor} ({armor.ArmorPoints} armor points) \n";
             }
             desc += $"{Name} owns {WeaponsOwned.Count} weapons:\n";
 
             foreach (var weapon in WeaponsOwned)
             {
-                desc += $"{weapon}\n";
+                desc += $"{weapon} ({weapon.WeaponDamage} damage)\n";
             }
 
             return desc;

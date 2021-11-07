@@ -11,6 +11,9 @@ namespace RolePlayingGameV2.Interfaces
         List<IArmor> ArmorOwned { get; }
         List<IWeapon> WeaponsOwned { get; }
         double DealDamage();
-        void ReceiveDamage(double damagePoints);
+        void ReceiveDamage(double damagePoints, string damageDealer);
+        void AddArmor(IArmor armor);
+        void AddWeapon(IWeapon weapon);
+        void ClearItems();
     }
 }

@@ -5,8 +5,6 @@
         public const int MAX_DAMAGE = 200;
         public const int MAX_HEALTH_POINTS = 80;
 
-        public Troll(string name) : base(MAX_HEALTH_POINTS, MAX_DAMAGE, name)
-        {
-        }
+        public Troll(string name) : base(MAX_HEALTH_POINTS, MAX_DAMAGE, name){}
     }
 }

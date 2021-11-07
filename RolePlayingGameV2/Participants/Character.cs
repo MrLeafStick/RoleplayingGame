@@ -8,12 +8,9 @@
         public const int MAX_INITIAL_WEAPONS = 2;
         public const int MAX_DAMAGE = 50;
 
-        public Character(string name) : base(MAX_INITIAL_HEALTHPOINTS, MAX_INITIAL_GOLD, MAX_INITIAL_ARMOR, MAX_INITIAL_WEAPONS, MAX_DAMAGE, name)
-        {
-        }
-
+        public Character(string name) : 
+            base(MAX_INITIAL_HEALTHPOINTS, MAX_INITIAL_GOLD, MAX_INITIAL_ARMOR, MAX_INITIAL_WEAPONS, MAX_DAMAGE, name){}
         public int Level { get; private set; }
-
         public void LevelUp() 
         {
             Level++;
