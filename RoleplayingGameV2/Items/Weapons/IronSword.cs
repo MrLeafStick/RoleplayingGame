@@ -2,7 +2,7 @@
 {
     public class IronSword : WeaponBase
     {
-        public IronSword() : base()
+        public IronSword()
         {
         }
 

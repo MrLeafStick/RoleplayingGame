@@ -6,8 +6,8 @@ GameFactory.Instance.ArmorFactory = new ArmorFactoryStandard();
 GameFactory.Instance.WeaponFactory = new WeaponFactoryStandard();
 GameFactory.Instance.ParticipantFactory = new ParticipantFactoryStandard();
 
-var game = new Game();
-game.Run(900);
+var game = new Game(Console.WriteLine);
+game.Run(10);
 KeepConsoleWindowOpen();
 
 static void KeepConsoleWindowOpen()

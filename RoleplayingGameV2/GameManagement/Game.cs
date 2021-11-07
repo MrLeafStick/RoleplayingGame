@@ -4,11 +4,19 @@ using RoleplayingGameV2.Participants.Creatures;
 using RoleplayingGameV2.Participants.Humanoids;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace RoleplayingGameV2.GameManagement
 {
     public class Game
     {
+        private readonly Action<object> _outputProvider;
+
+        public Game(Action<object> outputProvider)
+        {
+            _outputProvider = outputProvider;
+        }
+
         public void Run(int numberOfOpponents)
         {
             var character = new Character("Sigrid");
@@ -47,11 +55,18 @@ namespace RoleplayingGameV2.GameManagement
                 opponent.ReceiveDamage(character.DealDamage());
                 if(!opponent.IsDead)
                 {
-                    character.ReceiveDamage(opponent.DealDamage());
+                    var damageFromOpponent = opponent.DealDamage();
+                    character.ReceiveDamage(damageFromOpponent);
+
+                    if (character.IsDead)
+                    {
+                        _outputProvider($"{character.Name} was killed by {opponent.Name}, with a hit of {damageFromOpponent:F1} health points.");
+                        _outputProvider($"{character.Name} is now dead with {character.HealthPoints:F1} health points.");
+                        return false;
+                    }
                 }
             }
 
-            // TODO: return character.IsDead!!!!!!!!!!!!!!
             return opponent.IsDead;
         }
 
@@ -74,26 +89,26 @@ namespace RoleplayingGameV2.GameManagement
         {
             foreach (var participant in participants)
             {
-                Console.WriteLine(participant);
+                _outputProvider(participant);
             }
-            Console.WriteLine();
+            _outputProvider("");
         }
 
         private void PrintStartInfo(Character character, List<IParticipant> participants)
         {
-            Console.WriteLine("The game is starting");
-            Console.WriteLine(character);
-            Console.WriteLine();
+            _outputProvider("The game is starting");
+            _outputProvider(character);
+            _outputProvider("");
             PrintParticipant(participants);
         }
 
         private void PrintEndInfo(Character character)
         {
-            Console.WriteLine(new string('*', 40));
-            Console.WriteLine("The game has ended!");
-            Console.WriteLine(character);
-            Console.WriteLine(new string('*', 40));
-            Console.WriteLine();
+            _outputProvider(new string('*', 40));
+            _outputProvider("The game has ended!");
+            _outputProvider(character);
+            _outputProvider(new string('*', 40));
+            _outputProvider("");
         }
     }
 }

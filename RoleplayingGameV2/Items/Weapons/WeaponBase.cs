@@ -5,15 +5,11 @@ namespace RoleplayingGameV2.Items.Weapons
 {
     public abstract class WeaponBase : ItemBase, IWeapon
     {
-        public int MaxWeaponDamage { get; private set; }
-
-        public int MinWeaponDamage { get; private set; }
+        public int WeaponDamage { get; }
 
         protected WeaponBase()
         {
-            MaxWeaponDamage = RNG.RandomInt(1, TotalMaxWeaponDamage);
-            MinWeaponDamage = RNG.RandomInt(1, TotalMinWeaponDamage);
-            // TODO: MIN WEP DMG
+            WeaponDamage = RNG.RandomInt(TotalMinWeaponDamage, TotalMaxWeaponDamage);
         }
 
         public override string Description

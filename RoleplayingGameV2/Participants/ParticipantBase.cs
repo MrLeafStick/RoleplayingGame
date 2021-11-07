@@ -85,8 +85,7 @@ namespace RoleplayingGameV2.Participants
         protected List<IWeapon> SetInitialWeaponsOwned()
         {
             var initialWeapons = new List<IWeapon>();
-            var maxInitialWeapons = RNG.RandomInt(0, _maxInitialWeapons);
-            for (int i = 0; i < maxInitialWeapons; i++)
+            for (int i = 0; i < _maxInitialWeapons; i++)
             {
                 initialWeapons.Add(GameFactory.Instance.WeaponFactory.CreateWeapon());
             }
@@ -96,8 +95,7 @@ namespace RoleplayingGameV2.Participants
         protected List<IArmor> SetInitialArmorOwned()
         {
             var initialArmor = new List<IArmor>();
-            var maxInitialArmor = RNG.RandomInt(0, _maxInitialArmor);
-            for (int i = 0; i < maxInitialArmor; i++)
+            for (int i = 0; i < _maxInitialArmor; i++)
             {
                 initialArmor.Add(GameFactory.Instance.ArmorFactory.CreateArmor());
             }
@@ -106,7 +104,7 @@ namespace RoleplayingGameV2.Participants
 
         public virtual double DealDamage()
         {
-            return WeaponsOwned.Count == 0 ? 0.0 : WeaponsOwned.Select(weapon => weapon.MaxWeaponDamage).Max();
+            return WeaponsOwned.Count == 0 ? 0.0 : WeaponsOwned.Select(weapon => weapon.WeaponDamage).Max();
         }
 
         public virtual void ReceiveDamage(double damagePoints)
