@@ -22,4 +22,3 @@
     }
 }
 
-// TODO: When our character dies, Kenneth want something to happen (NOT BSOD)
