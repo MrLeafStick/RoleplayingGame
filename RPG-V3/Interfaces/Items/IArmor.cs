@@ -6,6 +6,7 @@ namespace RPG_V3.Interfaces
 {
     public interface IArmor : IItem
     {
-        int ArmorPoints { get; }
+        public double MaxArmorPoints { get; }
+        public double MinArmorPoints { get; }
     }
 }

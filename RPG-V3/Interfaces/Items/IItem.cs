@@ -8,6 +8,8 @@ namespace RPG_V3.Interfaces
 {
     public interface IItem
     {
-        string Description { get; }
+        public string Name { get; }
+        public double Value { get; }
+        public double Weight { get; }
     }
 }

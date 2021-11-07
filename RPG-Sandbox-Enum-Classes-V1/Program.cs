@@ -56,6 +56,7 @@ namespace RPG_Sandbox_Enum_Classes_V1
             return new List<EntityType> { Ghost, Were, Clockwork, Undead, Zombie, Skeleton, Magical, Living, Living, Living, Living };
         }
     }
+
     public class EntityOccupation : IEntityOccupation
     {
         private EntityOccupation(string occupation) { Name = occupation; }

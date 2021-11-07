@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPG_V3.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,19 +9,11 @@ namespace RPG_V3.Interfaces
 {
     public interface IEntity
     {
-        EntityTypes Type { get; }
+        public EntitySpecies Species { get; }
+        public EntityOccupation Occupation { get; }
+        public string Name { get; }
+        public int GoldOwned { get; set; }
         public double HealthPoints { get; }
         public bool IsDead { get; }
-    }
-
-    public enum EntityTypes
-    {
-        Critter,
-        Humanoid,
-        Monster,
-        UnDead,
-        Spectre,
-        Magical,
-        Deity
     }
 }
