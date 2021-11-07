@@ -125,19 +125,6 @@ namespace EnumTest
         }
 
         // Classes
-        public class EntitySpeciesTemplate
-        {
-            public EntitySpecies Species { get; }
-            public int MaxHealthPoints { get; }
-            public int MaxManaPoints { get; }
-            public int MaxDamage { get; }
-            public int MinDamage { get; }
-            public int MaxArmour { get; }
-            public int MinArmour { get; }
-            public int MaxGold { get; }
-        }
-
-
         public class Ability
         {
             public Ability(AbilityName name, int skillLevel)
@@ -148,11 +135,6 @@ namespace EnumTest
 
             public AbilityName Name { get; }
             public int SkillLevel { get; }
-        }
-
-        public class Item
-        {
-
         }
 
         public class Entity
@@ -193,8 +175,6 @@ namespace EnumTest
 
         static void Main()
         {
-            List<Item> items = new List<Item>();
-            List<Ability> abilities = new List<Ability>();
             List<Entity> entities = new List<Entity>();
 
             Random rnd = new Random(Guid.NewGuid().GetHashCode());
