@@ -13,7 +13,7 @@ namespace RPG_V3
             GameFactory.Instance().ParticipantFactory = new EntityFactoryStandard();
 
             Game aGame = new Game();
-            aGame.Run(3);
+            aGame.Run(4);
 
             KeepConsoleWindowOpen();
         }

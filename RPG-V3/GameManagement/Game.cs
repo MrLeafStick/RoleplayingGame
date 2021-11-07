@@ -88,6 +88,11 @@ namespace RPG_V3.GameManagement
 
         private void PrintStartInfo(Entity aChar, List<IEntity> participants)
         {
+
+            int combinations = EntityCategory.List().Count * EntitySpecies.List().Count * EntityOccupation.List().Count;
+
+            Console.WriteLine($"Total number of entity combinations: {combinations}\n");
+
             Console.WriteLine(new string('*', 40));
             Console.WriteLine("The game is about to begin...");
             Console.WriteLine(new string('*', 40));
