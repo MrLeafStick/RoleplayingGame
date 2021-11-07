@@ -52,7 +52,8 @@ namespace RPG_Sandbox_Enum_Classes_V1
 
         public static List<EntityType> List()
         {
-            return new List<EntityType> { Ghost, Were, Clockwork, Undead, Zombie, Skeleton, Magical, Living };
+            // Added more "Living" to balance out 
+            return new List<EntityType> { Ghost, Were, Clockwork, Undead, Zombie, Skeleton, Magical, Living, Living, Living, Living };
         }
     }
     public class EntityOccupation : IEntityOccupation
@@ -97,7 +98,6 @@ namespace RPG_Sandbox_Enum_Classes_V1
         public int MaxHealthPoints { get; }
         public int MaxDamagePoints { get; }
 
-        public static EntitySpecies Human       { get { return new EntitySpecies("Human", 500, 500); } }
         public static EntitySpecies Ork         { get { return new EntitySpecies("Ork", 700, 1000); } }
         public static EntitySpecies Elf         { get { return new EntitySpecies("Elf", 400, 1500); } }
         public static EntitySpecies Dwarf       { get { return new EntitySpecies("Dwarf", 800, 700); } }
@@ -109,10 +109,12 @@ namespace RPG_Sandbox_Enum_Classes_V1
         public static EntitySpecies Goat        { get { return new EntitySpecies("Goat", 50, 25); } }
         public static EntitySpecies Snake       { get { return new EntitySpecies("Snake", 150, 250); } }
         public static EntitySpecies Bear        { get { return new EntitySpecies("Bear", 500, 500); } }
+        public static EntitySpecies Human { get { return new EntitySpecies("Human", 500, 500); } }
 
         public static List<EntitySpecies> List()
         {
-            return new List<EntitySpecies> { Human, Ork, Elf, Dwarf, Giant, Hobgoblin, Griffin, Minotaur, Wolf, Goat, Snake, Bear };
+            // Added extra Humans to balance out
+            return new List<EntitySpecies> { Ork, Elf, Dwarf, Giant, Hobgoblin, Griffin, Minotaur, Wolf, Goat, Snake, Bear, Human, Human, Human, Human };
         }
     }
 
@@ -152,7 +154,7 @@ namespace RPG_Sandbox_Enum_Classes_V1
 
             for (int i = 0; i < 30; i++)
             {
-                entities.Add(new Entity($"Mr. Afterburner {i}", GetRandom(EntityType.List(), rnd), GetRandom(EntitySpecies.List(), rnd), GetRandom(EntityOccupation.List(), rnd)));
+                entities.Add(new Entity(GenerateName(), GetRandom(EntityType.List(), rnd), GetRandom(EntitySpecies.List(), rnd), GetRandom(EntityOccupation.List(), rnd)));
             }
 
             int combinations = EntityType.List().Count * EntitySpecies.List().Count * EntityOccupation.List().Count;
@@ -167,6 +169,19 @@ namespace RPG_Sandbox_Enum_Classes_V1
             T GetRandom<T>(List<T> list, Random random)
             {
                 return list.ElementAt(rnd.Next(0, list.Count));
+            }
+
+            string GenerateName()
+            {
+                List<string> generator = new List<string> { "xan", "tran", "ser", "mor", "houl", "zuur", "raz", "qex", "sir", "zor", "vaar", "khon", "an", "bel", "lin" };
+
+                var name = generator.ElementAt(rnd.Next(0, generator.Count - 1)) +
+                           generator.ElementAt(rnd.Next(0, generator.Count - 1)) +
+                           generator.ElementAt(rnd.Next(0, generator.Count - 1));
+
+                name = name.Substring(0, 1).ToUpper() + name.Substring(1, name.Length - 1);
+
+                return name;
             }
         }
     }

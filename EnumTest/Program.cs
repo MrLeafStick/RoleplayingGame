@@ -186,8 +186,6 @@ namespace EnumTest
                 EntitySpecies species = EnumRndVal<EntitySpecies>();
                 EntityOccupation occupation = EnumRndVal<EntityOccupation>();
 
-                //Console.WriteLine($"{occupation} has a value of { (int)occupation}");
-
                 entities.Add(new Entity(name, entity, species, occupation, rnd.Next(1, 1000)));
             }
 
