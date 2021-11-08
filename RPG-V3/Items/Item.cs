@@ -7,5 +7,7 @@ namespace RPG_V3.Items
         public string Name { get; }
         public double Value { get; }
         public double Weight { get; }
+        
+        //public double RepairState { get; }
     }
 }

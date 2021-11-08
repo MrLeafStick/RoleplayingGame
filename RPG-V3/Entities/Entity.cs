@@ -26,11 +26,9 @@ namespace RPG_V3.Entities
             Category = entity.Category;
             Species = entity.Species;
             Occupation = entity.Occupation;
-
             Name = entity.Name;
             GoldOwned = entity.GoldOwned;
             HealthPoints = entity.HealthPoints;
-
             ArmorOwned = entity.ArmorOwned;
             WeaponsOwned = entity.WeaponsOwned;
         }

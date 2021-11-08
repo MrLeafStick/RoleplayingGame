@@ -7,12 +7,16 @@ namespace RPG_V3.Items
     {
         private Material(string name) { Name = name; }
         public string Name { get; }
-        public string Strength { get; }
+        public string StrengthModifier { get; }
+        public string ValueModifier { get; }
+        public string WeightModifier { get; }
 
         public static Material Leather { get { return new Material("leather"); } }
         public static Material Wood { get { return new Material("wood"); } }
         public static Material Flint { get { return new Material("flint"); } }
         public static Material Stone { get { return new Material("stone"); } }
+        public static Material Gold { get { return new Material("gold"); } }
+        public static Material Silver { get { return new Material("silver"); } }
         public static Material Copper { get { return new Material("copper"); } }
         public static Material Lead { get { return new Material("lead"); } }
         public static Material Tin { get { return new Material("tin"); } }
@@ -25,7 +29,7 @@ namespace RPG_V3.Items
 
         public static List<Material> List()
         {
-            return new List<Material> { Leather, Wood, Flint, Stone, Copper, Lead, Tin, Bronze, Iron, Steel, Diamond, Crystal, Ice };
+            return new List<Material> { Leather, Wood, Flint, Stone, Gold, Silver, Copper, Lead, Tin, Bronze, Iron, Steel, Diamond, Crystal, Ice };
         }
     }
 }

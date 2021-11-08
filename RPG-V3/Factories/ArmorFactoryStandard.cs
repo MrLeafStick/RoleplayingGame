@@ -9,7 +9,16 @@ namespace RPG_V3.Factories
     {
         public IArmor CreateArmor()
         {
-            return new Armor(Randomizer.GetRandom(Armor.List()));
+            return new Armor(
+                Randomizer.GetRandom(ArmorCategory.List()),
+                Randomizer.GetRandom(Material.List()),
+                10.0,
+                1.0,
+                1000.0,
+                100.0
+                );
+            
+            //return new Armor(Randomizer.GetRandom(Armor.List()));
         }
     }
 }

@@ -9,7 +9,14 @@ namespace RPG_V3.Factories
     {
         public IWeapon CreateWeapon()
         {
-            return new Weapon(Randomizer.GetRandom(Weapon.List()));
+            return new Weapon(
+                Randomizer.GetRandom(WeaponCategory.List()),
+                Randomizer.GetRandom(Material.List()),
+                100,
+                10,
+                1000);
+            
+            //return new Weapon(Randomizer.GetRandom(Weapon.List()));
         }
     }
 }
