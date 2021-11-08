@@ -10,7 +10,7 @@ namespace RPG_V3
         {
             GameFactory.Instance().ArmorFactory = new ArmorFactoryStandard();
             GameFactory.Instance().WeaponFactory = new WeaponFactoryStandard();
-            GameFactory.Instance().ParticipantFactory = new EntityFactoryStandard();
+            GameFactory.Instance().EntityFactory = new EntityFactoryStandard();
 
             Game aGame = new Game();
             aGame.Run(4);

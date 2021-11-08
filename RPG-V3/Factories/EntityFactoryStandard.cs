@@ -7,7 +7,7 @@ namespace RPG_V3.Factories
 {
     public class EntityFactoryStandard : IEntityFactory
     {
-        public IEntity CreateParticipant()
+        public IEntity CreateEntity()
         {
             return new Entity(
                 Randomizer.GenerateName(),

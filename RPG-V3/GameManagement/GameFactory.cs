@@ -8,7 +8,7 @@ namespace RPG_V3.GameManagement
 
         public IArmorFactory ArmorFactory { get; set; }
         public IWeaponFactory WeaponFactory { get; set; }
-        public IEntityFactory ParticipantFactory { get; set; }
+        public IEntityFactory EntityFactory { get; set; }
 
         public static GameFactory Instance()
         {

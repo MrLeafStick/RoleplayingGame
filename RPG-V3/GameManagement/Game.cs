@@ -11,32 +11,32 @@ namespace RPG_V3.GameManagement
         {
             Entity aChar = new Entity("Sigrid", EntityCategory.Living, EntitySpecies.Human, EntityOccupation.Warrior);
 
-            List<IEntity> participants = CreateParticipants(numOpponents);
+            List<IEntity> entities = CreateEntities(numOpponents);
 
-            PrintStartInfo(aChar, participants);
-            FightParticipants(aChar, participants);
-            PrintEndInfo(aChar, participants);
+            PrintStartInfo(aChar, entities);
+            FightEntities(aChar, entities);
+            PrintEndInfo(aChar, entities);
         }
 
-        private List<IEntity> CreateParticipants(int numOpponents)
+        private List<IEntity> CreateEntities(int numOpponents)
         {
-            List<IEntity> participants = new List<IEntity>();
+            List<IEntity> entities = new List<IEntity>();
 
             for (int i = 0; i < numOpponents; i++)
             {
-                participants.Add(GameFactory.Instance().ParticipantFactory.CreateParticipant());
+                entities.Add(GameFactory.Instance().EntityFactory.CreateEntity());
             }
 
-            return participants;
+            return entities;
         }
 
-        private void FightParticipants(Entity aChar, List<IEntity> participants)
+        private void FightEntities(Entity aChar, List<IEntity> entities)
         {
-            foreach (var participant in participants)
+            foreach (var entity in entities)
             {
-                if (IsFighting(aChar, participant))
+                if (IsFighting(aChar, entity))
                 {
-                    Loot(aChar, participant);
+                    Loot(aChar, entity);
                 }
             }
         }
@@ -77,16 +77,16 @@ namespace RPG_V3.GameManagement
             opponent.WeaponsOwned.Clear();
         }
 
-        private void PrintParticipants(List<IEntity> participants)
+        private void PrintEntities(List<IEntity> entities)
         {
-            foreach (var participant in participants)
+            foreach (var entity in entities)
             {
-                Console.WriteLine(participant);
+                Console.WriteLine(entity);
             }
             Console.WriteLine();
         }
 
-        private void PrintStartInfo(Entity aChar, List<IEntity> participants)
+        private void PrintStartInfo(Entity aChar, List<IEntity> entities)
         {
 
             int combinations = EntityCategory.List().Count * EntitySpecies.List().Count * EntityOccupation.List().Count;
@@ -101,10 +101,10 @@ namespace RPG_V3.GameManagement
             Console.WriteLine(aChar);
 
             Console.WriteLine("Enemies:\n");
-            PrintParticipants(participants);
+            PrintEntities(entities);
         }
 
-        private void PrintEndInfo(Entity aChar, List<IEntity> participants)
+        private void PrintEndInfo(Entity aChar, List<IEntity> entities)
         {
             Console.WriteLine(new string('*', 40));
             Console.WriteLine("The game has ended.");
@@ -120,18 +120,18 @@ namespace RPG_V3.GameManagement
                 Console.WriteLine($"{aChar.Name} has died.\n");
             }
 
-            foreach (var participant in participants)
+            foreach (var entity in entities)
             {
-                if (!participant.IsDestroyed)
+                if (!entity.IsDestroyed)
                 {
-                    Console.WriteLine($"{participant.Name} survived.\n");
-                    Console.WriteLine(participant);
+                    Console.WriteLine($"{entity.Name} survived.\n");
+                    Console.WriteLine(entity);
                 }
                 else
                 {
-                    //string fullName = participant.Name == participant.GetType().Name ? participant.Name : participant.Name + " the " + participant.GetType().Name;
+                    //string fullName = entity.Name == entity.GetType().Name ? entity.Name : entity.Name + " the " + entity.GetType().Name;
 
-                    Console.WriteLine($"{participant.Name} has died.\n");
+                    Console.WriteLine($"{entity.Name} has died.\n");
                 }
             }
 

@@ -2,6 +2,6 @@
 {
     public interface IEntityFactory
     {
-        IEntity CreateParticipant();
+        IEntity CreateEntity();
     }
 }
