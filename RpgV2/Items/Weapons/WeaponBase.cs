@@ -24,7 +24,7 @@ namespace RpgV2.Items.Weapons
 
         public override string Description
         {
-            get { return $"{Name} (weapon range: {TotalMinWeaponDamage} to {TotalMaxWeaponDamage} weapon damage)"; }
+            get { return $"{Name} rolled {TotalWeaponDamage } from (weapon range: {TotalMinWeaponDamage} to {TotalMaxWeaponDamage} weapon damage)"; }
         }
         public abstract int TotalMaxWeaponDamage { get; }
         public abstract int TotalMinWeaponDamage { get; }
