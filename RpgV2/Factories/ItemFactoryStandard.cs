@@ -18,25 +18,17 @@ namespace RpgV2.Factories
         {
             int index = RNG.RandomInt(1, 7);
 
-            switch (index)
+            return index switch
             {
-                case 1:
-                    return new ClothGloves();
-                case 2:
-                    return new LeatherBoots();
-                case 3:
-                    return new PlateBoots();
-                case 4:
-                    return new WoodenShield();
-                case 5:
-                    return new IronSword();
-                case 6:
-                    return new SteelLance();
-                case 7:
-                    return new WoodenMace();
-                default:
-                    throw new Exception($"Could not generate item with index {index} ");
-            }
+                1 => new ClothGloves(),
+                2 => new LeatherBoots(),
+                3 => new PlateBoots(),
+                4 => new WoodenShield(),
+                5 => new IronSword(),
+                6 => new SteelLance(),
+                7 => new WoodenMace(),
+                _ => throw new Exception($"Could not generate item with index {index} "),
+            };
         }
     }
 }

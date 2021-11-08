@@ -12,7 +12,7 @@ namespace RoleplayingGame
     /// </summary>
     public static class BattleLog
     {
-        private static List<string> _log = new List<string>();
+        private static readonly List<string> _log = new List<string>();
 
         //Save a sinlge string
 

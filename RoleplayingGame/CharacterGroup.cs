@@ -68,7 +68,7 @@ namespace RoleplayingGame
             {
                 if (!member.IsDead)
                 {
-                    totalDamage = totalDamage + member.DealDamage();
+                    totalDamage += member.DealDamage();
                 }
             }
 

@@ -14,7 +14,7 @@ namespace RpgV2
             GameFactory.Instance().ParticipantFactory = new ParticipantFactoryStandard();
 
             Game aGame = new Game();
-            aGame.Run(5);
+            Game.Run(5);
 
             KeepConsoleWindowOpen(); 
         }

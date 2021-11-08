@@ -4,10 +4,10 @@ namespace RoleplayingGame
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var mech = new GameMechanics();
-            mech.GameLogic();
+            GameMechanics.GameLogic();
         }
     }
 }

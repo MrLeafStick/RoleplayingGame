@@ -18,7 +18,6 @@ namespace RpgV2.Participants
         private int _maxInitialHealthPoints;
         private int _maxInitialGold;
         private int _maxInitialArmor;
-        private int _maxInitialWeapons;
         private double _meleeMaxDamage;
         #endregion
 
@@ -41,8 +40,6 @@ namespace RpgV2.Participants
         }
          //TODO: LANDMINE !!!!!
 
-
-
         #endregion
 
         #region Constructor
@@ -51,7 +48,6 @@ namespace RpgV2.Participants
             int maxInitialHealthPoints,
             int maxInitialGold,
             int maxInitialArmor,
-            int maxInitialWeapons,
             double meleeMaxDamage, 
             string name
             )
@@ -59,7 +55,6 @@ namespace RpgV2.Participants
             _maxInitialHealthPoints = maxInitialHealthPoints;
             _maxInitialGold = maxInitialGold;
             _maxInitialArmor = maxInitialArmor;
-            _maxInitialWeapons = maxInitialWeapons;
             _meleeMaxDamage = meleeMaxDamage;
             
             Name = name;
@@ -112,32 +107,24 @@ namespace RpgV2.Participants
         {
             int index = RNG.RandomInt(1, 7);
 
-            switch (index)
+            return index switch
             {
-                case 1:
-                    return new ClothGloves();
-                case 2:
-                    return new LeatherBoots();
-                case 3:
-                    return new PlateBoots();
-                case 4:
-                    return new WoodenShield();
-                case 5:
-                    return new IronSword();
-                case 6:
-                    return new SteelLance();
-                case 7:
-                    return new WoodenMace();
-                default:
-                    throw new Exception($"Could not generate item with index {index} ");
-            }
+                1 => new ClothGloves(),
+                2 => new LeatherBoots(),
+                3 => new PlateBoots(),
+                4 => new WoodenShield(),
+                5 => new IronSword(),
+                6 => new SteelLance(),
+                7 => new WoodenMace(),
+                _ => throw new Exception($"Could not generate item with index {index} "),
+            };
         }
 
         public virtual double DealDamage()
         {
             return RNG.RandomDouble(0.0, _meleeMaxDamage);
 
-            //TODO: Figure out With weapon that is best and deal the damage from that weapon.
+            //TODO: Figure out With weapon that is best, and deal the damage from that weapon.
             //TODO Hint: SELECT(W => W.æsdæfkæsdlfksæ).MAX()
         }
 

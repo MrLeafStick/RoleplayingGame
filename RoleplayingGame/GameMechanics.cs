@@ -8,7 +8,7 @@ namespace RoleplayingGame
 {
     public class GameMechanics
     {
-        public void GameLogic()
+        public static void GameLogic()
         {
             CharacterGroup redTeam = new CharacterGroup("Team Red");
             redTeam.AddCharacter(new Defender("Freja", 600, 60, 80));

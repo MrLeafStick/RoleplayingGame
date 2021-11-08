@@ -18,7 +18,7 @@ namespace RpgV2.GameManagement
 
         public static GameFactory Instance()
         {
-            return _instance ?? (_instance = new GameFactory());
+            return _instance ??= new GameFactory();
         }
 
         private GameFactory()

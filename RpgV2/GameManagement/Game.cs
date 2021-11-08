@@ -13,7 +13,7 @@ namespace RpgV2.GameManagement
 {
     public class Game
     {
-        public void Run(int noOfOpponents)
+        public static void Run(int noOfOpponents)
         {
             var aChar = new Character("Sigrid");
             List<IParticipant> participants = CreateParticipants(noOfOpponents);
@@ -23,7 +23,7 @@ namespace RpgV2.GameManagement
             PrintEndInfo(aChar);
         }
 
-        private List<IParticipant> CreateParticipants(int noOfOpponents)
+        private static List<IParticipant> CreateParticipants(int noOfOpponents)
         {
             var participants = new List<IParticipant>();
 
@@ -35,7 +35,7 @@ namespace RpgV2.GameManagement
             return participants;
         }
 
-        private void FightParticipants(Character aChar, List<IParticipant> participants)
+        private static void FightParticipants(Character aChar, List<IParticipant> participants)
         {
             foreach (var participant in participants)
             {
@@ -46,7 +46,7 @@ namespace RpgV2.GameManagement
             }
         }
 
-        private bool IsFighting(Character aChar, IParticipant opponent)
+        private static bool IsFighting(Character aChar, IParticipant opponent)
         {
             while(!opponent.IsDead && !aChar.IsDead)
             {
@@ -61,18 +61,21 @@ namespace RpgV2.GameManagement
             return opponent.IsDead;
         }
 
-        private void Loot(Character aChar, IParticipant opponent)
+        private static void Loot(Character aChar, IParticipant opponent)
         {
-            aChar.GoldOwned = aChar.GoldOwned + opponent.GoldOwned;
+            aChar.GoldOwned += opponent.GoldOwned;
             opponent.GoldOwned = 0;
-            foreach (var item in opponent.ItemsOwned)
+            foreach (var item in opponent.ArmorOwned)
             {
-                aChar.AddItem(item);
+                aChar.AddArmor(item);
             }
-            
+            foreach (var item in opponent.WeaponsOwned)
+            {
+                aChar.AddWeapon(item);
+            }
         }
 
-        private void PrintParticipants(List<IParticipant> participants)
+        private static void PrintParticipants(List<IParticipant> participants)
         {
             foreach (var parcipant in participants)
             {
@@ -81,7 +84,7 @@ namespace RpgV2.GameManagement
             Console.WriteLine();
         }
 
-        private void PrintStartInfo(Character aChar, List<IParticipant> parcipants)
+        private static void PrintStartInfo(Character aChar, List<IParticipant> parcipants)
         {
             Console.WriteLine("The gams is starting");
             Console.WriteLine(aChar);
@@ -89,7 +92,7 @@ namespace RpgV2.GameManagement
             PrintParticipants(parcipants);
         }
 
-        private void PrintEndInfo(Character aChar)
+        private static void PrintEndInfo(Character aChar)
         {
             Console.WriteLine(new string('*', 40));
             Console.WriteLine("The game has ended");

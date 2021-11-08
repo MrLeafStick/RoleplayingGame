@@ -13,7 +13,7 @@ namespace RoleplayingGame
     public class Character
     {
         #region Instance Fields
-        private string _name;
+        private readonly string _name;
         protected int _hitPoints;
         protected int _maxHitPoints;
         protected int _minDamage;
@@ -77,7 +77,7 @@ namespace RoleplayingGame
         public int ReceiveDamage(int damage)
         {
             int modifiedDamge = ReceiveDamageModifier(damage);
-            _hitPoints = _hitPoints - modifiedDamge;
+            _hitPoints -= modifiedDamge;
 
             string damageDesc = (damage > modifiedDamge) ? "(DESCREASED)" : "";
             string message = $"{Name} receives " +
