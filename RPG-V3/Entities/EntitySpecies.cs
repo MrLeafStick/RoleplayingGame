@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace RPG_V3.Entities
 {
@@ -34,5 +36,20 @@ namespace RPG_V3.Entities
             // Added extra Humans to balance out
             return new List<EntitySpecies> { Moose, Ork, Elf, Dwarf, Giant, Hobgoblin, Griffin, Minotaur, Wolf, Goat, Snake, Bear, Human, Human, Human, Human };
         }
+
+        public static void PrintSpecies()
+        {
+            //List<EntitySpecies> list = new List<EntitySpecies>();
+
+            //Type type = typeof(EntitySpecies);
+            //PropertyInfo[] properties = type. .GetProperties();
+            
+            //foreach (PropertyInfo property in properties)
+            //{
+            //    Console.WriteLine(property.Name);
+            //    list.Add(property);
+            //}
+        }
+
     }
 }

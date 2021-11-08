@@ -1,11 +1,14 @@
 ﻿using RPG_V3.Interfaces.Items;
+using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace RPG_V3.Items
 {
     class Material : IMaterial
     {
         private Material(string name) { Name = name; }
+
         public string Name { get; }
         public string StrengthModifier { get; }
         public string ValueModifier { get; }
@@ -30,6 +33,11 @@ namespace RPG_V3.Items
         public static List<Material> List()
         {
             return new List<Material> { Leather, Wood, Flint, Stone, Gold, Silver, Copper, Lead, Tin, Bronze, Iron, Steel, Diamond, Crystal, Ice };
+        }
+
+        public static List<Material> WeaponMaterials()
+        {
+            return new List<Material> { Wood, Flint, Stone, Copper, Bronze, Iron, Steel, Diamond, Crystal };
         }
     }
 }

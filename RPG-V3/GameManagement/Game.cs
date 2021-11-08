@@ -1,5 +1,6 @@
 ﻿using RPG_V3.Entities;
 using RPG_V3.Interfaces;
+using RPG_V3.Items;
 using System;
 using System.Collections.Generic;
 
@@ -95,6 +96,8 @@ namespace RPG_V3.GameManagement
 
             Console.WriteLine($"Total number of entity combinations: {combinations}\n");
 
+            EntitySpecies.PrintSpecies();
+
             Console.WriteLine(new string('*', 40));
             Console.WriteLine("The game is about to begin...");
             Console.WriteLine(new string('*', 40));
@@ -136,8 +139,6 @@ namespace RPG_V3.GameManagement
                     Console.WriteLine($"{entity.Name} has died.\n");
                 }
             }
-
-
         }
     }
 }

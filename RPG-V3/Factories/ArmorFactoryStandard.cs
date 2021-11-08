@@ -17,6 +17,8 @@ namespace RPG_V3.Factories
                 1000.0,
                 100.0
                 );
+
+            // TODO: randomize values.
             
             //return new Armor(Randomizer.GetRandom(Armor.List()));
         }

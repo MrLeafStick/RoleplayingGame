@@ -12,10 +12,12 @@ namespace RPG_V3.Factories
             return new Weapon(
                 Randomizer.GetRandom(WeaponCategory.List()),
                 Randomizer.GetRandom(Material.List()),
-                100,
-                10,
-                1000);
-            
+                100.0,
+                10.0,
+                1000.0);
+
+            // TODO: randomize values.
+
             //return new Weapon(Randomizer.GetRandom(Weapon.List()));
         }
     }

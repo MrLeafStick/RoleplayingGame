@@ -16,7 +16,11 @@ namespace RPG_V3.Items
         {
             Category = category;
             Material = material;
-            Name = $"{Material.Name} {Category.Name}";
+
+            var name = Material.Name + Category.Name;
+            name = name.Substring(0, 1).ToUpper() + name.Substring(1, name.Length - 1);
+
+            Name = name;
             Value = value;
             Weight = weight;
             MaxArmorPoints = maxArmorPoints;

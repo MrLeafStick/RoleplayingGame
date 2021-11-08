@@ -17,10 +17,11 @@ namespace RPG_V3.Items
 
         public static ArmorCategory Shield { get { return new ArmorCategory("shield"); } }
         public static ArmorCategory Armor { get { return new ArmorCategory("armor"); } }
+        public static ArmorCategory Helmet { get { return new ArmorCategory("helmet"); } }
 
         public static List<ArmorCategory> List()
         {
-            return new List<ArmorCategory> { Shield, Armor };
+            return new List<ArmorCategory> { Shield, Armor, Helmet };
         }
     }
 }
