@@ -7,7 +7,7 @@ GameFactory.Instance.WeaponFactory = new WeaponFactoryStandard();
 GameFactory.Instance.ParticipantFactory = new ParticipantFactoryStandard();
 
 var game = new Game(Console.WriteLine);
-game.Run(10);
+game.Run(900);
 KeepConsoleWindowOpen();
 
 static void KeepConsoleWindowOpen()

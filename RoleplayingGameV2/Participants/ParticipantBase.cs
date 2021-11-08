@@ -104,7 +104,7 @@ namespace RoleplayingGameV2.Participants
 
         public virtual double DealDamage()
         {
-            return WeaponsOwned.Count == 0 ? 0.0 : WeaponsOwned.Select(weapon => weapon.WeaponDamage).Max();
+            return WeaponsOwned.Count == 0 ? _meleeMaxDamage : WeaponsOwned.Select(weapon => weapon.WeaponDamage).Max();
         }
 
         public virtual void ReceiveDamage(double damagePoints)
