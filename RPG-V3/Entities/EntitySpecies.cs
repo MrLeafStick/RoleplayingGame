@@ -15,6 +15,7 @@ namespace RPG_V3.Entities
         public int MaxHealthPoints { get; }
         public int MaxDamagePoints { get; }
 
+        public static EntitySpecies Moose { get { return new EntitySpecies("Moose", 7000, 10000); } }
         public static EntitySpecies Ork { get { return new EntitySpecies("Ork", 700, 1000); } }
         public static EntitySpecies Elf { get { return new EntitySpecies("Elf", 400, 1500); } }
         public static EntitySpecies Dwarf { get { return new EntitySpecies("Dwarf", 800, 700); } }
@@ -31,7 +32,7 @@ namespace RPG_V3.Entities
         public static List<EntitySpecies> List()
         {
             // Added extra Humans to balance out
-            return new List<EntitySpecies> { Ork, Elf, Dwarf, Giant, Hobgoblin, Griffin, Minotaur, Wolf, Goat, Snake, Bear, Human, Human, Human, Human };
+            return new List<EntitySpecies> { Moose, Ork, Elf, Dwarf, Giant, Hobgoblin, Griffin, Minotaur, Wolf, Goat, Snake, Bear, Human, Human, Human, Human };
         }
     }
 }

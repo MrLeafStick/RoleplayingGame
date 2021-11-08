@@ -13,6 +13,8 @@ namespace RPG_V3.GameManagement
 
             List<IEntity> entities = CreateEntities(numOpponents);
 
+            entities.Add(new Entity("SuperMoose", EntityCategory.Clockwork, EntitySpecies.Moose, EntityOccupation.Blacksmith));
+
             PrintStartInfo(aChar, entities);
             FightEntities(aChar, entities);
             PrintEndInfo(aChar, entities);

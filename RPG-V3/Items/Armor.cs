@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using RPG_V3.Interfaces;
+using System.Collections.Generic;
 
-namespace RPG_V3.Interfaces.Items.Armor
+namespace RPG_V3.Items
 {
     class Armor : IArmor
     {
