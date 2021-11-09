@@ -30,12 +30,28 @@ namespace RPG_V3.Items
 
         public static List<Material> List()
         {
-            return new List<Material> { Leather, Wood, Flint, Stone, Gold, Silver, Copper, Lead, Tin, Bronze, Iron, Steel, Diamond, Crystal, Ice };
+            return new List<Material> 
+            { 
+                Leather, Wood, Flint, Stone, Gold, Silver, Copper, Lead, Tin, Bronze, Iron, Steel, Diamond, Crystal, Ice 
+            };
         }
 
         public static List<Material> WeaponMaterials()
         {
-            return new List<Material> { Wood, Flint, Stone, Copper, Bronze, Iron, Steel, Diamond, Crystal };
+            return new List<Material> 
+            { 
+                Flint, Stone, Copper, Bronze, Iron, Steel, Diamond, Crystal 
+            };
+        }
+
+        public static List<Material> ArmorMaterials()
+        {
+            return new List<Material>
+            {
+                Leather, Wood, Copper, Bronze, Iron, Steel
+            };
         }
     }
 }
+
+// TODO: add Material child classes Metal, Stone, Organic, etc.

@@ -18,10 +18,11 @@ namespace RPG_V3.Items
         public static WeaponCategory Sword { get { return new WeaponCategory("sword"); } }
         public static WeaponCategory Axe { get { return new WeaponCategory("axe"); } }
         public static WeaponCategory Spear { get { return new WeaponCategory("spear"); } }
+        public static WeaponCategory Pike { get { return new WeaponCategory("pike"); } }
 
         public static List<WeaponCategory> List()
         {
-            return new List<WeaponCategory> { Stick, Club, Knife, Dagger, Sword, Axe, Spear };
+            return new List<WeaponCategory> { Stick, Club, Knife, Dagger, Sword, Axe, Spear, Pike };
         }
     }
 }

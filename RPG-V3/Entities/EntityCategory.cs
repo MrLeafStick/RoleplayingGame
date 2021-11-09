@@ -14,12 +14,17 @@ namespace RPG_V3.Entities
         public static EntityCategory Zombie { get { return new EntityCategory("Zombie"); } }
         public static EntityCategory Skeleton { get { return new EntityCategory("Skeleton"); } }
         public static EntityCategory Magical { get { return new EntityCategory("Magical"); } }
+        public static EntityCategory Vampire { get { return new EntityCategory("Vampire"); } }
+        public static EntityCategory Mummy { get { return new EntityCategory("Mummy"); } }
         public static EntityCategory Living { get { return new EntityCategory("Living"); } }
 
         public static List<EntityCategory> List()
         {
             // Added more "Living" to balance out 
-            return new List<EntityCategory> { Ghost, Were, Clockwork, Undead, Zombie, Skeleton, Magical, Living, Living, Living, Living };
+            return new List<EntityCategory> 
+            { 
+                Ghost, Were, Clockwork, Undead, Zombie, Skeleton, Magical, Vampire, Mummy, Living, Living, Living, Living 
+            };
         }
     }
 }

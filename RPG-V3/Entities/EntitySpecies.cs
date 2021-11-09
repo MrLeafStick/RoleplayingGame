@@ -23,16 +23,21 @@ namespace RPG_V3.Entities
         public static EntitySpecies Hobgoblin { get { return new EntitySpecies("Hobgoblin", 200, 100); } }
         public static EntitySpecies Griffin { get { return new EntitySpecies("Griffin", 2000, 2000); } }
         public static EntitySpecies Minotaur { get { return new EntitySpecies("Minotaur", 1500, 2500); } }
+        public static EntitySpecies Centaur { get { return new EntitySpecies("Centaur", 1500, 2500); } }
         public static EntitySpecies Wolf { get { return new EntitySpecies("Wolf", 1500, 2500); } }
         public static EntitySpecies Goat { get { return new EntitySpecies("Goat", 50, 25); } }
         public static EntitySpecies Snake { get { return new EntitySpecies("Snake", 150, 250); } }
         public static EntitySpecies Bear { get { return new EntitySpecies("Bear", 500, 500); } }
+        public static EntitySpecies Lion { get { return new EntitySpecies("Lion", 500, 500); } }
         public static EntitySpecies Human { get { return new EntitySpecies("Human", 2000, 2000); } }
 
         public static List<EntitySpecies> List()
         {
             // Added extra Humans to balance out
-            return new List<EntitySpecies> { Moose, Ork, Elf, Dwarf, Giant, Hobgoblin, Griffin, Minotaur, Wolf, Goat, Snake, Bear, Human, Human, Human, Human };
+            return new List<EntitySpecies> 
+            { 
+                Moose, Ork, Elf, Dwarf, Giant, Hobgoblin, Griffin, Minotaur, Centaur, Wolf, Goat, Snake, Bear, Lion, Human, Human, Human, Human 
+            };
         }
 
         public static void PrintSpecies()

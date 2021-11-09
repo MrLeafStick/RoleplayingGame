@@ -10,6 +10,7 @@ namespace RPG_V3.GameManagement
         public IWeaponFactory WeaponFactory { get; set; }
         public IEntityFactory EntityFactory { get; set; }
         public ICharacterFactory CharacterFactory { get; set; }
+        public ICritterFactory CritterFactory { get; set; }
 
         public static GameFactory Instance()
         {

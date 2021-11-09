@@ -11,7 +11,7 @@ namespace RPG_V3.Factories
         {
             return new Weapon(
                 Randomizer.GetRandom(WeaponCategory.List()),
-                Randomizer.GetRandom(Material.List()),
+                Randomizer.GetRandom(Material.WeaponMaterials()),
                 100.0,
                 10.0,
                 1000.0);

@@ -11,11 +11,11 @@ namespace RPG_V3.Factories
         {
             return new Armor(
                 Randomizer.GetRandom(ArmorCategory.List()),
-                Randomizer.GetRandom(Material.List()),
+                Randomizer.GetRandom(Material.ArmorMaterials()),
                 10.0,
                 1.0,
-                1000.0,
-                100.0
+                10.0,
+                1.0
                 );
 
             // TODO: randomize values.

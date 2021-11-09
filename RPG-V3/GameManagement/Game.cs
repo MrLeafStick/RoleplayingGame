@@ -11,30 +11,43 @@ namespace RPG_V3.GameManagement
         {
             Character aChar = new Character("Sigrid", EntityCategory.Living, EntitySpecies.Human, EntityOccupation.Warrior);
 
-            List<ICharacter> entities = CreateEntities(numOpponents);
+            List<ICharacter> opponentCharacters = CreateEntities(numOpponents);
+            //List<ICritter> opponentCritters = CreateCritters(numOpponents);
 
-            entities.Add(new Character("SuperMoose", EntityCategory.Clockwork, EntitySpecies.Moose, EntityOccupation.Blacksmith));
+            opponentCharacters.Add(new Character("SuperMoose", EntityCategory.Clockwork, EntitySpecies.Moose, EntityOccupation.Blacksmith));
 
-            PrintStartInfo(aChar, entities);
-            FightEntities(aChar, entities);
-            PrintEndInfo(aChar, entities);
+            PrintStartInfo(aChar, opponentCharacters);
+            FightEntities(aChar, opponentCharacters);
+            PrintEndInfo(aChar, opponentCharacters);
         }
 
         private List<ICharacter> CreateEntities(int numOpponents)
         {
-            List<ICharacter> entities = new List<ICharacter>();
+            List<ICharacter> opponentCharacters = new List<ICharacter>();
 
             for (int i = 0; i < numOpponents; i++)
             {
-                entities.Add(GameFactory.Instance().CharacterFactory.CreateCharacter());
+                opponentCharacters.Add(GameFactory.Instance().CharacterFactory.CreateCharacter());
             }
 
-            return entities;
+            return opponentCharacters;
         }
 
-        private void FightEntities(Character aChar, List<ICharacter> entities)
+        private List<ICritter> CreateCritters(int numOpponents)
         {
-            foreach (var entity in entities)
+            List<ICritter> opponentCritters = new List<ICritter>();
+
+            for (int i = 0; i < numOpponents; i++)
+            {
+                opponentCritters.Add(GameFactory.Instance().CritterFactory.CreateCritter());
+            }
+
+            return opponentCritters;
+        }
+
+        private void FightEntities(Character aChar, List<ICharacter> opponentCharacters)
+        {
+            foreach (var entity in opponentCharacters)
             {
                 if (IsFighting(aChar, entity))
                 {
@@ -60,7 +73,6 @@ namespace RPG_V3.GameManagement
 
         private void Loot(Character aChar, ICharacter opponent)
         {
-            // Copy opponent stuff
             aChar.GoldOwned += opponent.GoldOwned;
 
             foreach (var armor in opponent.ArmorOwned)
@@ -73,22 +85,21 @@ namespace RPG_V3.GameManagement
                 aChar.AddWeapons(weapon);
             }
 
-            // Clear opponent stuff
             opponent.GoldOwned = 0;
             opponent.ArmorOwned.Clear();
             opponent.WeaponsOwned.Clear();
         }
 
-        private void PrintEntities(List<ICharacter> entities)
+        private void PrintEntities(List<ICharacter> opponentCharacters)
         {
-            foreach (var entity in entities)
+            foreach (var entity in opponentCharacters)
             {
                 Console.WriteLine(entity);
             }
             Console.WriteLine();
         }
 
-        private void PrintStartInfo(Character aChar, List<ICharacter> entities)
+        private void PrintStartInfo(Character aChar, List<ICharacter> opponentCharacters)
         {
 
             int combinations = EntityCategory.List().Count * EntitySpecies.List().Count * EntityOccupation.List().Count;
@@ -105,10 +116,10 @@ namespace RPG_V3.GameManagement
             Console.WriteLine(aChar);
 
             Console.WriteLine("Enemies:\n");
-            PrintEntities(entities);
+            PrintEntities(opponentCharacters);
         }
 
-        private void PrintEndInfo(Character aChar, List<ICharacter> entities)
+        private void PrintEndInfo(Character aChar, List<ICharacter> opponentCharacters)
         {
             Console.WriteLine(new string('*', 40));
             Console.WriteLine("The game has ended.");
@@ -124,7 +135,7 @@ namespace RPG_V3.GameManagement
                 Console.WriteLine($"{aChar.Name} has died.\n");
             }
 
-            foreach (var entity in entities)
+            foreach (var entity in opponentCharacters)
             {
                 if (!entity.IsDestroyed)
                 {

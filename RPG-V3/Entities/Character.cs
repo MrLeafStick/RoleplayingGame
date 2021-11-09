@@ -2,6 +2,8 @@
 using RPG_V3.Helpers;
 using RPG_V3.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
+using System;
 
 namespace RPG_V3.Entities
 {
@@ -70,6 +72,23 @@ namespace RPG_V3.Entities
         {
             ArmorOwned.Clear();
             WeaponsOwned.Clear();
+        }
+        public override double DealDamage()
+        {
+            double maxDamagePoints = WeaponsOwned.Count > 0 ? WeaponsOwned.Select(weapon => weapon.MaxDamagePoints).Max() : 0.0;
+
+            return maxDamagePoints;
+        }
+
+        public override void ReceiveDamage(double damagePoints)
+        {
+            double sumArmorPoints = ArmorOwned.Count > 0 ? ArmorOwned.Select(armor => armor.MaxArmorPoints).Sum() : 0.0;
+            
+            double damage = damagePoints / (damagePoints + sumArmorPoints);
+
+            HealthPoints -= damage;
+
+            Console.WriteLine($"{Name} receives {damage} damage out of {damagePoints} max damage.");
         }
 
         public override string ToString()

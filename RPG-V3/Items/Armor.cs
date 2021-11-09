@@ -5,8 +5,10 @@ namespace RPG_V3.Items
     class Armor : Item, IArmor
     {
         /*
+         * Custom armor goes here:
         public static Armor WoodenShield { get { return new Armor("Wooden Shield", 1.0, 3.0, 10.0, 1.0); } }
         */
+
         public Armor(ArmorCategory category, Material material, double value, double weight, double maxArmorPoints, double minArmorPoints)
             : base("", value, weight)
         {
@@ -14,9 +16,8 @@ namespace RPG_V3.Items
             Material = material;
 
             var name = Material.Name + Category.Name;
-            name = name.Substring(0, 1).ToUpper() + name.Substring(1, name.Length - 1);
 
-            Name = name;
+            Name = name.Substring(0, 1).ToUpper() + name.Substring(1, name.Length - 1);
             MaxArmorPoints = maxArmorPoints;
             MinArmorPoints = minArmorPoints;
         }
@@ -37,7 +38,7 @@ namespace RPG_V3.Items
         */
 
         public ArmorCategory Category { get; }
-        public Material Material { get; }
+        public Material Material { get; } // TODO: move material to Item.
         public double MaxArmorPoints { get; }
         public double MinArmorPoints { get; }
     }
