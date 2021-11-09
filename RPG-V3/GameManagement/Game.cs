@@ -1,7 +1,5 @@
 ﻿using RPG_V3.Entities;
 using RPG_V3.Interfaces;
-using RPG_V3.Interfaces.Items;
-using RPG_V3.Items;
 using System;
 using System.Collections.Generic;
 

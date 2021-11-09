@@ -19,7 +19,7 @@ namespace RPG_V3.Factories
                 );
 
             // TODO: randomize values.
-            
+
             //return new Armor(Randomizer.GetRandom(Armor.List()));
         }
     }

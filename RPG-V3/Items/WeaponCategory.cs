@@ -6,7 +6,7 @@ namespace RPG_V3.Items
     class WeaponCategory : IWeaponCategory
     {
         private WeaponCategory(string name) { Name = name; }
-        
+
         public string Name { get; }
         public string MinDamage { get; }
         public string MaxDamage { get; }

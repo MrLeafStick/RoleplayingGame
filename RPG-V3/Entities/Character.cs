@@ -1,20 +1,15 @@
 ﻿using RPG_V3.GameManagement;
 using RPG_V3.Helpers;
 using RPG_V3.Interfaces;
-using RPG_V3.Interfaces.Items;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace RPG_V3.Entities
 {
     public class Character : Entity, ICharacter
     {
-        public Character(string name, EntityCategory category, EntitySpecies species, EntityOccupation occupation) : base(name, category, species)
+        public Character(string name, EntityCategory category, EntitySpecies species, EntityOccupation occupation) 
+            : base(name, category, species)
         {
-            Name = name;
-            Category = category;
-            Species = species;
             Occupation = occupation;
 
             HealthPoints = SetInitialHealthPoints();
@@ -25,12 +20,8 @@ namespace RPG_V3.Entities
 
         public Character(Character entity) : base(entity)
         {
-            Category = entity.Category;
-            Species = entity.Species;
             Occupation = entity.Occupation;
-            Name = entity.Name;
             GoldOwned = entity.GoldOwned;
-            HealthPoints = entity.HealthPoints;
             ArmorOwned = entity.ArmorOwned;
             WeaponsOwned = entity.WeaponsOwned;
         }

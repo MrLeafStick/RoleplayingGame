@@ -1,5 +1,4 @@
 ﻿using RPG_V3.Entities;
-using System.Collections.Generic;
 
 // Base interface for all animate entities, including living creatures,
 // animals, humanoids, the undead, monsters, and magical creatures.

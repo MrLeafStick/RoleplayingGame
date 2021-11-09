@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
+﻿using System.Collections.Generic;
 
 namespace RPG_V3.Entities
 {
@@ -43,7 +41,7 @@ namespace RPG_V3.Entities
 
             //Type type = typeof(EntitySpecies);
             //PropertyInfo[] properties = type. .GetProperties();
-            
+
             //foreach (PropertyInfo property in properties)
             //{
             //    Console.WriteLine(property.Name);
