@@ -1,5 +1,6 @@
 ﻿using RPG_V3.Entities;
 using RPG_V3.Interfaces;
+using RPG_V3.Interfaces.Items;
 using RPG_V3.Items;
 using System;
 using System.Collections.Generic;
@@ -10,30 +11,30 @@ namespace RPG_V3.GameManagement
     {
         public void Run(int numOpponents)
         {
-            Entity aChar = new Entity("Sigrid", EntityCategory.Living, EntitySpecies.Human, EntityOccupation.Warrior);
+            Character aChar = new Character("Sigrid", EntityCategory.Living, EntitySpecies.Human, EntityOccupation.Warrior);
 
-            List<IEntity> entities = CreateEntities(numOpponents);
+            List<ICharacter> entities = CreateEntities(numOpponents);
 
-            entities.Add(new Entity("SuperMoose", EntityCategory.Clockwork, EntitySpecies.Moose, EntityOccupation.Blacksmith));
+            entities.Add(new Character("SuperMoose", EntityCategory.Clockwork, EntitySpecies.Moose, EntityOccupation.Blacksmith));
 
             PrintStartInfo(aChar, entities);
             FightEntities(aChar, entities);
             PrintEndInfo(aChar, entities);
         }
 
-        private List<IEntity> CreateEntities(int numOpponents)
+        private List<ICharacter> CreateEntities(int numOpponents)
         {
-            List<IEntity> entities = new List<IEntity>();
+            List<ICharacter> entities = new List<ICharacter>();
 
             for (int i = 0; i < numOpponents; i++)
             {
-                entities.Add(GameFactory.Instance().EntityFactory.CreateEntity());
+                entities.Add(GameFactory.Instance().CharacterFactory.CreateCharacter());
             }
 
             return entities;
         }
 
-        private void FightEntities(Entity aChar, List<IEntity> entities)
+        private void FightEntities(Character aChar, List<ICharacter> entities)
         {
             foreach (var entity in entities)
             {
@@ -44,7 +45,7 @@ namespace RPG_V3.GameManagement
             }
         }
 
-        private bool IsFighting(Entity aChar, IEntity opponent)
+        private bool IsFighting(Character aChar, ICharacter opponent)
         {
             while (!opponent.IsDestroyed && !aChar.IsDestroyed)
             {
@@ -59,7 +60,7 @@ namespace RPG_V3.GameManagement
             return opponent.IsDestroyed;
         }
 
-        private void Loot(Entity aChar, IEntity opponent)
+        private void Loot(Character aChar, ICharacter opponent)
         {
             // Copy opponent stuff
             aChar.GoldOwned += opponent.GoldOwned;
@@ -80,7 +81,7 @@ namespace RPG_V3.GameManagement
             opponent.WeaponsOwned.Clear();
         }
 
-        private void PrintEntities(List<IEntity> entities)
+        private void PrintEntities(List<ICharacter> entities)
         {
             foreach (var entity in entities)
             {
@@ -89,7 +90,7 @@ namespace RPG_V3.GameManagement
             Console.WriteLine();
         }
 
-        private void PrintStartInfo(Entity aChar, List<IEntity> entities)
+        private void PrintStartInfo(Character aChar, List<ICharacter> entities)
         {
 
             int combinations = EntityCategory.List().Count * EntitySpecies.List().Count * EntityOccupation.List().Count;
@@ -109,7 +110,7 @@ namespace RPG_V3.GameManagement
             PrintEntities(entities);
         }
 
-        private void PrintEndInfo(Entity aChar, List<IEntity> entities)
+        private void PrintEndInfo(Character aChar, List<ICharacter> entities)
         {
             Console.WriteLine(new string('*', 40));
             Console.WriteLine("The game has ended.");

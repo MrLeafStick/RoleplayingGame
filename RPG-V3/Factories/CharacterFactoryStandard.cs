@@ -5,14 +5,15 @@ using RPG_V3.Interfaces.Factories;
 
 namespace RPG_V3.Factories
 {
-    public class EntityFactoryStandard : IEntityFactory
+    public class CharacterFactoryStandard : ICharacterFactory
     {
-        public IEntity CreateEntity()
+        public ICharacter CreateCharacter()
         {
-            return new Entity(
+            return new Character(
                 Randomizer.GenerateName(),
                 Randomizer.GetRandom(EntityCategory.List()),
-                Randomizer.GetRandom(EntitySpecies.List()));
+                Randomizer.GetRandom(EntitySpecies.List()),
+                Randomizer.GetRandom(EntityOccupation.List()));
         }
     }
 }
