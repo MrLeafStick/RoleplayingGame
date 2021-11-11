@@ -7,5 +7,6 @@ namespace RPG_V3.Interfaces
         public string Name { get; }
         public double Value { get; }
         public double Weight { get; }
+        public double Repair { get; }
     }
 }

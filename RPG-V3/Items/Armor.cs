@@ -10,7 +10,7 @@ namespace RPG_V3.Items
         */
 
         public Armor(ArmorCategory category, Material material, double value, double weight, double maxArmorPoints, double minArmorPoints)
-            : base("", value, weight)
+            : base(value, weight)
         {
             Category = category;
             Material = material;

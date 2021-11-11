@@ -2,6 +2,11 @@
 using RPG_V3.GameManagement;
 using System;
 
+// TODO: Reduce armor and weapon repair state as a function of use and material strength
+// TODO: Calculate armor points as a function of repair state and material strength
+// TODO: Calculate damage received as a function of armor armor points and armor material strength
+
+
 namespace RPG_V3
 {
     class Program

@@ -11,7 +11,7 @@ namespace RPG_V3.Items
         */
 
         public Weapon(WeaponCategory category, Material material, double value, double weight, double maxDamage) 
-            : base("", value, weight)
+            : base(value, weight)
         {
             Category = category;
             Material = material;
