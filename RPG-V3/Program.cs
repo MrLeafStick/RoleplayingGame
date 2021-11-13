@@ -2,9 +2,10 @@
 using RPG_V3.GameManagement;
 using System;
 
-// TODO: Reduce armor and weapon repair state as a function of use and material strength
-// TODO: Calculate armor points as a function of repair state and material strength
-// TODO: Calculate damage received as a function of armor armor points and armor material strength
+// TODO: calculate armor and weapon repair state as a function of number of uses and material strength
+// TODO: Calculate weapon damage and armor points as a function of repair state and material strength
+// TODO: Calculate damage given as a function of weapon damage points
+// TODO: Calculate damage received as a function of armor armor points
 
 
 namespace RPG_V3
@@ -15,7 +16,7 @@ namespace RPG_V3
         {
             GameFactory.Instance().ArmorFactory = new ArmorFactoryStandard();
             GameFactory.Instance().WeaponFactory = new WeaponFactoryStandard();
-            GameFactory.Instance().EntityFactory = new EntityFactoryStandard();
+            //GameFactory.Instance().EntityFactory = new EntityFactoryStandard();
             GameFactory.Instance().CharacterFactory = new CharacterFactoryStandard();
             GameFactory.Instance().CritterFactory = new CritterFactoryStandard();
 

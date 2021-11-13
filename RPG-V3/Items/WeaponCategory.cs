@@ -19,6 +19,7 @@ namespace RPG_V3.Items
         public static WeaponCategory Axe { get { return new WeaponCategory("axe"); } }
         public static WeaponCategory Spear { get { return new WeaponCategory("spear"); } }
         public static WeaponCategory Pike { get { return new WeaponCategory("pike"); } }
+        public static WeaponCategory None { get { return new WeaponCategory("none"); } }
 
         public static List<WeaponCategory> List()
         {

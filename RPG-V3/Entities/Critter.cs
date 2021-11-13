@@ -7,7 +7,12 @@ namespace RPG_V3.Entities
         public Critter(string name, EntityCategory category, EntitySpecies species) 
             : base(name, category, species)
         {
+            
+        }
 
+        public override string ToString()
+        {
+            return base.ToString();
         }
     }
 }

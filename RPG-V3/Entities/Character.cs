@@ -4,6 +4,7 @@ using RPG_V3.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using RPG_V3.Items;
 
 namespace RPG_V3.Entities
 {
@@ -82,9 +83,20 @@ namespace RPG_V3.Entities
 
         public override void ReceiveDamage(double damagePoints)
         {
-            double sumArmorPoints = ArmorOwned.Count > 0 ? ArmorOwned.Select(armor => armor.MaxArmorPoints).Sum() : 0.0;
-            
-            double damage = damagePoints / (damagePoints + sumArmorPoints);
+            double maxArmorPoints = ArmorOwned.Count > 0 ? ArmorOwned.Select(armor => armor.MaxDamageReduction).Max() : 0.0;
+
+            Armor bestArmor;
+
+            if (ArmorOwned.Any(armor => armor.MaxDamageReduction == maxArmorPoints))
+            {
+                bestArmor = (Armor)ArmorOwned.FirstOrDefault(armor => armor.MaxDamageReduction == maxArmorPoints);
+            }
+            else
+            {
+                bestArmor = Armor.None;
+            }
+                
+            double damage = bestArmor.CalculatedReducedDamage(damagePoints);
 
             HealthPoints -= damage;
 

@@ -5,10 +5,7 @@ namespace RPG_V3.Items
     class Weapon : Item, IWeapon
     {
 
-        /*
-         * Custom (non auto-generated) weapons goes here:
-        public static Weapon WoodenSword { get { return new Weapon("Wooden Sword", 4.0, 1.0, 10.0, 1.0); } }
-        */
+        public static Weapon None { get { return new Weapon(WeaponCategory.None, Material.None, 0.0, 0.0, 0.0); } }
 
         public Weapon(WeaponCategory category, Material material, double value, double weight, double maxDamage) 
             : base(value, weight)
@@ -28,6 +25,11 @@ namespace RPG_V3.Items
             Material = weapon.Material;
             MaxDamagePoints = weapon.MaxDamagePoints;
             MinDamagePoints = weapon.MinDamagePoints;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
         }
 
         /*

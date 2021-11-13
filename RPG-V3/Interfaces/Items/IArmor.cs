@@ -2,7 +2,8 @@
 {
     public interface IArmor : IItem
     {
-        public double MaxArmorPoints { get; }
-        public double MinArmorPoints { get; }
+        public double MaxDamageReduction { get; }
+        public double MinDamageReduction { get; }
+        public bool IsBroken { get; }
     }
 }

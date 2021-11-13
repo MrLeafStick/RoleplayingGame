@@ -3,8 +3,8 @@
     public interface IMaterial
     {
         public string Name { get; }
-        public string StrengthModifier { get; }
-        public string ValueModifier { get; }
-        public string WeightModifier { get; }
+        public double StrengthModifier { get; }
+        public double ValueModifier { get; }
+        public double WeightModifier { get; }
     }
 }
